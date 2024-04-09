@@ -12,7 +12,7 @@ namespace ATBM_Project.ViewsModels
         {
             try
             {
-                string conString = $"User Id={username};Password={password};Data Source=ADMIN;";
+                string conString = $"User Id={username};Password={password};Data Source=localhost;";
                 connection = new OracleConnection(conString);
                 connection.Open();
                 return connection;
