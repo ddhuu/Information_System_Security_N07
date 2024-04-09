@@ -2,6 +2,7 @@
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Media;
 
 namespace ATBM_Project.ViewsModels
@@ -117,6 +118,42 @@ namespace ATBM_Project.ViewsModels
             cmdGrantSession.ExecuteNonQuery();
         }
 
+
+        public ObservableCollection<Role> GetRolesData()
+        {
+            ObservableCollection<Role> roles = new ObservableCollection<Role>();
+            var converter = new BrushConverter();
+            string SQLcontext = "select distinct granted_role from dba_role_privs";
+            OracleCommand cmd = new OracleCommand(SQLcontext, connection);
+            using (OracleDataReader reader = cmd.ExecuteReader())
+            {
+                int i = 1;
+                while (reader.Read())
+                {
+                    string empName = reader.GetString(reader.GetOrdinal("GRANTED_ROLE"));
+                    char firstCharName = empName[0];
+                    roles.Add(new Role { Number = i.ToString(), Character = firstCharName.ToString(), BgColor = (Brush)converter.ConvertFromString(colors[(i % 7)]), Name = empName });
+                    i++;
+                }
+            }
+            return roles;
+        }
+
+        public void CreateRole(string roleName)
+        {
+            ExecuteAlterSession();
+            string SQLcontext = $"CREATE ROLE {roleName}";
+            OracleCommand cmd = new OracleCommand(SQLcontext, connection);
+            cmd.ExecuteNonQuery();
+        }
+        public void DropRole(Role role)
+        {
+            // Drop the role
+            MessageBox.Show($"{role.Name}");
+            string SQLcontex = $"DROP ROLE {role.Name}";
+            OracleCommand cmd = new OracleCommand(SQLcontex, connection);
+            cmd.ExecuteNonQuery();
+        }
 
     }
 }
