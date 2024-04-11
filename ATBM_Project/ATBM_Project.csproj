@@ -229,6 +229,7 @@
     </Compile>
     <Compile Include="Views\Table\Table_View.xaml.cs">
       <DependentUpon>Table_View.xaml</DependentUpon>
+    </Compile>
 
     <Compile Include="Views\Role\EditRole_View.xaml.cs">
       <DependentUpon>EditRole_View.xaml</DependentUpon>
@@ -284,6 +285,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Table\Table_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
 
     <Page Include="Views\Role\EditRole_View.xaml">
       <SubType>Designer</SubType>
