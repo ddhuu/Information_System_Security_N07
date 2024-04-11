@@ -1,4 +1,5 @@
 ﻿using ATBM_Project.Models;
+using ATBM_Project.Views.Table;
 using ATBM_Project.ViewsModels;
 using Oracle.ManagedDataAccess.Client;
 using System.Collections.ObjectModel;
@@ -52,6 +53,15 @@ namespace ATBM_Project.Views
             UserController.Content = new Role_View(_admin, UserController);
         }
 
+        private void tableviewButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserController.Content = new Table_View(_admin, UserController);
 
+        }
+
+        private void viewsViewButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserController.Content = new Table_View(_admin, UserController, "View");
+        }
     }
 }
