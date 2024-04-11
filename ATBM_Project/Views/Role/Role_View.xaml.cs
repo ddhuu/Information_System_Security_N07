@@ -1,5 +1,4 @@
-﻿using ATBM_Project.Models;
-using ATBM_Project.ViewsModels;
+﻿using ATBM_Project.ViewsModels;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -15,7 +14,7 @@ namespace ATBM_Project.Views
     {
 
         private Admin_VM _admin;
-        private ObservableCollection<Role> _listRole { get; set; }
+        private ObservableCollection<Models.Role> _listRole { get; set; }
         private UserControl _userControl;
 
 
@@ -49,7 +48,7 @@ namespace ATBM_Project.Views
         {
             try
             {
-                Role role = rolesDataGrid.SelectedItem as Role;
+                Models.Role role = rolesDataGrid.SelectedItem as Models.Role;
                 if (role != null)
                 {
                     _admin.DropRole(role);
