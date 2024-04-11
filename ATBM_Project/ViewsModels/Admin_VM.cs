@@ -216,10 +216,11 @@ namespace ATBM_Project.ViewsModels
                     string grantee = reader.GetString(reader.GetOrdinal("GRANTEE"));
                     string privilege = reader.GetString(reader.GetOrdinal("PRIVILEGE"));
                     string grantable = reader.GetString(reader.GetOrdinal("GRANTABLE"));
-                    privileges.Add(new PrivilegeOfTable { 
-                        Number = i, 
-                        Owner = owner, 
-                        TableName = tableName, 
+                    privileges.Add(new PrivilegeOfTable
+                    {
+                        Number = i,
+                        Owner = owner,
+                        TableName = tableName,
                         Grantee = grantee,
                         Privilege = privilege,
                         Grantable = grantable
@@ -229,5 +230,28 @@ namespace ATBM_Project.ViewsModels
             }
             return privileges;
         }
+
+        public void EditUserPassword(string userName, string pwd)
+        {
+            string SQLContext = "ALTER USER :userName IDENTIFIED BY :pwd";
+            using (OracleCommand cmd = new OracleCommand(SQLContext, connection))
+            {
+                cmd.Parameters.Add(new OracleParameter("userName", userName));
+                cmd.Parameters.Add(new OracleParameter("pwd", pwd));
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (OracleException ex)
+                {
+                    // Log error, rethrow, return an error message or handle it appropriately.
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+
+
+
     }
 }

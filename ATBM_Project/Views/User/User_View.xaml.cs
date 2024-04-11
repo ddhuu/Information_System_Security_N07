@@ -1,4 +1,5 @@
 ﻿using ATBM_Project.Models;
+using ATBM_Project.Views.User;
 using ATBM_Project.ViewsModels;
 using System;
 using System.Collections.ObjectModel;
@@ -58,6 +59,18 @@ namespace ATBM_Project.Views
         private void membersDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void EditUser_Click(object sender, RoutedEventArgs e)
+        {
+            Users user = membersDataGrid.SelectedItem as Users;
+            EditUser_View editUser = new EditUser_View(_admin, user.Name);
+
+            editUser.Width = this.Width;
+            editUser.Height = this.Height;
+            editUser.Left = (this.Width - editUser.Width) / 2;
+            editUser.Top = (this.Height - editUser.Height) / 2;
+            editUser.Show();
         }
     }
 }

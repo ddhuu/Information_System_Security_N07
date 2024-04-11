@@ -91,7 +91,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button >
+                                <Button Name ="EditUser" Click = "EditUser_Click">
                                     <Icon:PackIconMaterial Kind="SettingsHelper"/>
                                 </Button>
                                 <Button Margin="5 0 0 0" Name="buttonDeleteUser" Click="deleteUser_Click" >
