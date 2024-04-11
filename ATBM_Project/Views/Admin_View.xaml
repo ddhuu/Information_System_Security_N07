@@ -57,14 +57,14 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="tableviewButton"  Margin="5">
+                            <Button Name="tableviewButton"  Margin="5" Click="tableviewButton_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Table" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Table" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="viewsViewButton"  Margin="5">
+                            <Button Name="viewsViewButton"  Margin="5" Click="viewsViewButton_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="eye" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Views" Margin="10,0,0,0" Foreground="black"/>

@@ -155,5 +155,79 @@ namespace ATBM_Project.ViewsModels
             cmd.ExecuteNonQuery();
         }
 
+        public ObservableCollection<Table> GetTablesData(string type = "table")
+        {
+            ObservableCollection<Table> tables = new ObservableCollection<Table>();
+
+            string SQLcontext = "SELECT table_name, count(*) as number_cols \n" +
+                                "FROM user_tab_columns \n" +
+                                $"where table_name in (select {type}_name from user_{type}s) \n" +
+                                "group by table_name";
+            OracleCommand cmd = new OracleCommand(SQLcontext, connection);
+            using (OracleDataReader reader = cmd.ExecuteReader())
+            {
+                int i = 1;
+                while (reader.Read())
+                {
+                    string tableName = reader.GetString(reader.GetOrdinal("TABLE_NAME"));
+                    int numCols = reader.GetInt32(reader.GetOrdinal("NUMBER_COLS"));
+                    tables.Add(new Table { Number = i, Name = tableName, NumCols = numCols });
+                    i++;
+                }
+            }
+            return tables;
+        }
+
+        public ObservableCollection<Column> GetColumnData(string objectName)
+        {
+            ObservableCollection<Column> columns = new ObservableCollection<Column>();
+
+            string SQLcontext = $"SELECT column_name, data_type, data_length FROM user_tab_columns where table_name = UPPER('{objectName}')";
+            OracleCommand cmd = new OracleCommand(SQLcontext, connection);
+            using (OracleDataReader reader = cmd.ExecuteReader())
+            {
+                int i = 1;
+                while (reader.Read())
+                {
+                    string colName = reader.GetString(reader.GetOrdinal("COLUMN_NAME"));
+                    string dataType = reader.GetString(reader.GetOrdinal("DATA_TYPE"));
+                    int dataLength = reader.GetInt32(reader.GetOrdinal("DATA_LENGTH"));
+                    columns.Add(new Column { Number = i, Name = colName, DataType = dataType, DataLength = dataLength });
+                    i++;
+                }
+            }
+            return columns;
+        }
+
+        // this function will be used to get privilleges of role/user in a table/view
+        public ObservableCollection<PrivilegeOfTable> getPrivilegesOfTable(string objectName)
+        {
+            ObservableCollection<PrivilegeOfTable> privileges = new ObservableCollection<PrivilegeOfTable>();
+
+            string SQLcontext = $"select owner, table_name, grantee, privilege, grantable from dba_tab_privs where table_name = upper('{objectName}')";
+            OracleCommand cmd = new OracleCommand(SQLcontext, connection);
+            using (OracleDataReader reader = cmd.ExecuteReader())
+            {
+                int i = 1;
+                while (reader.Read())
+                {
+                    string owner = reader.GetString(reader.GetOrdinal("OWNER"));
+                    string tableName = reader.GetString(reader.GetOrdinal("TABLE_NAME"));
+                    string grantee = reader.GetString(reader.GetOrdinal("GRANTEE"));
+                    string privilege = reader.GetString(reader.GetOrdinal("PRIVILEGE"));
+                    string grantable = reader.GetString(reader.GetOrdinal("GRANTABLE"));
+                    privileges.Add(new PrivilegeOfTable { 
+                        Number = i, 
+                        Owner = owner, 
+                        TableName = tableName, 
+                        Grantee = grantee,
+                        Privilege = privilege,
+                        Grantable = grantable
+                    });
+                    i++;
+                }
+            }
+            return privileges;
+        }
     }
 }
