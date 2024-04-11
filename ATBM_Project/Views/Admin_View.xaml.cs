@@ -49,7 +49,9 @@ namespace ATBM_Project.Views
 
         private void roleButton_Click(object sender, RoutedEventArgs e)
         {
-
+            UserController.Content = new Role_View(_admin, UserController);
         }
+
+
     }
 }

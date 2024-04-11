@@ -54,5 +54,10 @@ namespace ATBM_Project.Views
         {
             _userControl.Content = new AddUser_View(_admin, _userControl);
         }
+
+        private void membersDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

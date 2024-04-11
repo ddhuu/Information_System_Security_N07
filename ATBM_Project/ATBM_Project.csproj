@@ -212,11 +212,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="ViewsModels\Admin_VM.cs" />
     <Compile Include="ViewsModels\ConnectionDB_VM.cs" />
-    <Compile Include="Views\AddUser_View.xaml.cs">
+    <Compile Include="Views\Role\AddRole_View.xaml.cs">
+      <DependentUpon>AddRole_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\AddUser_View.xaml.cs">
       <DependentUpon>AddUser_View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin_View.xaml.cs">
@@ -225,10 +229,10 @@
     <Compile Include="Views\Login_View.xaml.cs">
       <DependentUpon>Login_View.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Role_View.xaml.cs">
+    <Compile Include="Views\Role\Role_View.xaml.cs">
       <DependentUpon>Role_View.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\User_View.xaml.cs">
+    <Compile Include="Views\User\User_View.xaml.cs">
       <DependentUpon>User_View.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
@@ -244,7 +248,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\AddUser_View.xaml">
+    <Page Include="Views\Role\AddRole_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\AddUser_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -256,11 +264,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Role_View.xaml">
+    <Page Include="Views\Role\Role_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\User_View.xaml">
+    <Page Include="Views\User\User_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -307,6 +315,9 @@
     <Error Condition="!Exists('..\packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.5.0.0\build\MaterialDesignThemes.targets'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>
