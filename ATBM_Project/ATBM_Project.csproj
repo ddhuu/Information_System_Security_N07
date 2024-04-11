@@ -212,13 +212,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Column.cs" />
+    <Compile Include="Models\PrivilegeOfTable.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Session.cs" />
+    <Compile Include="Models\Table.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="ViewsModels\Admin_VM.cs" />
     <Compile Include="ViewsModels\ConnectionDB_VM.cs" />
     <Compile Include="Views\Role\AddRole_View.xaml.cs">
       <DependentUpon>AddRole_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Table\Table_Detail_View.xaml.cs">
+      <DependentUpon>Table_Detail_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Table\Table_View.xaml.cs">
+      <DependentUpon>Table_View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\User\AddUser_View.xaml.cs">
       <DependentUpon>AddUser_View.xaml</DependentUpon>
@@ -249,6 +258,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Role\AddRole_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Table\Table_Detail_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Table\Table_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,105 @@
+﻿<Window x:Class="ATBM_Project.Views.Table.Table_Detail_View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ATBM_Project.Views.Table"
+        mc:Ignorable="d"
+        Height="550" Width="600">
+    <StackPanel Orientation="Vertical" Margin="10, 10, 10, 10">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock FontSize="20" x:Name="txtLabel"/>
+            <TextBlock Margin="2, 0, 0, 0" FontSize="20" x:Name="txtTableName"/>
+        </StackPanel>
+
+        <Separator Height="1" Background="#DAE2EA" Margin="0,6,0,10"/>
+        <TextBlock Text="Columns:" FontSize="14"/>
+        <DataGrid Height="200" ScrollViewer.CanContentScroll="True" x:Name="tableDetailGrid" AutoGenerateColumns="false">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="STT" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
+                <DataGridTemplateColumn Header="Column Name" IsReadOnly="True" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+
+                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Data Type" IsReadOnly="True" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+
+                            <TextBlock Text="{Binding DataType}" VerticalAlignment="Center"/>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Data Length" IsReadOnly="True" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+
+                            <TextBlock Text="{Binding DataLength}" VerticalAlignment="Center"/>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <Separator Height="1" Background="#DAE2EA" Margin="0,6,0,13"/>
+        <TextBlock Text="Privileges:" FontSize="14"/>
+
+        <DataGrid Height="200" ScrollViewer.CanContentScroll="True" x:Name="privilegesGrid" AutoGenerateColumns="false">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="STT" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
+                <DataGridTemplateColumn Header="Owner" IsReadOnly="True" Width="80">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+
+                            <TextBlock Text="{Binding Owner}" VerticalAlignment="Center"/>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Grantee" IsReadOnly="True" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+
+                            <TextBlock Text="{Binding Grantee}" VerticalAlignment="Center"/>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Privilege" IsReadOnly="True" Width="80">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+
+                            <TextBlock Text="{Binding Privilege}" VerticalAlignment="Center"/>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Grantable" IsReadOnly="True" Width="80">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+
+                            <TextBlock Text="{Binding Grantable}" VerticalAlignment="Center"/>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</Window>
