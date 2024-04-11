@@ -252,6 +252,56 @@ namespace ATBM_Project.ViewsModels
         }
 
 
+        public ObservableCollection<PrivilegeOfTable> GetPrivilegesOfUser(string userName, int type)
+        {
+            ObservableCollection<PrivilegeOfTable> privs = new ObservableCollection<PrivilegeOfTable>();
+            try
+            {
+                string SQLcontext = "";
+                if (type == 1)
+                {
+                    SQLcontext = $"SELECT grantee, owner, table_name, privilege, grantor FROM dba_tab_privs where grantee in (select granted_role from DBA_role_privs where grantee = '{userName}')";
+                }
+                else
+                {
+                    SQLcontext = $"Select grantee, owner, table_name, privilege, grantor from dba_tab_privs where grantee = '{userName}'";
+                }
+
+                using (OracleCommand cmd = new OracleCommand(SQLcontext, connection))
+                {
+                    using (OracleDataReader reader = cmd.ExecuteReader())
+                    {
+                        int number = 1;
+                        while (reader.Read())
+                        {
+                            string grantee = reader.GetString(reader.GetOrdinal("GRANTEE"));
+                            string owner = reader.GetString(reader.GetOrdinal("OWNER"));
+                            string tableName = reader.GetString(reader.GetOrdinal("TABLE_NAME"));
+                            string grantor = reader.GetString(reader.GetOrdinal("GRANTOR"));
+                            string priv = reader.GetString(reader.GetOrdinal("PRIVILEGE"));
+                            privs.Add(new PrivilegeOfTable
+                            {
+                                Grantee = grantee,
+                                Owner = owner,
+                                TableName = tableName,
+                                Privilege = priv,
+                                Grantable = grantor,
+                                Number = number++
+                            });
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            return privs;
+        }
+
+
+
 
     }
 }
