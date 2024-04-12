@@ -28,7 +28,7 @@ namespace ATBM_Project.Views.User
 
         private void loadPriv()
         {
-            EditUserController.Content = new PrivilOfUser_View(_admin, _userName);
+            EditUserController.Content = new PrivilOfUser_View(_admin, _userName, EditUserController);
         }
 
         private void editPasswordButton_Click(object sender, RoutedEventArgs e)
@@ -38,7 +38,7 @@ namespace ATBM_Project.Views.User
 
         private void privButton_Click(object sender, RoutedEventArgs e)
         {
-            EditUserController.Content = new PrivilOfUser_View(_admin, _userName);
+            EditUserController.Content = new PrivilOfUser_View(_admin, _userName, EditUserController);
         }
 
 

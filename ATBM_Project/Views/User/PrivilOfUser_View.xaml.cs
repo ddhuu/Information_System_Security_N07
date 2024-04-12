@@ -15,10 +15,12 @@ namespace ATBM_Project.Views.User
         private ObservableCollection<PrivilegeOfTable> _listPriv { get; set; }
         private Admin_VM _admin;
         private string _userName;
-        public PrivilOfUser_View(Admin_VM admin, string userName)
+        private UserControl _userControl;
+        public PrivilOfUser_View(Admin_VM admin, string userName, UserControl userControl)
         {
             _admin = admin;
             _userName = userName;
+            _userControl = userControl;
             InitializeComponent();
             List<string> privKind = new List<string>();
             privKind.Add("Cấp trực tiếp");
@@ -53,6 +55,11 @@ namespace ATBM_Project.Views.User
             //admin
             _admin.RevokePrivs(priv, _userName);
             PrivsGrid.ItemsSource = _admin.GetPrivilegesOfUser(_userName, 0);
+        }
+
+        private void addPrivButton_Click(object sender, RoutedEventArgs e)
+        {
+            _userControl.Content = new GrantPrivilege_View(_admin, _userName, _userControl);
         }
 
     }
