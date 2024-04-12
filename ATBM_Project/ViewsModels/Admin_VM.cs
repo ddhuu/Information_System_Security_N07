@@ -322,6 +322,35 @@ namespace ATBM_Project.ViewsModels
 
 
 
+        public ObservableCollection<Role> GetRolesOfUser(string userName)
+        {
+            ObservableCollection<Role> roles = new ObservableCollection<Role>();
+            var converter = new BrushConverter();
+            string SQLcontext = $"select * from dba_role_privs where grantee = '{userName}'";
+            using (OracleCommand cmd = new OracleCommand(SQLcontext, connection))
+            {
+                using (OracleDataReader reader = cmd.ExecuteReader())
+                {
+                    int i = 1;
+                    while (reader.Read())
+                    {
+                        string roleName = reader.GetString(reader.GetOrdinal("GRANTED_ROLE"));
+                        char firstCharName = roleName[0];
+                        roles.Add(new Role
+                        {
+                            Number = i.ToString(),
+                            Name = roleName,
+                            AdminOption = reader.GetString(reader.GetOrdinal("ADMIN_OPTION"))
+                        });
+                        i++;
+                    }
+                }
+            }
+            return roles;
+        }
+
+
+
 
     }
 }

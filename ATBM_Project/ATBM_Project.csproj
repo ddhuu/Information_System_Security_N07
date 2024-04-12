@@ -265,6 +265,9 @@
     <Compile Include="Views\User\PrivilOfUser_View.xaml.cs">
       <DependentUpon>PrivilOfUser_View.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\User\RoleOfUser_View.xaml.cs">
+      <DependentUpon>RoleOfUser_View.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\User\User_View.xaml.cs">
       <DependentUpon>User_View.xaml</DependentUpon>
     </Compile>
@@ -338,6 +341,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\User\PrivilOfUser_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\RoleOfUser_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

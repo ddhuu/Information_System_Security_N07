@@ -47,7 +47,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="roleButton"  Margin="5" >
+                            <Button Name="roleButton"  Margin="5" Click= "roleButton_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="AccountBox" Width="15" Height="15" Foreground="Black"/>
                                     <TextBlock Text="Role" Margin="10,0,0,0" Foreground="black"/>

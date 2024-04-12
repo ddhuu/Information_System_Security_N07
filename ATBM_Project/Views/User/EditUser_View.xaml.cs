@@ -40,6 +40,12 @@ namespace ATBM_Project.Views.User
         {
             EditUserController.Content = new PrivilOfUser_View(_admin, _userName);
         }
+
+
+        private void roleButton_Click(object sender, RoutedEventArgs e)
+        {
+            EditUserController.Content = new RoleOfUser_View(_admin, _userName);
+        }
     }
 
 }
