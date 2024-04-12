@@ -301,6 +301,26 @@ namespace ATBM_Project.ViewsModels
         }
 
 
+        public void RevokePrivs(PrivilegeOfTable priv, string userName)
+        {
+            string SQLContext = $"REVOKE {priv.Privilege} ON {priv.TableName} FROM {userName}";
+            try
+            {
+                using (OracleCommand cmd = new OracleCommand(SQLContext, connection))
+                {
+                    cmd.ExecuteNonQuery();
+                    return;
+                }
+            }
+            catch (OracleException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
+        }
+
+
 
 
     }

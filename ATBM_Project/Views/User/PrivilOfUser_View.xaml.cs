@@ -47,5 +47,13 @@ namespace ATBM_Project.Views.User
 
         }
 
+        private void buttonDeleteUser_Click(object sender, RoutedEventArgs e)
+        {
+            PrivilegeOfTable priv = PrivsGrid.SelectedItem as PrivilegeOfTable;
+            //admin
+            _admin.RevokePrivs(priv, _userName);
+            PrivsGrid.ItemsSource = _admin.GetPrivilegesOfUser(_userName, 0);
+        }
+
     }
 }

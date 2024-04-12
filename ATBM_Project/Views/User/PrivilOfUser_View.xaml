@@ -80,7 +80,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <Button Margin="5 0 0 0" Name="buttonDeleteUser">
+                                <Button Margin="5 0 0 0" Name="buttonDeleteUser" Click="buttonDeleteUser_Click">
                                     <Icon:PackIconMaterial Kind="DeleteOutline"/>
                                 </Button>
                             </StackPanel>
