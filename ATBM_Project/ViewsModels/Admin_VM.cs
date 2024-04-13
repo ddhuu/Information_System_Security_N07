@@ -230,7 +230,6 @@ namespace ATBM_Project.ViewsModels
             return privileges;
         }
 
-<<<<<<< HEAD
         public void grantRoleToUser(string role, string user)
         {
             string SQLcontex = $"GRANT {role} TO {user}";
@@ -271,7 +270,6 @@ namespace ATBM_Project.ViewsModels
         }
 
 
-=======
         public void EditUserPassword(string userName, string pwd)
         {
             string SQLContext = "ALTER USER :userName IDENTIFIED BY :pwd";
@@ -396,6 +394,5 @@ namespace ATBM_Project.ViewsModels
 
 
 
->>>>>>> de88887ca8f9cce2957982f17da56ac12e304965
     }
 }
