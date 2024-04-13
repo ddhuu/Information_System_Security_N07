@@ -149,7 +149,6 @@ namespace ATBM_Project.ViewsModels
         public void DropRole(Role role)
         {
             // Drop the role
-            MessageBox.Show($"{role.Name}");
             string SQLcontex = $"DROP ROLE {role.Name}";
             OracleCommand cmd = new OracleCommand(SQLcontex, connection);
             cmd.ExecuteNonQuery();
