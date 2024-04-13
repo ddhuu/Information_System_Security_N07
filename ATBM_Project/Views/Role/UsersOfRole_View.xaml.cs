@@ -4,9 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using ATBM_Project.ViewsModels;
 using System.Windows.Controls;
-
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace ATBM_Project.Views.Role
 {
@@ -15,16 +20,9 @@ namespace ATBM_Project.Views.Role
     /// </summary>
     public partial class UsersOfRole_View : UserControl
     {
-        private UserControl _userControl;
-        private Admin_VM _admin;
         public UsersOfRole_View()
         {
             InitializeComponent();
-        }
-
-        private void GrantRoleButton_Click(object sender, RoutedEventArgs e)
-        {
-           
         }
     }
 }

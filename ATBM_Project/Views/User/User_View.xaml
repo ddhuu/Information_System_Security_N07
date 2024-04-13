@@ -44,24 +44,8 @@
         <Line X1="0" Y1="0" X2="150" Y2="0" Stroke="#154c79" StrokeThickness="2" Margin="0 0 20 0"/>
         <!--Page Title-->
         <TextBlock Text="User" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0,20,0,30" Foreground="#121518" HorizontalAlignment="Left" Grid.RowSpan="2"/>
-        <Border Grid.Row="1" Grid.RowSpan="1" HorizontalAlignment="Right" Width="120" Height="30" CornerRadius="15" BorderBrush="Transparent" Background="LightGray" Margin="0,21,265,21">
-            <Button Background="Transparent" Style="{StaticResource ButtonStyle}" Grid.Row="1" Margin="10,0,10,0" Name="GrantPrivilegeButton" Click="GrantPrivilegeButton_Click">
-                <StackPanel Orientation="Horizontal">
-                    <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
-                    <TextBlock Text="Grant Privilege" Height="16" Width="80"/>
-                </StackPanel>
-            </Button>
-        </Border>
-        <Border Grid.Row="1" Grid.RowSpan="1" HorizontalAlignment="Right" Width="120" Height="30" CornerRadius="15" BorderBrush="Transparent" Background="LightGray" Margin="0,21,135,21">
-            <Button Background="Transparent" Style="{StaticResource ButtonStyle}" Grid.Row="1" Margin="10,0,10,0" Name="GrantRoleButton" Click="GrantRoleButton_Click">
-                <StackPanel Orientation="Horizontal">
-                    <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
-                    <TextBlock Text="Grant Role" Height="16" Width="62"/>
-                </StackPanel>
-            </Button>
-        </Border>
-        
-        <Border Grid.Row="1" HorizontalAlignment="Right" Width="120" Height="30" CornerRadius="15" BorderBrush="Transparent" Background="LightGray" Margin="0,20,8,22">
+
+        <Border Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="120" Height="30" CornerRadius="15" BorderBrush="Transparent" Background="LightGray" Margin="0,16,10,17">
             <Button Background="Transparent" Style="{StaticResource ButtonStyle}" Click="addUser_Click">
                 <StackPanel Orientation="Horizontal">
                     <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
@@ -118,8 +102,6 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
-
         </DataGrid>
-        
     </Grid>
 </UserControl>

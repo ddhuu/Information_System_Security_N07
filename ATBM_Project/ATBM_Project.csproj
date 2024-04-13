@@ -223,12 +223,14 @@
     <Compile Include="Views\Role\AddRole_View.xaml.cs">
       <DependentUpon>AddRole_View.xaml</DependentUpon>
     </Compile>
+
     <Compile Include="Views\Table\Table_Detail_View.xaml.cs">
       <DependentUpon>Table_Detail_View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Table\Table_View.xaml.cs">
       <DependentUpon>Table_View.xaml</DependentUpon>
     </Compile>
+
     <Compile Include="Views\Role\EditRole_View.xaml.cs">
       <DependentUpon>EditRole_View.xaml</DependentUpon>
     </Compile>
@@ -243,6 +245,7 @@
     </Compile>
     <Compile Include="Views\Role\UsersOfRole_View.xaml.cs">
       <DependentUpon>UsersOfRole_View.xaml</DependentUpon>
+
     </Compile>
     <Compile Include="Views\User\AddUser_View.xaml.cs">
       <DependentUpon>AddUser_View.xaml</DependentUpon>
@@ -296,6 +299,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+
     <Page Include="Views\Table\Table_Detail_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -304,6 +308,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+
     <Page Include="Views\Role\EditRole_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

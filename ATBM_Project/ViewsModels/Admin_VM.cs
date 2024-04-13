@@ -1,11 +1,8 @@
 ﻿using ATBM_Project.Models;
-using ATBM_Project.Views.Role;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.ObjectModel;
-using System.Data;
 using System.Windows;
-using System.Windows.Documents;
 using System.Windows.Media;
 
 namespace ATBM_Project.ViewsModels
@@ -154,13 +151,12 @@ namespace ATBM_Project.ViewsModels
             // Drop the role
             string SQLcontex = $"DROP ROLE {role.Name}";
             OracleCommand cmd = new OracleCommand(SQLcontex, connection);
-         
             cmd.ExecuteNonQuery();
         }
 
-        public ObservableCollection<Models.Table> GetTablesData(string type = "table")
+        public ObservableCollection<Table> GetTablesData(string type = "table")
         {
-            ObservableCollection<Models.Table> tables = new ObservableCollection<Models.Table>();
+            ObservableCollection<Table> tables = new ObservableCollection<Table>();
 
             string SQLcontext = "SELECT table_name, count(*) as number_cols \n" +
                                 "FROM user_tab_columns \n" +
@@ -174,7 +170,7 @@ namespace ATBM_Project.ViewsModels
                 {
                     string tableName = reader.GetString(reader.GetOrdinal("TABLE_NAME"));
                     int numCols = reader.GetInt32(reader.GetOrdinal("NUMBER_COLS"));
-                    tables.Add(new Models.Table { Number = i, Name = tableName, NumCols = numCols });
+                    tables.Add(new Table { Number = i, Name = tableName, NumCols = numCols });
                     i++;
                 }
             }
