@@ -1,5 +1,8 @@
 ﻿using ATBM_Project.Models;
+using ATBM_Project.Views.Role;
+using ATBM_Project.Views.User;
 using ATBM_Project.ViewsModels;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -58,6 +61,18 @@ namespace ATBM_Project.Views
         private void membersDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void GrantRoleButton_Click(object sender, RoutedEventArgs e)
+        {
+            _userControl.Content = new GrantRole_View(_admin, _userControl);
+            
+            
+        }
+
+        private void GrantPrivilegeButton_Click(object sender, RoutedEventArgs e)
+        {
+            _userControl.Content = new GrantPrivilegeToUser_View(_admin, _userControl);
         }
     }
 }

@@ -42,7 +42,8 @@
         <!--Top Buttons-->
         <Line X1="0" Y1="0" X2="150" Y2="0" Stroke="#154c79" StrokeThickness="2" Margin="0 0 20 0"/>
         <!--Page Title-->
-        <TextBlock Text="User" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0,20,0,30" Foreground="#121518" HorizontalAlignment="Left" Grid.RowSpan="2"/>
+        <TextBlock Text="User" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0,14,0,14" Foreground="#121518" HorizontalAlignment="Left"/>
+
         <Border Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="120" Height="30" CornerRadius="15" BorderBrush="Transparent" Background="LightGray" Margin="0,16,10,17">
             <Button Background="Transparent" Style="{StaticResource ButtonStyle}" >
                 <StackPanel Orientation="Horizontal">
@@ -99,5 +100,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+
     </Grid>
 </UserControl>

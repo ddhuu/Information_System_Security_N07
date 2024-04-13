@@ -87,13 +87,13 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-              
+
 
                 <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button >
+                                <Button x:Name="ViewPrivilegeOperation" Click="ViewPrivilege">
                                     <Icon:PackIconMaterial Kind="SettingsHelper"/>
                                 </Button>
                                 <Button Margin="5 0 0 0" Name="buttonDeleteRole" Click= "buttonDeleteRole_Click" >
@@ -105,5 +105,17 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Background="Transparent" Style="{StaticResource ButtonStyle}" Click="AddRole_Click" Margin="238,67,378,6" Grid.RowSpan="3" Grid.Row="1" >
+            <StackPanel Orientation="Horizontal"/>
+        </Button>
+
+        <Border Grid.Row="1" Grid.RowSpan="1" Width="120" Height="30" CornerRadius="15" BorderBrush="Transparent" Background="LightGray" Margin="340,21,0,21">
+            <Button Background="Transparent" Style="{StaticResource ButtonStyle}" Grid.Row="1" Margin="10,0,10,0" Name="GrantPrivilegeToUserBtn" Click="GrantPrivilegeToRole_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
+                    <TextBlock Height="17" Width="79"><Run Text="Grant Privilege"/><LineBreak/><Run/><LineBreak/><Run/></TextBlock>
+                </StackPanel>
+            </Button>
+        </Border>
     </Grid>
 </UserControl>
