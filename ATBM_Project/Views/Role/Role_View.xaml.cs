@@ -1,4 +1,5 @@
-﻿using ATBM_Project.ViewsModels;
+﻿using ATBM_Project.Views.Role;
+using ATBM_Project.ViewsModels;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -71,6 +72,14 @@ namespace ATBM_Project.Views
             _userControl.Content = new AddRole_View(_admin, _userControl);
         }
 
+        private void GrantPrivilegeToRole_Click(object sender, RoutedEventArgs e)
+        {
+            _userControl.Content = new GrantPrivilege_View(_admin, _userControl)
+;       }
 
+        private void ViewPrivilege(object sender, RoutedEventArgs e)
+        {
+            _userControl.Content = new PrivilegesOfRole_View(_admin, _userControl);
+        }
     }
 }

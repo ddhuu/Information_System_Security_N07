@@ -1,10 +1,8 @@
 ﻿using ATBM_Project.Models;
-<<<<<<< HEAD
 using ATBM_Project.Views.Role;
-=======
->>>>>>> de88887ca8f9cce2957982f17da56ac12e304965
 using ATBM_Project.Views.User;
 using ATBM_Project.ViewsModels;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -65,7 +63,7 @@ namespace ATBM_Project.Views
 
         }
 
-<<<<<<< HEAD
+
         private void GrantRoleButton_Click(object sender, RoutedEventArgs e)
         {
             _userControl.Content = new GrantRole_View(_admin, _userControl);
@@ -76,7 +74,8 @@ namespace ATBM_Project.Views
         private void GrantPrivilegeButton_Click(object sender, RoutedEventArgs e)
         {
             _userControl.Content = new GrantPrivilegeToUser_View(_admin, _userControl);
-=======
+        }
+
         private void EditUser_Click(object sender, RoutedEventArgs e)
         {
             Users user = membersDataGrid.SelectedItem as Users;
@@ -87,7 +86,7 @@ namespace ATBM_Project.Views
             editUser.Left = (this.Width - editUser.Width) / 2;
             editUser.Top = (this.Height - editUser.Height) / 2;
             editUser.Show();
->>>>>>> de88887ca8f9cce2957982f17da56ac12e304965
+
         }
     }
 }
