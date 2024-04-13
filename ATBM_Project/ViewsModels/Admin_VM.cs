@@ -155,9 +155,7 @@ namespace ATBM_Project.ViewsModels
         }
 
         public ObservableCollection<Table> GetTablesData(string type = "table")
-        public ObservableCollection<Table> GetTablesData(string type = "table")
         {
-            ObservableCollection<Table> tables = new ObservableCollection<Table>();
             ObservableCollection<Table> tables = new ObservableCollection<Table>();
 
             string SQLcontext = "SELECT table_name, count(*) as number_cols \n" +
@@ -172,7 +170,6 @@ namespace ATBM_Project.ViewsModels
                 {
                     string tableName = reader.GetString(reader.GetOrdinal("TABLE_NAME"));
                     int numCols = reader.GetInt32(reader.GetOrdinal("NUMBER_COLS"));
-                    tables.Add(new Table { Number = i, Name = tableName, NumCols = numCols });
                     tables.Add(new Table { Number = i, Name = tableName, NumCols = numCols });
                     i++;
                 }
