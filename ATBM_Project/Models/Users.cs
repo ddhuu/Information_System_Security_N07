@@ -10,6 +10,6 @@ namespace ATBM_Project.Models
         public string Name { get; set; }
         public string date_created { get; set; }
 
-
+        public string admin_option { get; set; }
     }
 }

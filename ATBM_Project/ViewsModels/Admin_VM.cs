@@ -433,7 +433,7 @@ namespace ATBM_Project.ViewsModels
                             users.Add(new Users
                             {
                                 Name = reader.GetString(reader.GetOrdinal("GRANTEE")),
-                                date_created = reader.GetString(reader.GetOrdinal("ADMIN_OPTION"))
+                                admin_option = reader.GetString(reader.GetOrdinal("ADMIN_OPTION"))
                             });
                         }
                     }
@@ -447,6 +447,19 @@ namespace ATBM_Project.ViewsModels
             return users;
         }
 
+        public void RevokeRoleFromUser(string role, string username)
+        {
+            string SQLcontex = $"Revoke {role} from {username}";
+            OracleCommand cmd = new OracleCommand(SQLcontex, connection);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (OracleException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
 
 

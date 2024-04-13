@@ -44,14 +44,6 @@
         <!--Page Title-->
         <TextBlock Text="User" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0,14,0,14" Foreground="#121518" HorizontalAlignment="Left"/>
 
-        <Border Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="120" Height="30" CornerRadius="15" BorderBrush="Transparent" Background="LightGray" Margin="0,16,10,17">
-            <Button Background="Transparent" Style="{StaticResource ButtonStyle}" >
-                <StackPanel Orientation="Horizontal">
-                    <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Margin="0 1 8 0" Width="11" Height="11"/>
-                    <TextBlock Text="Add New User"/>
-                </StackPanel>
-            </Button>
-        </Border>
         <!--Seprator-->
         <Separator Height="1" Grid.Row="2" Background="#DAE2EA" Margin="0,29,0,10" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
 
@@ -82,16 +74,14 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Date Created" Binding="{Binding date_created}" IsReadOnly="True" Width="*"/>
+                <DataGridTextColumn Header="Admin Option" Binding="{Binding admin_option}" IsReadOnly="True" Width="*"/>
 
                 <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button >
-                                    <Icon:PackIconMaterial Kind="SettingsHelper"/>
-                                </Button>
-                                <Button Margin="5 0 0 0" Name="buttonDeleteUser"  >
+            
+                                <Button Margin="5 0 0 0" Name="buttonDeleteUser" Click = "RevokeUserFromRole" >
                                     <Icon:PackIconMaterial Kind="DeleteOutline"/>
                                 </Button>
                             </StackPanel>

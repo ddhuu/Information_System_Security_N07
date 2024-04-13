@@ -1,7 +1,7 @@
-﻿using ATBM_Project.ViewsModels;
+﻿using ATBM_Project.Models;
+using ATBM_Project.ViewsModels;
 using System.Windows;
 using System.Windows.Controls;
-
 
 namespace ATBM_Project.Views.Role
 {
@@ -25,5 +25,15 @@ namespace ATBM_Project.Views.Role
         {
 
         }
+        private void RevokeUserFromRole(object sender, RoutedEventArgs e)
+        {
+            var user = UserOfRoleGrid.SelectedItem as Users;
+            //admin
+            _admin.RevokeRoleFromUser(_roleName, user.Name);
+
+            UserOfRoleGrid.ItemsSource = _admin.GetUsersOfRole(_roleName);
+        }
+
+
     }
 }
