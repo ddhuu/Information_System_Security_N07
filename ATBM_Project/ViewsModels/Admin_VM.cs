@@ -1,11 +1,8 @@
 ﻿using ATBM_Project.Models;
-using ATBM_Project.Views.Role;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.ObjectModel;
-using System.Data;
 using System.Windows;
-using System.Windows.Documents;
 using System.Windows.Media;
 
 namespace ATBM_Project.ViewsModels
@@ -154,7 +151,7 @@ namespace ATBM_Project.ViewsModels
             // Drop the role
             string SQLcontex = $"DROP ROLE {role.Name}";
             OracleCommand cmd = new OracleCommand(SQLcontex, connection);
-         
+
             cmd.ExecuteNonQuery();
         }
 
@@ -415,6 +412,39 @@ namespace ATBM_Project.ViewsModels
                 }
             }
             return roles;
+        }
+
+
+        public ObservableCollection<Users> GetUsersOfRole(string role)
+        {
+            var users = new ObservableCollection<Users>();
+
+            try
+            {
+                string SQLcontext = "select * from dba_role_privs where granted_role = :role";
+                using (OracleCommand cmd = new OracleCommand(SQLcontext, connection))
+                {
+                    cmd.Parameters.Add(new OracleParameter("role", $"{role}"));
+
+                    using (OracleDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            users.Add(new Users
+                            {
+                                Name = reader.GetString(reader.GetOrdinal("GRANTEE")),
+                                date_created = reader.GetString(reader.GetOrdinal("ADMIN_OPTION"))
+                            });
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                return new ObservableCollection<Users>();
+            }
+
+            return users;
         }
 
 

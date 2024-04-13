@@ -66,7 +66,7 @@
             </Border>
         </StackPanel>
         <!--Members Data Grid-->
-        <DataGrid ScrollViewer.CanContentScroll="True" x:Name="membersDataGrid" Grid.Row="5" Grid.ColumnSpan="2" AutoGenerateColumns="false" >
+        <DataGrid ScrollViewer.CanContentScroll="True" x:Name="UserOfRoleGrid" Grid.Row="5" Grid.ColumnSpan="2" AutoGenerateColumns="false" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="STT" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
                 <DataGridTemplateColumn Header="Users" IsReadOnly="True" Width="*">
@@ -82,7 +82,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="With Grant Option" Binding="{Binding date_created}" IsReadOnly="True" Width="*"/>
+                <DataGridTextColumn Header="Date Created" Binding="{Binding date_created}" IsReadOnly="True" Width="*"/>
 
                 <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
                     <DataGridTemplateColumn.CellTemplate>

@@ -75,11 +75,21 @@ namespace ATBM_Project.Views
         private void GrantPrivilegeToRole_Click(object sender, RoutedEventArgs e)
         {
             _userControl.Content = new GrantPrivilege_View(_admin, _userControl)
-;       }
-
-        private void ViewPrivilege(object sender, RoutedEventArgs e)
-        {
-            _userControl.Content = new PrivilegesOfRole_View(_admin, _userControl);
+;
         }
+
+        private void ViewDetailRole(object sender, RoutedEventArgs e)
+        {
+            Models.Role role = rolesDataGrid.SelectedItem as Models.Role;
+            DetailOfRole_View detailRole = new DetailOfRole_View(_admin, role.Name);
+
+            detailRole.Width = this.Width;
+            detailRole.Height = this.Height;
+            detailRole.Left = (this.Width - detailRole.Width) / 2;
+            detailRole.Top = (this.Height - detailRole.Height) / 2;
+            detailRole.Show();
+        }
+
+
     }
 }

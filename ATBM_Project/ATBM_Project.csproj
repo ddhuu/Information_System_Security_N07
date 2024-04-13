@@ -207,173 +207,163 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
   </ItemGroup>
-	<ItemGroup>
-		<ApplicationDefinition Include="App.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</ApplicationDefinition>
-		<Compile Include="Models\Column.cs" />
-		<Compile Include="Models\PrivilegeOfTable.cs" />
-		<Compile Include="Models\Role.cs" />
-		<Compile Include="Models\Session.cs" />
-		<Compile Include="Models\Table.cs" />
-		<Compile Include="Models\Users.cs" />
-		<Compile Include="ViewsModels\Admin_VM.cs" />
-		<Compile Include="ViewsModels\ConnectionDB_VM.cs" />
-		<Compile Include="Views\Role\AddRole_View.xaml.cs">
-			<DependentUpon>AddRole_View.xaml</DependentUpon>
-		</Compile>
-
-
-		<Compile Include="Views\Table\Table_Detail_View.xaml.cs">
-			<DependentUpon>Table_Detail_View.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Views\Table\Table_View.xaml.cs">
-			<DependentUpon>Table_View.xaml</DependentUpon>
-		</Compile>
-
-
-		<Compile Include="Views\Role\EditRole_View.xaml.cs">
-			<DependentUpon>EditRole_View.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Views\Role\GrantPrivilege_View.xaml.cs">
-			<DependentUpon>GrantPrivilege_View.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Views\Role\GrantRole_View.xaml.cs">
-			<DependentUpon>GrantRole_View.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Views\Role\PrivilegesOfRole_View.xaml.cs">
-			<DependentUpon>PrivilegesOfRole_View.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Views\Role\UsersOfRole_View.xaml.cs">
-			<DependentUpon>UsersOfRole_View.xaml</DependentUpon>
-
-
-		</Compile>
-		<Compile Include="Views\User\AddUser_View.xaml.cs">
-			<DependentUpon>AddUser_View.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Views\Admin_View.xaml.cs">
-			<DependentUpon>Admin_View.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Views\Login_View.xaml.cs">
-			<DependentUpon>Login_View.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Views\Role\Role_View.xaml.cs">
-			<DependentUpon>Role_View.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Views\User\GrantPrivilegeToUser_View.xaml.cs">
-			<DependentUpon>GrantPrivilegeToUser_View.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Views\User\EditPassword_View.xaml.cs">
-		    <DependentUpon>EditPassword_View.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Views\User\EditUser_View.xaml.cs">
-			<DependentUpon>EditUser_View.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Views\User\GrantPrivilege_View.xaml.cs">
-			<DependentUpon>GrantPrivilege_View.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Views\User\PrivilOfUser_View.xaml.cs">
-			<DependentUpon>PrivilOfUser_View.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Views\User\RoleOfUser_View.xaml.cs">
-			<DependentUpon>RoleOfUser_View.xaml</DependentUpon>
-		</Compile>
-		<Compile Include="Views\User\User_View.xaml.cs">
-			<DependentUpon>User_View.xaml</DependentUpon>
-		</Compile>
-		<Page Include="MainWindow.xaml">
-			<Generator>MSBuild:Compile</Generator>
-			<SubType>Designer</SubType>
-		</Page>
-		<Compile Include="App.xaml.cs">
-			<DependentUpon>App.xaml</DependentUpon>
-			<SubType>Code</SubType>
-		</Compile>
-		<Compile Include="Commands\RelayCommands.cs" />
-		<Compile Include="MainWindow.xaml.cs">
-			<DependentUpon>MainWindow.xaml</DependentUpon>
-			<SubType>Code</SubType>
-		</Compile>
-		<Page Include="Views\Role\AddRole_View.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-
-
-		<Page Include="Views\Table\Table_Detail_View.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Views\Table\Table_View.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-
-
-		<Page Include="Views\Role\EditRole_View.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Views\Role\GrantPrivilege_View.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Views\Role\GrantRole_View.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Views\Role\PrivilegesOfRole_View.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Views\Role\UsersOfRole_View.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Views\User\AddUser_View.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Views\Admin_View.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Views\Login_View.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Views\Role\Role_View.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Views\User\GrantPrivilegeToUser_View.xaml"/>
-		<Page Include="Views\User\EditPassword_View.xaml">
-		<SubType>Designer</SubType>
-		<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Views\User\EditUser_View.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Views\User\GrantPrivilege_View.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Views\User\PrivilOfUser_View.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Views\User\RoleOfUser_View.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-		<Page Include="Views\User\User_View.xaml">
-			<SubType>Designer</SubType>
-			<Generator>MSBuild:Compile</Generator>
-		</Page>
-	</ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Models\Column.cs" />
+    <Compile Include="Models\PrivilegeOfTable.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Session.cs" />
+    <Compile Include="Models\Table.cs" />
+    <Compile Include="Models\Users.cs" />
+    <Compile Include="ViewsModels\Admin_VM.cs" />
+    <Compile Include="ViewsModels\ConnectionDB_VM.cs" />
+    <Compile Include="Views\Role\AddRole_View.xaml.cs">
+      <DependentUpon>AddRole_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Role\DetailOfRole_View.xaml.cs">
+      <DependentUpon>DetailOfRole_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Table\Table_Detail_View.xaml.cs">
+      <DependentUpon>Table_Detail_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Table\Table_View.xaml.cs">
+      <DependentUpon>Table_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Role\GrantPrivilege_View.xaml.cs">
+      <DependentUpon>GrantPrivilege_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Role\GrantRole_View.xaml.cs">
+      <DependentUpon>GrantRole_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Role\PrivilegesOfRole_View.xaml.cs">
+      <DependentUpon>PrivilegesOfRole_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Role\UsersOfRole_View.xaml.cs">
+      <DependentUpon>UsersOfRole_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\AddUser_View.xaml.cs">
+      <DependentUpon>AddUser_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin_View.xaml.cs">
+      <DependentUpon>Admin_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login_View.xaml.cs">
+      <DependentUpon>Login_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Role\Role_View.xaml.cs">
+      <DependentUpon>Role_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\GrantPrivilegeToUser_View.xaml.cs">
+      <DependentUpon>GrantPrivilegeToUser_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\EditPassword_View.xaml.cs">
+      <DependentUpon>EditPassword_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\EditUser_View.xaml.cs">
+      <DependentUpon>EditUser_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\GrantPrivilege_View.xaml.cs">
+      <DependentUpon>GrantPrivilege_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\PrivilOfUser_View.xaml.cs">
+      <DependentUpon>PrivilOfUser_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\RoleOfUser_View.xaml.cs">
+      <DependentUpon>RoleOfUser_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\User_View.xaml.cs">
+      <DependentUpon>User_View.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Commands\RelayCommands.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\Role\AddRole_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Role\DetailOfRole_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Table\Table_Detail_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Table\Table_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Role\GrantPrivilege_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Role\GrantRole_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Role\PrivilegesOfRole_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Role\UsersOfRole_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\AddUser_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Login_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Role\Role_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\GrantPrivilegeToUser_View.xaml" />
+    <Page Include="Views\User\EditPassword_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\EditUser_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\GrantPrivilege_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\PrivilOfUser_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\RoleOfUser_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\User_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

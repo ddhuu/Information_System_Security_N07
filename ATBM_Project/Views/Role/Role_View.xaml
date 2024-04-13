@@ -93,7 +93,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button x:Name="ViewPrivilegeOperation" Click="ViewPrivilege">
+                                <Button x:Name="DetailRole" Click="ViewDetailRole">
                                     <Icon:PackIconMaterial Kind="SettingsHelper"/>
                                 </Button>
                                 <Button Margin="5 0 0 0" Name="buttonDeleteRole" Click= "buttonDeleteRole_Click" >

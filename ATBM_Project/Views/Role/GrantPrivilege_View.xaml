@@ -69,7 +69,7 @@
 
 
             <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,182,0,267">
-                <Button Padding="10 0 0 5" Margin="0 30 20 5" Content="Cancel" Width="100" Height="50"  FontSize="24" FontWeight="Bold" Background="#E8B444" BorderBrush="Black" BorderThickness="2" Foreground="White">
+                <Button Padding="10 0 0 5" Margin="0 30 20 5" Content="Cancel" Width="100" Height="50"  FontSize="24" FontWeight="Bold" Background="#E8B444" BorderBrush="Black" BorderThickness="2" Foreground="White" Click= "Cancel_Click">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="2" CornerRadius="7">
