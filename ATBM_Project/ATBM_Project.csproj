@@ -256,8 +256,25 @@
     <Compile Include="Views\Role\Role_View.xaml.cs">
       <DependentUpon>Role_View.xaml</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Views\User\GrantPrivilegeToUser_View.xaml.cs">
       <DependentUpon>GrantPrivilegeToUser_View.xaml</DependentUpon>
+=======
+    <Compile Include="Views\User\EditPassword_View.xaml.cs">
+      <DependentUpon>EditPassword_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\EditUser_View.xaml.cs">
+      <DependentUpon>EditUser_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\GrantPrivilege_View.xaml.cs">
+      <DependentUpon>GrantPrivilege_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\PrivilOfUser_View.xaml.cs">
+      <DependentUpon>PrivilOfUser_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\RoleOfUser_View.xaml.cs">
+      <DependentUpon>RoleOfUser_View.xaml</DependentUpon>
+>>>>>>> de88887ca8f9cce2957982f17da56ac12e304965
     </Compile>
     <Compile Include="Views\User\User_View.xaml.cs">
       <DependentUpon>User_View.xaml</DependentUpon>
@@ -323,7 +340,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+<<<<<<< HEAD
     <Page Include="Views\User\GrantPrivilegeToUser_View.xaml">
+=======
+    <Page Include="Views\User\EditPassword_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\EditUser_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\GrantPrivilege_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\PrivilOfUser_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\RoleOfUser_View.xaml">
+>>>>>>> de88887ca8f9cce2957982f17da56ac12e304965
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

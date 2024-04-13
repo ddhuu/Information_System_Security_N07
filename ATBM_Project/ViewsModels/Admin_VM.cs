@@ -152,7 +152,6 @@ namespace ATBM_Project.ViewsModels
         public void DropRole(Role role)
         {
             // Drop the role
-            MessageBox.Show($"{role.Name}");
             string SQLcontex = $"DROP ROLE {role.Name}";
             OracleCommand cmd = new OracleCommand(SQLcontex, connection);
          
@@ -220,10 +219,11 @@ namespace ATBM_Project.ViewsModels
                     string grantee = reader.GetString(reader.GetOrdinal("GRANTEE"));
                     string privilege = reader.GetString(reader.GetOrdinal("PRIVILEGE"));
                     string grantable = reader.GetString(reader.GetOrdinal("GRANTABLE"));
-                    privileges.Add(new PrivilegeOfTable { 
-                        Number = i, 
-                        Owner = owner, 
-                        TableName = tableName, 
+                    privileges.Add(new PrivilegeOfTable
+                    {
+                        Number = i,
+                        Owner = owner,
+                        TableName = tableName,
                         Grantee = grantee,
                         Privilege = privilege,
                         Grantable = grantable
@@ -234,6 +234,7 @@ namespace ATBM_Project.ViewsModels
             return privileges;
         }
 
+<<<<<<< HEAD
         public void grantRoleToUser(string role, string user)
         {
             string SQLcontex = $"GRANT {role} TO {user}";
@@ -274,5 +275,131 @@ namespace ATBM_Project.ViewsModels
         }
 
 
+=======
+        public void EditUserPassword(string userName, string pwd)
+        {
+            string SQLContext = "ALTER USER :userName IDENTIFIED BY :pwd";
+            using (OracleCommand cmd = new OracleCommand(SQLContext, connection))
+            {
+                cmd.Parameters.Add(new OracleParameter("userName", userName));
+                cmd.Parameters.Add(new OracleParameter("pwd", pwd));
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (OracleException ex)
+                {
+                    // Log error, rethrow, return an error message or handle it appropriately.
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+
+
+        public ObservableCollection<PrivilegeOfTable> GetPrivilegesOfUser(string userName, int type)
+        {
+            ObservableCollection<PrivilegeOfTable> privs = new ObservableCollection<PrivilegeOfTable>();
+            try
+            {
+                string SQLcontext = "";
+                if (type == 1)
+                {
+                    SQLcontext = $"SELECT grantee, owner, table_name, privilege, grantor FROM dba_tab_privs where grantee in (select granted_role from DBA_role_privs where grantee = '{userName}')";
+                }
+                else
+                {
+                    SQLcontext = $"Select grantee, owner, table_name, privilege, grantor from dba_tab_privs where grantee = '{userName}'";
+                }
+
+                using (OracleCommand cmd = new OracleCommand(SQLcontext, connection))
+                {
+                    using (OracleDataReader reader = cmd.ExecuteReader())
+                    {
+                        int number = 1;
+                        while (reader.Read())
+                        {
+                            string grantee = reader.GetString(reader.GetOrdinal("GRANTEE"));
+                            string owner = reader.GetString(reader.GetOrdinal("OWNER"));
+                            string tableName = reader.GetString(reader.GetOrdinal("TABLE_NAME"));
+                            string grantor = reader.GetString(reader.GetOrdinal("GRANTOR"));
+                            string priv = reader.GetString(reader.GetOrdinal("PRIVILEGE"));
+                            privs.Add(new PrivilegeOfTable
+                            {
+                                Grantee = grantee,
+                                Owner = owner,
+                                TableName = tableName,
+                                Privilege = priv,
+                                Grantable = grantor,
+                                Number = number++
+                            });
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            return privs;
+        }
+
+
+        public void RevokePrivs(PrivilegeOfTable priv, string userName)
+        {
+            string SQLContext = $"REVOKE {priv.Privilege} ON {priv.TableName} FROM {userName}";
+            try
+            {
+                using (OracleCommand cmd = new OracleCommand(SQLContext, connection))
+                {
+                    cmd.ExecuteNonQuery();
+                    return;
+                }
+            }
+            catch (OracleException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
+        }
+
+
+
+        public ObservableCollection<Role> GetRolesOfUser(string userName)
+        {
+            ObservableCollection<Role> roles = new ObservableCollection<Role>();
+            var converter = new BrushConverter();
+            string SQLcontext = $"select * from dba_role_privs where grantee = '{userName}'";
+            using (OracleCommand cmd = new OracleCommand(SQLcontext, connection))
+            {
+                using (OracleDataReader reader = cmd.ExecuteReader())
+                {
+                    int i = 1;
+                    while (reader.Read())
+                    {
+                        string roleName = reader.GetString(reader.GetOrdinal("GRANTED_ROLE"));
+                        char firstCharName = roleName[0];
+                        roles.Add(new Role
+                        {
+                            Number = i.ToString(),
+                            Name = roleName,
+                            AdminOption = reader.GetString(reader.GetOrdinal("ADMIN_OPTION"))
+                        });
+                        i++;
+                    }
+                }
+            }
+            return roles;
+        }
+
+
+
+
+
+
+
+>>>>>>> de88887ca8f9cce2957982f17da56ac12e304965
     }
 }
