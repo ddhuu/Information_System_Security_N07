@@ -501,6 +501,23 @@ namespace ATBM_Project.ViewsModels
             return privileges;
         }
 
+        public void RevokePrivFromRole(string role, PrivilegeOfTable privileges)
+        {
+            string SQLcontext = $"REVOKE {privileges.Privilege} ON {privileges.TableName} FROM {role}";
+
+            using (OracleCommand cmd = new OracleCommand(SQLcontext, connection))
+            {
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
 
 
 

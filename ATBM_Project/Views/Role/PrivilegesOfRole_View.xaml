@@ -81,7 +81,7 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 
-                                <Button Margin="5 0 0 0" Name="buttonDeleteUser"  >
+                                <Button Margin="5 0 0 0" Name="buttonDeleteUser" Click="RevokePrivFromRole"  >
                                     <Icon:PackIconMaterial Kind="DeleteOutline"/>
                                 </Button>
                             </StackPanel>

@@ -1,4 +1,6 @@
-﻿using ATBM_Project.ViewsModels;
+﻿using ATBM_Project.Models;
+using ATBM_Project.ViewsModels;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ATBM_Project.Views.Role
@@ -19,6 +21,13 @@ namespace ATBM_Project.Views.Role
             //admin
             PrivOfRoleGrid.ItemsSource = _admin.GetPrivsOfRole(roleName);
 
+        }
+
+        private void RevokePrivFromRole(object sender, RoutedEventArgs e)
+        {
+            var priv = PrivOfRoleGrid.SelectedItem as PrivilegeOfTable;
+            _admin.RevokePrivFromRole(_roleName, priv);
+            PrivOfRoleGrid.ItemsSource = _admin.GetPrivsOfRole(_roleName);
         }
 
     }
