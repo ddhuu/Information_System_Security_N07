@@ -428,13 +428,16 @@ namespace ATBM_Project.ViewsModels
 
                     using (OracleDataReader reader = cmd.ExecuteReader())
                     {
+                        int i = 1;
                         while (reader.Read())
                         {
                             users.Add(new Users
                             {
+                                Number = i.ToString(),
                                 Name = reader.GetString(reader.GetOrdinal("GRANTEE")),
                                 admin_option = reader.GetString(reader.GetOrdinal("ADMIN_OPTION"))
                             });
+                            i++;
                         }
                     }
                 }
@@ -461,6 +464,42 @@ namespace ATBM_Project.ViewsModels
             }
         }
 
+        public ObservableCollection<PrivilegeOfTable> GetPrivsOfRole(string role)
+        {
+            var privileges = new ObservableCollection<PrivilegeOfTable>();
+
+            try
+            {
+                string SQLcontext = "SELECT * FROM DBA_tab_PRIVS where grantee LIKE :role";
+                using (OracleCommand cmd = new OracleCommand(SQLcontext, connection))
+                {
+                    cmd.Parameters.Add(new OracleParameter("role", $"{role}"));
+
+                    using (OracleDataReader reader = cmd.ExecuteReader())
+                    {
+                        int i = 1;
+                        while (reader.Read())
+                        {
+                            privileges.Add(new PrivilegeOfTable
+                            {
+                                Grantee = reader.GetString(reader.GetOrdinal("GRANTEE")),
+                                Number = i,
+                                TableName = reader.GetString(reader.GetOrdinal("TABLE_NAME")),
+                                Privilege = reader.GetString(reader.GetOrdinal("PRIVILEGE")),
+                                Grantable = reader.GetString(reader.GetOrdinal("GRANTOR"))
+                            });
+                            i++;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                return new ObservableCollection<PrivilegeOfTable>();
+            }
+
+            return privileges;
+        }
 
 
 

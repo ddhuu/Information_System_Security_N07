@@ -29,5 +29,10 @@ namespace ATBM_Project.Views.Role
         {
             DetailOfRole.Content = new UsersOfRole_View(_admin, roleName);
         }
+
+        private void privilegeButton_Click(object sender, RoutedEventArgs e)
+        {
+            DetailOfRole.Content = new PrivilegesOfRole_View(_admin, roleName);
+        }
     }
 }

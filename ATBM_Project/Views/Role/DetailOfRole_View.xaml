@@ -50,7 +50,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="privilegeButton"  Margin="5" >
+                            <Button Name="privilegeButton"  Margin="5" Click="privilegeButton_Click" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Lock" Width="15" Height="15" Foreground="Black"/>
                                     <TextBlock Text="Privilege" Margin="10,0,0,0" Foreground="black"/>

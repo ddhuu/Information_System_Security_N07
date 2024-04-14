@@ -1,9 +1,4 @@
-﻿using ATBM_Project.Views.Role;
-using ATBM_Project.ViewsModels;
-using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Windows;
+﻿using ATBM_Project.ViewsModels;
 using System.Windows.Controls;
 
 namespace ATBM_Project.Views.Role
@@ -15,11 +10,16 @@ namespace ATBM_Project.Views.Role
     {
         private Admin_VM _admin;
         private UserControl _userControl;
-        public PrivilegesOfRole_View(Admin_VM admin, UserControl userControl)
+        private string _roleName;
+        public PrivilegesOfRole_View(Admin_VM admin, string roleName)
         {
             InitializeComponent();
             _admin = admin;
-            _userControl = userControl;
+            _roleName = roleName;
+            //admin
+            PrivOfRoleGrid.ItemsSource = _admin.GetPrivsOfRole(roleName);
+
         }
+
     }
 }

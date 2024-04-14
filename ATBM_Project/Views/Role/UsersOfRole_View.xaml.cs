@@ -23,6 +23,7 @@ namespace ATBM_Project.Views.Role
 
         private void GrantRoleButton_Click(object sender, RoutedEventArgs e)
         {
+            _userControl.Content = new GrantRole_View(_admin, _userControl);
 
         }
         private void RevokeUserFromRole(object sender, RoutedEventArgs e)
@@ -33,6 +34,7 @@ namespace ATBM_Project.Views.Role
 
             UserOfRoleGrid.ItemsSource = _admin.GetUsersOfRole(_roleName);
         }
+
 
 
     }

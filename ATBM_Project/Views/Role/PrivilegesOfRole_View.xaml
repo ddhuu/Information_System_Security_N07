@@ -65,25 +65,14 @@
             </Border>
         </StackPanel>
         <!--Members Data Grid-->
-        <DataGrid ScrollViewer.CanContentScroll="True" x:Name="membersDataGrid" Grid.Row="5" Grid.ColumnSpan="2" AutoGenerateColumns="false">
+        <DataGrid ScrollViewer.CanContentScroll="True" x:Name="PrivOfRoleGrid" Grid.Row="5" Grid.ColumnSpan="2" AutoGenerateColumns="false">
             <DataGrid.Columns>
 
                 <DataGridTextColumn Header="STT" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
-                <DataGridTemplateColumn Header="Table" IsReadOnly="True" Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="{Binding BgColor}">
-                                    <TextBlock Text="{Binding Character}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1"/>
-                                </Border>
+                <DataGridTextColumn Header="Table" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding TableName}"/>
 
-                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Privilege" Binding="{Binding date_created}" IsReadOnly="True" Width="*"/>
-                <DataGridTextColumn Header="Grantor" Binding="{Binding date_created}" IsReadOnly="True" Width="*"/>
+                <DataGridTextColumn Header="Privilege" Binding="{Binding Privilege}" IsReadOnly="True" Width="*"/>
+                <DataGridTextColumn Header="Grantor" Binding="{Binding Grantable}" IsReadOnly="True" Width="*"/>
 
 
 
@@ -91,9 +80,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button >
-                                    <Icon:PackIconMaterial Kind="SettingsHelper"/>
-                                </Button>
+                                
                                 <Button Margin="5 0 0 0" Name="buttonDeleteUser"  >
                                     <Icon:PackIconMaterial Kind="DeleteOutline"/>
                                 </Button>
