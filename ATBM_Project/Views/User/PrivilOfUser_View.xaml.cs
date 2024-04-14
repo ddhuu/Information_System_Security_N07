@@ -23,10 +23,10 @@ namespace ATBM_Project.Views.User
             _userControl = userControl;
             InitializeComponent();
             List<string> privKind = new List<string>();
-            privKind.Add("Cấp trực tiếp");
-            privKind.Add("Cấp qua Role");
+            privKind.Add("By Direct");
+            privKind.Add("By Role");
             grantTypeComboBox.ItemsSource = privKind;
-            grantTypeComboBox.SelectedItem = "Cấp trực tiếp";
+            grantTypeComboBox.SelectedItem = "By Direct";
             _listPriv = _admin.GetPrivilegesOfUser(_userName, 0);
             PrivsGrid.ItemsSource = _listPriv;
 
@@ -37,7 +37,7 @@ namespace ATBM_Project.Views.User
         private void ChooseGrantType(object sender, RoutedEventArgs e)
         {
             string option = grantTypeComboBox.SelectedValue as string;
-            if (option == "Cấp trực tiếp")
+            if (option == "By Direct")
             {
                 PrivsGrid.ItemsSource = _admin.GetPrivilegesOfUser(_userName, 0);
             }

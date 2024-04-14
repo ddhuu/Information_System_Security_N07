@@ -226,6 +226,9 @@
     <Compile Include="Views\Role\DetailOfRole_View.xaml.cs">
       <DependentUpon>DetailOfRole_View.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Role\PrivOnColumn_View.xaml.cs">
+      <DependentUpon>PrivOnColumn_View.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Table\Table_Detail_View.xaml.cs">
       <DependentUpon>Table_Detail_View.xaml</DependentUpon>
     </Compile>
@@ -295,6 +298,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Role\DetailOfRole_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Role\PrivOnColumn_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

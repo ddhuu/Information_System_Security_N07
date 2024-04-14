@@ -57,7 +57,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="privilegeOnColumnButton"  Margin="5" >
+                            <Button Name="privilegeOnColumnButton"  Margin="5" Click="ViewPrivOnColumn" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="TableColumnPlusAfter" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Privilege on Column" Margin="10,0,0,0" Foreground="black"/>

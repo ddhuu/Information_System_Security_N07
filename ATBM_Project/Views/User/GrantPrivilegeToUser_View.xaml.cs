@@ -8,8 +8,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-using static MaterialDesignThemes.Wpf.Theme.ToolBar;
-
 namespace ATBM_Project.Views.User
 {
     /// <summary>
@@ -31,7 +29,7 @@ namespace ATBM_Project.Views.User
             this._tables = admin_VM.GetTablesData("table");
             TableComboBox.ItemsSource = _tables;
             RoleComboBox.ItemsSource = _users;
-            
+
         }
 
 
@@ -51,7 +49,7 @@ namespace ATBM_Project.Views.User
             string operation = (string)PrivilegeComboBox.SelectedItem;
             if (operation == null)
             {
-                
+
             }
             else
             {
@@ -64,7 +62,7 @@ namespace ATBM_Project.Views.User
                 {
                     ColumnCheckBox.ItemsSource = null;
                 }
-            } 
+            }
 
 
         }
@@ -179,7 +177,7 @@ namespace ATBM_Project.Views.User
                     MessageBox.Show(ex.Message);
                 }
             }
-            
+
 
 
 
@@ -243,6 +241,11 @@ namespace ATBM_Project.Views.User
         private void grantOptionCheck_Checked(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            userControl.Content = new User_View(admin_VM, userControl);
         }
     }
 }

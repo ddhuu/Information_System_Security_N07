@@ -344,6 +344,7 @@ namespace ATBM_Project.ViewsModels
                             string tableName = reader.GetString(reader.GetOrdinal("TABLE_NAME"));
                             string grantor = reader.GetString(reader.GetOrdinal("GRANTOR"));
                             string priv = reader.GetString(reader.GetOrdinal("PRIVILEGE"));
+
                             privs.Add(new PrivilegeOfTable
                             {
                                 Grantee = grantee,
@@ -351,8 +352,10 @@ namespace ATBM_Project.ViewsModels
                                 TableName = tableName,
                                 Privilege = priv,
                                 Grantable = grantor,
-                                Number = number++
+                                Number = number++,
+
                             });
+
                         }
                     }
                 }
@@ -516,6 +519,50 @@ namespace ATBM_Project.ViewsModels
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+
+        public ObservableCollection<PrivilegeOfTable> GetPrivsOnColumnOfRole(string role)
+        {
+            ObservableCollection<PrivilegeOfTable> Privs = new ObservableCollection<PrivilegeOfTable>();
+            string SQLcontext = $"select * from DBA_COL_PRIVS where grantee LIKE '{role}'";
+
+            try
+            {
+                using (OracleCommand cmd = new OracleCommand(SQLcontext, connection))
+                {
+                    using (OracleDataReader reader = cmd.ExecuteReader())
+                    {
+                        int number = 1;
+                        while (reader.Read())
+                        {
+                            string grantee = reader.GetString(reader.GetOrdinal("GRANTEE"));
+                            string owner = reader.GetString(reader.GetOrdinal("OWNER"));
+                            string tableName = reader.GetString(reader.GetOrdinal("TABLE_NAME"));
+                            string grantor = reader.GetString(reader.GetOrdinal("GRANTOR"));
+                            string priv = reader.GetString(reader.GetOrdinal("PRIVILEGE"));
+                            string col = reader.GetString(reader.GetOrdinal("COLUMN_NAME"));
+                            Privs.Add(new PrivilegeOfTable
+                            {
+                                Grantee = grantee,
+                                Owner = owner,
+                                TableName = tableName,
+                                Privilege = priv,
+                                Grantable = grantor,
+                                Number = number++,
+                                column = col
+                            });
+                        }
+                    }
+                }
+                return Privs;
+            }
+            catch (OracleException ex)
+            {
+                throw new Exception("Oracle error: " + ex.Message);
+            }
+
+
         }
 
 

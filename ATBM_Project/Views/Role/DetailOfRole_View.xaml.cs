@@ -34,5 +34,10 @@ namespace ATBM_Project.Views.Role
         {
             DetailOfRole.Content = new PrivilegesOfRole_View(_admin, roleName);
         }
+
+        private void ViewPrivOnColumn(object sender, RoutedEventArgs e)
+        {
+            DetailOfRole.Content = new PrivOnColumn_View(_admin, roleName);
+        }
     }
 }

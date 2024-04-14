@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ATBM_Project.Models
+﻿namespace ATBM_Project.Models
 {
     public class Column
     {
@@ -13,5 +7,6 @@ namespace ATBM_Project.Models
         public int DataLength { get; set; }
 
         public int Number { get; set; }
+        public string column { get; set; }
     }
 }

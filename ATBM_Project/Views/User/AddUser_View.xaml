@@ -19,7 +19,7 @@
                 <RowDefinition Height="Auto" />
 
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Content="Thêm người dùng" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" />
+            <Label Grid.Row="0" Content="Add New User" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" />
             <Label Grid.Row="1" Width="500" Height="50" Content="Username:" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" />
             <TextBox Grid.Row="2" Padding="10 0 0 5" VerticalContentAlignment="Center" FontFamily="Times New Roman" FontSize="24" FontWeight="Bold" Width="500" Height="50" Name="AddUserBox" HorizontalAlignment="Center" />
             <Label Grid.Row="3" Width="500" Height="50" Content="Password: " FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" />
