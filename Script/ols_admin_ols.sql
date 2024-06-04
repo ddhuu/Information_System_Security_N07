@@ -1,0 +1,160 @@
+-- Dang nhap bang admin_ols
+
+--B1: tao policy
+BEGIN 
+    SA_SYSDBA.CREATE_POLICY( 
+    policy_name => 'ols_policy', 
+    column_name => 'ols_label'
+); 
+END; 
+--BEGIN 
+--    SA_SYSDBA.DROP_POLICY( 
+--    policy_name => 'ols_policy'
+--); 
+--END; 
+
+EXEC SA_SYSDBA.ENABLE_POLICY ('ols_policy'); 
+
+-- cap role quan ly ols_policy cho admin_ols
+grant ols_policy_dba to ADMIN_OLS;
+set role all;
+--select* from session_roles;
+
+
+-- B2
+--TAO COMPONENT CUA LABEL 
+--->TAO LEVEL 
+EXECUTE SA_COMPONENTS.CREATE_LEVEL('ols_policy',900,'TK','TRUONG KHOA');
+EXECUTE SA_COMPONENTS.CREATE_LEVEL('ols_policy',800,'TDV','TRUONG DON VI');
+EXECUTE SA_COMPONENTS.CREATE_LEVEL('ols_policy',700,'GV','GIANG VIEN');
+EXECUTE SA_COMPONENTS.CREATE_LEVEL('ols_policy',600,'GVU','GIAO VU');
+EXECUTE SA_COMPONENTS.CREATE_LEVEL('ols_policy',500,'NV','NHAN VIEN');
+EXECUTE SA_COMPONENTS.CREATE_LEVEL('ols_policy',400,'SV','SINH VIEN');
+
+--->TAO COMPARTMENT 
+EXECUTE SA_COMPONENTS.CREATE_COMPARTMENT('ols_policy',100,'HTTT','HE THONG THONG TIN');
+EXECUTE SA_COMPONENTS.CREATE_COMPARTMENT('ols_policy',200,'CNPM','CONG NGHE PHAN MEM');
+EXECUTE SA_COMPONENTS.CREATE_COMPARTMENT('ols_policy',300,'KHMT','KHOA HOC MAY TINH');
+EXECUTE SA_COMPONENTS.CREATE_COMPARTMENT('ols_policy',400,'CNTT','CONG NGHE TRI THUC');
+EXECUTE SA_COMPONENTS.CREATE_COMPARTMENT('ols_policy',500,'TGMT','THI GIAC MAY TINH');
+EXECUTE SA_COMPONENTS.CREATE_COMPARTMENT('ols_policy',600,'MMT','MANG MAY TINH');
+--->TAO GROUP 
+EXECUTE SA_COMPONENTS.CREATE_GROUP('ols_policy',100,'CS1','CO SO 1'); 
+EXECUTE SA_COMPONENTS.CREATE_GROUP('ols_policy',200,'CS2','CO SO 2'); 
+
+
+
+-- B3: tao bang THONG BAO
+CREATE TABLE THONGBAO 
+( 
+    ID INT PRIMARY KEY,
+    NOIDUNG NVARCHAR2(200)
+);
+
+INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(1,N'Thông báo dành cho Trý?ng khoa');
+INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(2,N'Thông báo dành cho Trý?ng b? môn không phân bi?t v? trí ð?a l?');
+INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(3,N'Thông báo dành cho Giáo v?'); 
+INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(4,N'Thông báo dành cho t?t c? các Trý?ng ðõn v?'); 
+INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(5,N'Thông báo dành cho Sinh viên ngành HTTT ? CS1'); 
+INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(6,N'Thông báo dành cho Trý?ng b? môn KHMT ? CS1'); 
+INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(7,N'Thông báo dành cho Trý?ng b? môn KHMT ? CS1 và CS2'); 
+
+SELECT * FROM THONGBAO; 
+
+
+
+-- B4 TAO NHAN
+EXECUTE SA_LABEL_ADMIN.CREATE_LABEL('ols_policy', 9000, 'TK:HTTT,CNPM,KHMT,CNTT,TGMT,MMT:CS1,CS2');
+
+EXECUTE SA_LABEL_ADMIN.CREATE_LABEL('ols_policy', 8000, 'TDV');
+EXECUTE SA_LABEL_ADMIN.CREATE_LABEL('ols_policy', 8001, 'TDV::CS1,CS2');
+EXECUTE SA_LABEL_ADMIN.CREATE_LABEL('ols_policy', 8002, 'TDV:KHMT:CS1,CS2');
+EXECUTE SA_LABEL_ADMIN.CREATE_LABEL('ols_policy', 8100, 'TDV:KHMT:CS1');
+
+EXECUTE SA_LABEL_ADMIN.CREATE_LABEL('ols_policy', 7000, 'GV');
+
+EXECUTE SA_LABEL_ADMIN.CREATE_LABEL('ols_policy', 6000, 'GVU');
+
+EXECUTE SA_LABEL_ADMIN.CREATE_LABEL('ols_policy', 5000, 'NV');
+
+EXECUTE SA_LABEL_ADMIN.CREATE_LABEL('ols_policy', 4000, 'SV');
+EXECUTE SA_LABEL_ADMIN.CREATE_LABEL('ols_policy', 4100, 'SV:HTTT:CS1'); 
+
+--KIEM TRA NHAN DA TAO
+select* from all_sa_labels;
+
+-- B5: APPLY NO CONTROL
+BEGIN 
+ SA_POLICY_ADMIN.APPLY_TABLE_POLICY ( 
+ POLICY_NAME => 'OLS_POLICY',
+ SCHEMA_NAME => 'ADMIN_OLS', 
+ TABLE_NAME => 'THONGBAO',
+ TABLE_OPTIONS => 'NO_CONTROL'
+ ); 
+END;
+
+
+--B6: GAN NHAN CHO THONG BAO
+UPDATE THONGBAO 
+SET OLS_LABEL = CHAR_TO_LABEL('OLS_POLICY','TK:HTTT,CNPM,KHMT,CNTT,TGMT,MMT:CS1,CS2') 
+WHERE ID = 1;
+UPDATE THONGBAO 
+SET OLS_LABEL = CHAR_TO_LABEL('OLS_POLICY','TDV::CS1,CS2') 
+WHERE ID = 2;
+UPDATE THONGBAO 
+SET OLS_LABEL = CHAR_TO_LABEL('OLS_POLICY','GV') 
+WHERE ID = 3;
+
+-- d) gan nhan cho t1 de t1 duoc phat tan (doc) boi tat ca cac truong don vi
+UPDATE THONGBAO 
+SET OLS_LABEL = CHAR_TO_LABEL('OLS_POLICY','TDV') 
+WHERE ID = 4;
+-- e) gan nhan cho t2 de phat tan t2 den sinh vien thuoc nganh HTT o CS1
+UPDATE THONGBAO 
+SET OLS_LABEL = CHAR_TO_LABEL('OLS_POLICY','SV:HTTT:CS1') 
+WHERE ID = 5;
+-- f) gan nhan cho t3 de phat tan t3 den truong bo mon KHMT o CS1
+UPDATE THONGBAO 
+SET OLS_LABEL = CHAR_TO_LABEL('OLS_POLICY','TDV:KHMT:CS1') 
+WHERE ID = 6;
+-- g) gan nhan cho t4 de phat tan t4 den truong bo mon KHMT o CS1 va CS2
+UPDATE THONGBAO 
+SET OLS_LABEL = CHAR_TO_LABEL('OLS_POLICY','TDV:KHMT:CS1,CS2') 
+WHERE ID = 7;
+
+SELECT * FROM THONGBAO;
+
+
+--B7: AP DUNG OLS VAO BANG 
+BEGIN 
+SA_POLICY_ADMIN.REMOVE_TABLE_POLICY('OLS_POLICY','ADMIN_OLS','THONGBAO');
+SA_POLICY_ADMIN.APPLY_TABLE_POLICY ( 
+ policy_name => 'OLS_POLICY', 
+ schema_name => 'ADMIN_OLS', 
+ table_name => 'THONGBAO',
+ table_options => 'READ_CONTROL',
+ predicate => null
+); 
+END; 
+
+
+-- B10: gan label cho user
+BEGIN 
+    --a) gan nhan cho Truong khoa doc duoc toan bo thong bao
+    SA_USER_ADMIN.SET_USER_LABELS('OLS_POLICY','TruongKhoa','TK:HTTT,CNPM,KHMT,CNTT,TGMT,MMT:CS1,CS2'); 
+    --b) gan nhan cho Truong bo mon o CS2 co the doc tat ca thong bao cua truong bo mon khong phan biet vi tri dia ly
+    SA_USER_ADMIN.SET_USER_LABELS('OLS_POLICY','TBM_CS2','TDV::CS1,CS2'); 
+    --c) gan nhan cho giao vu doc duoc toan bo thong bao danh cho giao vu
+    SA_USER_ADMIN.SET_USER_LABELS('OLS_POLICY','GiaoVu','GVU'); 
+    
+    SA_USER_ADMIN.SET_USER_LABELS('OLS_POLICY','TruongDonVi','TDV');
+    SA_USER_ADMIN.SET_USER_LABELS('OLS_POLICY','SV_HTTT_CS1','SV:HTTT:CS1'); 
+    SA_USER_ADMIN.SET_USER_LABELS('OLS_POLICY','TBM_KHMT_CS1','TDV:KHMT:CS1'); 
+    SA_USER_ADMIN.SET_USER_LABELS('OLS_POLICY','TBM_KHMT_CS1_CS2','TDV:KHMT:CS1,CS2'); 
+END; 
+
+
+
+
+
+
