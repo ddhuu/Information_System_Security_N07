@@ -1,0 +1,108 @@
+﻿<Window x:Class="ATBM_Project.Views.Affair.AffairPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ATBM_Project.Views.Affair" xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+                Height="720" Width="1080" WindowStartupLocation="CenterScreen" AllowsTransparency="True"
+Background="Transparent" WindowStyle="None"
+        >
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Window.Resources>
+
+    <Border CornerRadius="30" Background="#EFF2F7">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Left Menu-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--Menu Icon-->
+                <Button HorizontalAlignment="Left" Margin="20 28 0 35" Click="clickBack" >
+                    <Icon:PackIconMaterial Kind="ArrowLeft" Width="15" Height="15" Foreground="black"/>
+                </Button>
+
+                <Border Grid.Row="1" Background="#eeeee4" CornerRadius="0 0 0 0">
+                    <DockPanel>
+
+
+                        <!--Menu Titles-->
+                        <TextBlock Name="Title" Foreground="black" FontSize="22" FontWeight="SemiBold" DockPanel.Dock="Top" Margin="5 25 0 10" TextAlignment="Center"/>
+
+                        <!--Menu Seprator-->
+                        <Separator Margin="25" Background="#7E5FDC" DockPanel.Dock="Top" Height="0.5"/>
+
+                        <!--Menu Buttons-->
+                        <StackPanel DockPanel.Dock="Top" Margin="10">
+                            <Button Name="infoButton"  Margin="5"  >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Account" Width="15" Height="15" Foreground="black"/>
+                                    <TextBlock Text="Thông tin" Margin="10,0,0,0" Foreground="Black"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Name="studentButton"  Margin="5"  >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="AccountCog" Width="15" Height="15" Foreground="Black"/>
+                                    <TextBlock Text="Sinh viên" Margin="10,0,0,0" Foreground="black"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Name="compartmentButton"  Margin="5" >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Table" Width="15" Height="15" Foreground="black"/>
+                                    <TextBlock Text="Đơn vị" Margin="10,0,0,0" Foreground="black"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Name="moduleButton"  Margin="5"  >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Book" Width="15" Height="15" Foreground="black"/>
+                                    <TextBlock Text="Học phần" Margin="10,0,0,0" Foreground="black"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Name="courseButton"  Margin="5"  >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="BookAccountOutline" Width="15" Height="15" Foreground="black"/>
+                                    <TextBlock Text="Khóa học mở" Margin="10,0,0,0" Foreground="black"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Name="assignmentButton"  Margin="5"  >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Assistant" Width="15" Height="15" Foreground="black"/>
+                                    <TextBlock Text="Phân công " Margin="10,0,0,0" Foreground="black"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Name="registerButton"  Margin="5"  >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Note" Width="15" Height="15" Foreground="black"/>
+                                    <TextBlock Text="Đăng ký" Margin="10,0,0,0" Foreground="black"/>
+                                </StackPanel>
+                            </Button>
+
+
+                        </StackPanel>
+
+
+
+                    </DockPanel>
+                </Border>
+
+            </Grid>
+            <UserControl x:Name="UserController" Grid.Column="1" Margin="30 20 20 20">
+
+            </UserControl>
+        </Grid>
+    </Border>
+</Window>

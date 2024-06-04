@@ -36,11 +36,10 @@ namespace ATBM_Project.Views
         }
         private void exitClick(object sender, RoutedEventArgs e)
         {
-            Window parentWindow = Window.GetWindow(this);
-            if (parentWindow != null)
-            {
-                parentWindow.Close();
-            }
+            _connection.Close();
+            Login_View login = new Login_View();
+            this.Close();
+            login.Show();
         }
 
         private void userButton_Click(object sender, RoutedEventArgs e)

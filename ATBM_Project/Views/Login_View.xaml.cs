@@ -1,6 +1,12 @@
 ﻿using ATBM_Project.Models;
+using ATBM_Project.Views.Affair;
+using ATBM_Project.Views.Employee;
+using ATBM_Project.Views.HeadUnit;
+using ATBM_Project.Views.Lecturer;
+using ATBM_Project.Views.Student;
 using ATBM_Project.ViewsModels;
 using Oracle.ManagedDataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -16,17 +22,50 @@ namespace ATBM_Project.Views
         {
             InitializeComponent();
         }
-        private void directWindowUser(OracleConnection conn, Session session)
+        private void directWindowUser(OracleConnection connection, Session session)
         {
-            if (session.Role != "DBA")
+
+
+            string role = session.Role;
+
+            switch (role)
             {
-                MessageBox.Show($"Only DBA role is allowed to use this system. Your role: {session.Role} is not permitted.");
-                return;
+                case "RL_NHANVIENCOBAN":
+                    EmployeePage employee = new EmployeePage(connection, session.Username);
+                    this.Close();
+                    employee.Show();
+                    break;
+                case "RL_GIANGVIEN":
+                    LecturerPage lecturer = new LecturerPage(connection, session.Username);
+                    this.Close();
+                    lecturer.Show();
+                    break;
+                case "RL_GIAOVU":
+                    AffairPage affair = new AffairPage(connection, session.Username);
+                    this.Close();
+                    affair.Show();
+                    break;
+                case "RL_TRUONGDONVI":
+                    HeadUnitPage headUnit = new HeadUnitPage(connection, session.Username);
+                    this.Close();
+                    headUnit.Show();
+                    break;
+                case "RL_SINHVIEN":
+                    StudentPage student = new StudentPage(connection, session.Username);
+                    this.Close();
+                    student.Show();
+                    break;
+                case "DBA":
+                    Admin_View admin_Window = new Admin_View(connection, session.Role, session.Username);
+                    this.Close();
+                    admin_Window.Show();
+                    break;
+
+
+                default:
+                    break;
             }
 
-            Admin_View admin_Window = new Admin_View(conn, session.Role, session.Username);
-            this.Close();
-            admin_Window.Show();
         }
         private void HandleSession(OracleConnection conn, string user)
         {
@@ -44,16 +83,18 @@ namespace ATBM_Project.Views
                         countRole++;
                     }
                 }
-                var role = Lrole.Where(hh => hh == "DBA").ToList();
+                var role = Lrole.Where(hh => hh == "DBA" || hh.Contains("RL_")).ToList();
                 if (role.Count == 0)
                 {
-                    MessageBox.Show("Only DBA role is allowed to use this system!");
+                    MessageBox.Show("Account does not have privileges in this system");
                     return;
                 }
                 else
                 {
                     session.Username = user;
                     session.Role = role[0];
+                    Console.WriteLine("User: {0}", session.Username);
+                    Console.WriteLine("Role: {0}", session.Role);
                     directWindowUser(conn, session);
                 }
             }
