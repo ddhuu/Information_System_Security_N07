@@ -89,6 +89,11 @@ BEGIN
             v_donvi := '';
     end;
     
+    -- Truong khoa duoc quyen xem tat ca
+    if v_donvi = 'VPK' then
+        return '';
+    end if;
+    
     -- user la truong don vi
     if length(v_donvi) > 0 then
         -- NHUNG NHAN VIEN THUOC DON VI MINH LAM TRUONG

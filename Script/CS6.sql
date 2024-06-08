@@ -1,241 +1,243 @@
-CREATE OR REPLACE FUNCTION STUDENT_StudentSelect_Policy_Function(p_schema VARCHAR2, p_object VARCHAR2)
+-- cs4: Sinh vien
+
+-- xem va sua (dien thoai, dia chi) cua ca nhan
+CREATE OR REPLACE FUNCTION CS6_FUNCTION1(p_schema VARCHAR2, p_object VARCHAR2)
     RETURN VARCHAR2
     AS
         v_username VARCHAR2(10);
-     BEGIN
-         v_username := SYS_CONTEXT('USERENV', 'SESSION_USER');
+        v_isnhansu NUMBER;
+    BEGIN
+        v_username := SYS_CONTEXT('USERENV', 'SESSION_USER');
+        if v_username = 'ADMIN' then
+            return '';
+        end if;
+
+        -- check co phai la nhan vien trong bang nhan su hay khong hay khong
+        select count(*) into v_isnhansu from admin.NHANSU where UPPER(MANV) = v_username;
+        
+        if v_isnhansu > 0 then
+            return '';
+        end if;
+
         return 'MASV = ''' || v_username || '''';
-     END;
-
-CREATE OR REPLACE FUNCTION STUDENT_StudentUpdate_Policy_Function(p_schema VARCHAR2, p_object VARCHAR2)
-RETURN VARCHAR2
-AS
-    v_username VARCHAR2(10);
+    END;
+/
 BEGIN
-    v_username := SYS_CONTEXT('USERENV', 'SESSION_USER');
-    RETURN 'MASV = ''' || v_username || '''';
+    dbms_rls.add_policy(
+    	OBJECT_SCHEMA => 'ADMIN',
+    	OBJECT_NAME => 'SINHVIEN',
+    	POLICY_NAME => 'CS6_SELECT_UPDATE_SINHVIEN',
+    	POLICY_FUNCTION => 'CS6_FUNCTION1',
+    	STATEMENT_TYPES => 'SELECT, UPDATE',
+        UPDATE_CHECK => TRUE
+	);
 END;
-
-BEGIN
-    DBMS_RLS.ADD_POLICY(
-        object_schema   => 'ADMIN',
-        object_name     => 'SINHVIEN',
-        policy_name     => 'Student_Select_Policy',
-        function_schema => 'ADMIN',
-        policy_function => 'STUDENT_StudentSelect_Policy_Function',
-        statement_types => 'SELECT'
-    );
-    DBMS_RLS.ADD_POLICY(
-        object_schema   => 'ADMIN',
-        object_name     => 'SINHVIEN',
-        policy_name     => 'Student_Update_Policy',
-        function_schema => 'ADMIN',
-        policy_function => 'STUDENT_StudentUpdate_Policy_Function',
-        statement_types => 'UPDATE'
-    );
-END;
-
-
--- BEGIN
---     DBMS_RLS.DROP_POLICY(
---         object_schema   => 'ADMIN',
---         object_name     => 'SINHVIEN',
---         policy_name     => 'Student_Select_Policy'
---     );
---
---     DBMS_RLS.DROP_POLICY(
---         object_schema   => 'ADMIN',
---         object_name     => 'SINHVIEN',
---         policy_name     => 'Student_Update_Policy'
---     );
--- END;
-
+/
 --Grant select and update to SINHVIEN
-GRANT SELECT ON SINHVIEN TO RL_SINHVIEN;
+GRANT SELECT ON ADMIN.SINHVIEN TO RL_SINHVIEN;
 GRANT UPDATE(DCHI, DT) ON ADMIN.SINHVIEN TO RL_SINHVIEN;
 
-CREATE OR REPLACE FUNCTION KHMO_StudentSelect_Policy_Function(p_schema VARCHAR2, p_object VARCHAR2)
+
+
+-- Xem tat ca hoc phan cua chuong trinh ma sv dang theo hoc
+GRANT SELECT ON ADMIN.HOCPHAN TO RL_SINHVIEN;
+
+-- Xem KHMO cua chuong trinh ma sinh vien dang theo hoc
+CREATE OR REPLACE FUNCTION CS6_FUNCTION2(p_schema VARCHAR2, p_object VARCHAR2)
 RETURN VARCHAR2
 AS
     v_username VARCHAR2(10);
     v_program VARCHAR2(10);
-    v_role VARCHAR2(255);
+    v_isnhansu NUMBER;
     BEGIN
         v_username := SYS_CONTEXT('USERENV', 'SESSION_USER');
         IF(v_username = 'ADMIN') THEN
-            RETURN '1 = 1';
+            RETURN '';
         END IF;
-        SELECT GRANTED_ROLE INTO v_role FROM DBA_ROLE_PRIVS WHERE GRANTEE = v_username;
-        IF v_role = 'RL_SINHVIEN' THEN
-            SELECT MACT INTO v_program FROM SINHVIEN WHERE MASV = v_username;
-            return 'MACT = ''' || v_program || '''';
+        
+         -- check co phai la nhan vien trong bang nhan su hay khong hay khong
+        select count(*) into v_isnhansu from admin.NHANSU where UPPER(MANV) = v_username;
+        IF v_isnhansu > 0 THEN
+            return '';
         END IF;
-        RETURN '1 = 1';
+        
+        -- khong can where masv=v_ussername tai vi da them policy vao bang SINHVIEN o truoc do roi
+        SELECT MACT INTO v_program FROM SINHVIEN;
+        return 'MACT = ''' || v_program || '''';
     END;
-
+/
 BEGIN
     DBMS_RLS.ADD_POLICY(
         object_schema   => 'ADMIN',
         object_name     => 'KHMO',
-        policy_name     => 'KHMO_Select_Policy',
-        function_schema => 'ADMIN',
-        policy_function => 'KHMO_StudentSelect_Policy_Function',
+        policy_name     => 'CS6_SELECT_KHMO',
+        policy_function => 'CS6_FUNCTION2',
         statement_types => 'SELECT'
     );
 END;
+/
 GRANT SELECT ON KHMO TO RL_SINHVIEN;
 
 
-CREATE OR REPLACE FUNCTION DANGKY_StudentSelect_Policy_Function(p_schema VARCHAR2, p_object VARCHAR2)
+--Xem, them, xoa tren quan he dang ky
+-- xem thong tin ca nhan
+CREATE OR REPLACE FUNCTION CS6_FUNCTION3(p_schema VARCHAR2, p_object VARCHAR2)
 RETURN VARCHAR2
 AS
     v_username VARCHAR2(10);
-    v_role VARCHAR2(255);
+    v_isnhansu NUMBER;
     BEGIN
         v_username := SYS_CONTEXT('USERENV', 'SESSION_USER');
+        if v_username = 'ADMIN' then
+            return '';
+        end if;
 
-        SELECT GRANTED_ROLE INTO v_role FROM DBA_ROLE_PRIVS WHERE GRANTEE = v_username;
-        IF v_role = 'RL_SINHVIEN' THEN
-            RETURN 'MASV = ''' || v_username || '''';
-        END IF;
-        RETURN '1 = 1';
+        -- check co phai la nhan vien trong bang nhan su hay khong hay khong
+        select count(*) into v_isnhansu from admin.NHANSU where UPPER(MANV) = v_username;
+        
+        if v_isnhansu > 0 then
+            return '';
+        end if;
+
+        return 'MASV = ''' || v_username || '''';
     END;
+/
+BEGIN
+    DBMS_RLS.ADD_POLICY(
+        object_schema   => 'ADMIN',
+        object_name     => 'DANGKY',
+        policy_name     => 'CS6_SELECT_DANGKY',
+        policy_function => 'CS6_FUNCTION3',
+        statement_types => 'SELECT'
+    );
+END;
+/
+GRANT SELECT ON ADMIN.DANGKY TO RL_SINHVIEN;
 
-CREATE OR REPLACE FUNCTION DANGKY_StudentDelete_Policy_Function(p_schema VARCHAR2, p_object VARCHAR2)
+
+
+
+-- Them xoa, trong thoi gian dang ky (ko duoc sua diem)
+CREATE OR REPLACE FUNCTION CS6_FUNCTION4(p_schema VARCHAR2, p_object VARCHAR2)
 RETURN VARCHAR2
 AS
     v_username VARCHAR2(10);
     v_sem_start_date DATE;
     v_current_date DATE := SYSDATE;
-    v_role VARCHAR(255);
+    v_isnhansu NUMBER;
     v_current_semester NUMBER;
     v_year NUMBER := EXTRACT(YEAR FROM SYSDATE);
     BEGIN
         v_username := SYS_CONTEXT('USERENV', 'SESSION_USER');
-        --Check role of the user
-        SELECT GRANTED_ROLE INTO v_role FROM DBA_ROLE_PRIVS WHERE GRANTEE = v_username;
-        IF v_role = 'RL_SINHVIEN' THEN
-            SELECT CASE
-                WHEN EXTRACT(MONTH FROM v_current_date) BETWEEN 1 AND 4 THEN 1
-                WHEN EXTRACT(MONTH FROM v_current_date) BETWEEN 5 AND 8 THEN 2
-                ELSE 3
-                END INTO v_current_semester
-                FROM DUAL;
-            --Get semester start date base on current dte
-            SELECT CASE
-                WHEN EXTRACT(MONTH FROM v_current_date) BETWEEN 1 AND 4 THEN TO_DATE('01-JAN-' || TO_CHAR(v_current_date, 'YYYY'), 'DD-MON-YYYY')
-                WHEN EXTRACT(MONTH FROM v_current_date) BETWEEN 5 AND 8 THEN TO_DATE('01-MAY-' || TO_CHAR(v_current_date, 'YYYY'), 'DD-MON-YYYY')
-                ELSE TO_DATE('01-SEP-' || TO_CHAR(v_current_date, 'YYYY'), 'DD-MON-YYYY')
-                END INTO v_sem_start_date
-            FROM DUAL;
-            IF current_date BETWEEN v_sem_start_date AND (v_sem_start_date + 14) THEN
-                -- Student can only delete record in the current semester
-                RETURN 'MASV = ''' || v_username || '''' || ' AND NAM = ' || v_year || ' AND HK = ' || v_current_semester;
-            END IF;
---             RETURN '1 = 0';
-           RETURN 'MASV = ''' || v_username || '''' || ' AND NAM = ' || v_year || ' AND HK = ' || v_current_semester;
+        if v_username = 'ADMIN' then
+            return '';
+        end if;
+        
+        -- check co phai la nhan vien trong bang nhan su hay khong hay khong
+        select count(*) into v_isnhansu from admin.NHANSU where UPPER(MANV) = v_username;
+        if v_isnhansu > 0 then
+            return '';
+        end if;
+        
+        -- lay semester hien tai
+        SELECT CASE
+            WHEN EXTRACT(MONTH FROM v_current_date) BETWEEN 1 AND 4 THEN 1
+            WHEN EXTRACT(MONTH FROM v_current_date) BETWEEN 5 AND 8 THEN 2
+            ELSE 3
+            END INTO v_current_semester
+        FROM DUAL;
+        
+        -- NOTE: CO THE THAY DOI NGAY BAT DAU HOC CUA MOI HOC KY O DAY
+        --Get semester start date base on current date
+        SELECT CASE
+            WHEN EXTRACT(MONTH FROM v_current_date) BETWEEN 1 AND 4 THEN TO_DATE('01-JAN-' || TO_CHAR(v_current_date, 'YYYY'), 'DD-MON-YYYY')
+            WHEN EXTRACT(MONTH FROM v_current_date) BETWEEN 5 AND 8 THEN TO_DATE('01-JUN-' || TO_CHAR(v_current_date, 'YYYY'), 'DD-MON-YYYY')
+            ELSE TO_DATE('01-SEP-' || TO_CHAR(v_current_date, 'YYYY'), 'DD-MON-YYYY')
+            END INTO v_sem_start_date
+        FROM DUAL;
+        
+        -- NOTE: CO THE THAY DOI THOI HAN DIEU CHINH HOC PHAN O DAY
+        IF current_date BETWEEN v_sem_start_date AND (v_sem_start_date + 14) THEN
+            -- Student can only delete record in the current semester
+            RETURN 'MASV = ''' || v_username || '''' || ' AND NAM = ' || v_year || ' AND HK = ' || v_current_semester;
         END IF;
-        RETURN '1 = 1';
+        
+        RETURN '1 = 0';
     END;
-CREATE OR REPLACE FUNCTION DANGKY_StudentInsert_Policy_Function(p_schema VARCHAR2, p_object VARCHAR2)
+/
+BEGIN
+    DBMS_RLS.ADD_POLICY(
+        object_schema   => 'ADMIN',
+        object_name     => 'DANGKY',
+        policy_name     => 'CS6_DELETE_DANGKY',
+        policy_function => 'CS6_FUNCTION4',
+        statement_types => 'DELETE'
+    );
+END;
+/
+GRANT DELETE ON ADMIN.DANGKY TO RL_SINHVIEN;
+
+    
+CREATE OR REPLACE FUNCTION CS6_FUNCTION5(p_schema VARCHAR2, p_object VARCHAR2)
 RETURN VARCHAR2
 AS
     v_username VARCHAR2(10);
     v_sem_start_date DATE;
     v_current_date DATE := SYSDATE;
-    v_role VARCHAR(255);
+    v_isnhansu NUMBER;
     v_current_semester INT;
     v_year INT := EXTRACT(YEAR FROM SYSDATE);
     v_program VARCHAR2(10);
     BEGIN
         v_username := SYS_CONTEXT('USERENV', 'SESSION_USER');
         IF(v_username = 'ADMIN') THEN
-            RETURN '1 = 1';
+            RETURN '';
         END IF;
-        --Check role of the user
-        SELECT GRANTED_ROLE INTO v_role FROM DBA_ROLE_PRIVS WHERE GRANTEE = v_username;
-        IF v_role = 'RL_SINHVIEN' THEN
-            SELECT CASE
-                WHEN EXTRACT(MONTH FROM v_current_date) BETWEEN 1 AND 4 THEN 1
-                WHEN EXTRACT(MONTH FROM v_current_date) BETWEEN 5 AND 8 THEN 2
-                ELSE 3
-                END INTO v_current_semester
-                FROM DUAL;
-            --Get semester start date base on current date
-            SELECT CASE
-                WHEN EXTRACT(MONTH FROM v_current_date) BETWEEN 1 AND 4 THEN TO_DATE('01-JAN-' || TO_CHAR(v_current_date, 'YYYY'), 'DD-MON-YYYY')
-                WHEN EXTRACT(MONTH FROM v_current_date) BETWEEN 5 AND 8 THEN TO_DATE('01-MAY-' || TO_CHAR(v_current_date, 'YYYY'), 'DD-MON-YYYY')
-                ELSE TO_DATE('01-SEP-' || TO_CHAR(v_current_date, 'YYYY'), 'DD-MON-YYYY')
-                END INTO v_sem_start_date
-            FROM DUAL;
-            SELECT MACT INTO v_program FROM SINHVIEN WHERE MASV = v_username;
-            IF current_date BETWEEN v_sem_start_date AND (v_sem_start_date + 14) THEN
-                -- Student can only delete record in the current semester
-                RETURN 'MASV = ''' || v_username || '''' || ' AND NAM = ' || v_year || ' AND HK = ' || v_current_semester;
-            END IF;
---             RETURN '1 = 0';
-            RETURN 'MASV = ''' || v_username || '''' || ' AND NAM = ' || v_year || ' AND HK = ' || v_current_semester || ' AND MACT = ''' || v_program || '''' ;
+        
+        --Check xem co phai la nhan vien trong bang nhan su hay khong
+        select count(*) into v_isnhansu from admin.NHANSU where UPPER(MANV) = v_username;
+        if v_isnhansu > 0 then
+            return '';
+        end if;
+        
+        
+        -- la sinh vien
+        SELECT CASE
+            WHEN EXTRACT(MONTH FROM v_current_date) BETWEEN 1 AND 4 THEN 1
+            WHEN EXTRACT(MONTH FROM v_current_date) BETWEEN 5 AND 8 THEN 2
+            ELSE 3
+            END INTO v_current_semester
+        FROM DUAL;
+        --NOTE: CO THE THAY DOI NGAY BAT DAU HOC KY O DAY
+        --Get semester start date base on current date
+        SELECT CASE
+            WHEN EXTRACT(MONTH FROM v_current_date) BETWEEN 1 AND 4 THEN TO_DATE('01-JAN-' || TO_CHAR(v_current_date, 'YYYY'), 'DD-MON-YYYY')
+            WHEN EXTRACT(MONTH FROM v_current_date) BETWEEN 5 AND 8 THEN TO_DATE('01-JUN-' || TO_CHAR(v_current_date, 'YYYY'), 'DD-MON-YYYY')
+            ELSE TO_DATE('01-SEP-' || TO_CHAR(v_current_date, 'YYYY'), 'DD-MON-YYYY')
+            END INTO v_sem_start_date
+        FROM DUAL;
+        -- bang sinhvien da co policy CS6_SELECT_UPDATE_SINHVIEN nen khong can where masv=v_username
+        SELECT MACT INTO v_program FROM SINHVIEN;
+        --NOTE: CO THE THAY DOI THOI HAN DIEU CHINH DANG KY HOC PHAN O DAY
+        IF current_date BETWEEN v_sem_start_date AND (v_sem_start_date + 14) THEN
+            -- Student can only insert record in the current semester
+            RETURN 'MASV = ''' || v_username || '''' || ' AND NAM = ' || v_year || ' AND HK = ' || v_current_semester || ' AND MACT = ''' || v_program || ''''
+                || ' AND DIEMTH is null AND DIEMQT is null AND DIEMCK is null AND DIEMTK is null';
+        END IF;
 
-        END IF;
-        RETURN '1 = 1';
+        RETURN '1 = 0';
     END;
-GRANT SELECT, INSERT, DELETE ON ADMIN.DANGKY TO RL_SINHVIEN;
+/
 BEGIN
     DBMS_RLS.ADD_POLICY(
         object_schema   => 'ADMIN',
         object_name     => 'DANGKY',
-        policy_name     => 'DANGKY_Select_Policy',
-        function_schema => 'ADMIN',
-        policy_function => 'DANGKY_StudentSelect_Policy_Function',
-        statement_types => 'SELECT'
-    );
-END;
-BEGIN
-    DBMS_RLS.ADD_POLICY(
-        object_schema   => 'ADMIN',
-        object_name     => 'DANGKY',
-        policy_name     => 'DANGKY_Delete_Policy',
-        function_schema => 'ADMIN',
-        policy_function => 'DANGKY_StudentDelete_Policy_Function',
-        statement_types => 'DELETE'
-    );
-    DBMS_RLS.ADD_POLICY(
-        object_schema   => 'ADMIN',
-        object_name     => 'DANGKY',
-        policy_name     => 'DANGKY_Insert_Policy',
-        function_schema => 'ADMIN',
-        policy_function => 'DANGKY_StudentInsert_Policy_Function',
+        policy_name     => 'CS6_INSERT_DANGKY',
+        policy_function => 'CS6_FUNCTION5',
         statement_types => 'INSERT',
         update_check => TRUE
     );
 END;
+/
+GRANT INSERT ON ADMIN.DANGKY TO RL_SINHVIEN;
 
-BEGIN
-    DBMS_RLS.DROP_POLICY(
-        object_name => 'DANGKY',
-        policy_name => 'DANGKY_Delete_Policy',
-        object_schema => 'ADMIN'
-    );
-    DBMS_RLS.DROP_POLICY(
-        object_name => 'DANGKY',
-        policy_name => 'DANGKY_Insert_Policy',
-        object_schema => 'ADMIN'
-    );
-end;
-
-SELECT * FROM DBA_ROLE_PRIVS;
-
-select * from DBA_ROLE_PRIVS WHERE GRANTEE = 'NV001'
-
---Connect to db as user with RL_SINHVIEN
-SELECT * FROM ADMIN.sinhvien;
-UPDATE ADMIN.SINHVIEN SET DCHI = 'Dong Nai';
-    SELECT * FROM ADMIN.khmo;
-SELECT * FROM ADMIN.dangky;
-INSERT INTO ADMIN.DANGKY VALUES('SV1002','NV324','HP504', 2, 2024, 'CQ', null, null, null, null);
-INSERT INTO ADMIN.DANGKY VALUES('SV1002','NV329','HP604', 2, 2024, 'CQ', null, null, null, null);
-INSERT INTO ADMIN.DANGKY VALUES('SV1002','NV311','HP301', 1, 2024, 'CQ', 6, 6, 6, 6);
-INSERT INTO ADMIN.DANGKY VALUES('SV1002','NV321','HP501', 1, 2024, 'CQ', 6, 6, 6, 6);
-DELETE FROM ADMIN.DANGKY WHERE MAHP = 'HP311';
-DELETE FROM ADMIN.DANGKY WHERE MAHP = 'HP504';
-DELETE FROM ADMIN.DANGKY WHERE MAHP = 'HP604';

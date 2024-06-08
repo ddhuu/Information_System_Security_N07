@@ -74,17 +74,28 @@ BEGIN
     end if;
 
     -- kiem tra user co role RL_GIAOVU hay khong
-    select VAITRO into v_role from NHANSU where upper(MANV) = USER;
+    begin
+        select VAITRO into v_role from NHANSU where upper(MANV) = USER;
+    exception
+        when NO_DATA_FOUND then
+            v_role := '';
+    end;
     if v_role = 'GIAO VU' then
         SELECT EXTRACT(DAY FROM SYSDATE) into v_day FROM dual;
         SELECT EXTRACT(MONTH FROM SYSDATE) into v_month FROM dual;
         SELECT EXTRACT(YEAR FROM SYSDATE) into v_year FROM dual;
-        if(v_day <= 15) then
-            if (v_month = 1) then
+        
+        -- NOTE: CO THE THAY DOI THOI HAN DIEU CHINH DANG KY HOC PHAN O DAY
+        if (v_month = 1) then
+            if v_day < 15 then
                 return 'HK = 1 AND NAM = ' || v_year;
-            elsif (v_month = 6) then
+            end if;
+        elsif (v_month = 6) then
+            if v_day < 15 then
                 return 'HK = 2 AND NAM = ' || v_year;
-            elsif (v_month = 9) then
+            end if;
+        elsif (v_month = 9) then
+            if v_day < 15 then
                 return 'HK = 3 AND NAM = ' || v_year;
             end if;
         end if;
