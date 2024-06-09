@@ -44,7 +44,7 @@ Background="Transparent" WindowStyle="None"
 
                         <!--Menu Buttons-->
                         <StackPanel DockPanel.Dock="Top" Margin="10">
-                            <Button Name="infoButton"  Margin="5"  >
+                            <Button Name="infoButton"  Margin="5" Click="inforButton_Click"  >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Account" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Thông tin" Margin="10,0,0,0" Foreground="Black"/>
@@ -55,13 +55,13 @@ Background="Transparent" WindowStyle="None"
 
                             
 
-                            <Button Name="moduleButton"  Margin="5"  >
+                            <Button Name="moduleButton"  Margin="5" Click="moduleButton_Click" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Book" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Học phần" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
-                            <Button Name="courseButton"  Margin="5"  >
+                            <Button Name="courseButton"  Margin="5" Click="courseButton_Click"  >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="BookAccountOutline" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Đăng ký" Margin="10,0,0,0" Foreground="black"/>

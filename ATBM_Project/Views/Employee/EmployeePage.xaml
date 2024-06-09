@@ -43,34 +43,34 @@ Background="Transparent" WindowStyle="None"
 
                         <!--Menu Buttons-->
                         <StackPanel DockPanel.Dock="Top" Margin="10">
-                            <Button Name="infoButton"  Margin="5"  >
+                            <Button Name="infoButton"  Margin="5" Click="infoButton_Click"  >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Account" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Thông tin" Margin="10,0,0,0" Foreground="Black"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="studentButton"  Margin="5"  >
+                            <Button Name="studentButton"  Margin="5" Click="studentButton_Click"  >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="AccountCog" Width="15" Height="15" Foreground="Black"/>
                                     <TextBlock Text="Sinh viên" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="compartmentButton"  Margin="5" >
+                            <Button Name="compartmentButton"  Margin="5" Click="compartmentButton_Click" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Table" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Đơn vị" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="moduleButton"  Margin="5"  >
+                            <Button Name="moduleButton"  Margin="5" Click="moduleButton_Click"  >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Book" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Học phần" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
-                            <Button Name="courseButton"  Margin="5"  >
+                            <Button Name="courseButton"  Margin="5" Click="courseButton_Click"  >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="BookAccountOutline" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Khóa học mở" Margin="10,0,0,0" Foreground="black"/>
@@ -88,7 +88,7 @@ Background="Transparent" WindowStyle="None"
                 </Border>
 
             </Grid>
-            <UserControl x:Name="UserController" Grid.Column="1" Margin="30 20 20 20">
+            <UserControl x:Name="UserController" Grid.Column="1" >
 
             </UserControl>
         </Grid>

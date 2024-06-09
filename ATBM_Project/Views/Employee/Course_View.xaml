@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="ATBM_Project.Views.Employee.Course_View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ATBM_Project.Views.Employee"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             Height="550" Width="835">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <TextBox Name="SearchTextBox" Width="200"/>
+            <Button Margin="10 0 0 0">
+                <materialDesign:PackIcon Kind="Magnify" Width="16" Height="16"/>
+            </Button>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <ListView Name="StudentListView" Margin="5">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Mã học phần" DisplayMemberBinding="{Binding courseID}" Width="80"/>
+                        <GridViewColumn Header="Tên học phần" DisplayMemberBinding="{Binding courseName}" Width="150"/>
+                        <GridViewColumn Header="Số tín chỉ" DisplayMemberBinding="{Binding accumulatedCredit}" Width="80"/>
+                        <GridViewColumn Header="Số tiết lý thuyết" DisplayMemberBinding="{Binding theoryPeriod}" Width="100"/>
+                        <GridViewColumn Header="Số tiết thực hành" DisplayMemberBinding="{Binding practicePeriod}" Width="120"/>
+                        <GridViewColumn Header="Số sinh viên tối đa" DisplayMemberBinding="{Binding maximumStudent}" Width="120"/>
+                        <GridViewColumn Header="Mã đơn vị" DisplayMemberBinding="{Binding unitID}" Width="90"/>
+                        <GridViewColumn Header="Actions" Width="80">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button >
+                                            <materialDesign:PackIcon Kind="Pencil" Width="16" Height="16"/>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

@@ -213,18 +213,42 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\Column.cs" />
+    <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\CourseOpenSchedule.cs" />
+    <Compile Include="Models\CourseRegistration.cs" />
+    <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\PrivilegeOfTable.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Session.cs" />
+    <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Table.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="ViewsModels\Admin_VM.cs" />
     <Compile Include="ViewsModels\ConnectionDB_VM.cs" />
+    <Compile Include="ViewsModels\Employee_VM.cs" />
+    <Compile Include="ViewsModels\HeadDepartment_VM.cs" />
+    <Compile Include="ViewsModels\Lecturer_VM.cs" />
+    <Compile Include="ViewsModels\Student_VM.cs" />
     <Compile Include="Views\Affair\AffairPage.xaml.cs">
       <DependentUpon>AffairPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Employee\CourseOpen_View.xaml.cs">
+      <DependentUpon>CourseOpen_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employee\Course_View.xaml.cs">
+      <DependentUpon>Course_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employee\EmployeeInfo.xaml.cs">
+      <DependentUpon>EmployeeInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Employee\EmployeePage.xaml.cs">
       <DependentUpon>EmployeePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employee\Student_View.xaml.cs">
+      <DependentUpon>Student_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Employee\Unit_View.xaml.cs">
+      <DependentUpon>Unit_View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HeadUnit\HeadUnitPage.xaml.cs">
       <DependentUpon>HeadUnitPage.xaml</DependentUpon>
@@ -241,8 +265,14 @@
     <Compile Include="Views\Role\PrivOnColumn_View.xaml.cs">
       <DependentUpon>PrivOnColumn_View.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Student\StudentCourse.xaml.cs">
+      <DependentUpon>StudentCourse.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Student\StudentPage.xaml.cs">
       <DependentUpon>StudentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Student\StudentInfor.xaml.cs">
+      <DependentUpon>StudentInfor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Table\Table_Detail_View.xaml.cs">
       <DependentUpon>Table_Detail_View.xaml</DependentUpon>
@@ -312,7 +342,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Employee\CourseOpen_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Employee\Course_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Employee\EmployeeInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Employee\EmployeePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Employee\Student_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Employee\Unit_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -336,7 +386,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Student\StudentCourse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Student\StudentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Student\StudentInfor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
