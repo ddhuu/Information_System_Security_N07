@@ -222,8 +222,10 @@
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Table.cs" />
+    <Compile Include="Models\Unit.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="ViewsModels\Admin_VM.cs" />
+    <Compile Include="ViewsModels\Affair_VM.cs" />
     <Compile Include="ViewsModels\ConnectionDB_VM.cs" />
     <Compile Include="ViewsModels\Employee_VM.cs" />
     <Compile Include="ViewsModels\HeadDepartment_VM.cs" />
@@ -231,6 +233,9 @@
     <Compile Include="ViewsModels\Student_VM.cs" />
     <Compile Include="Views\Affair\AffairPage.xaml.cs">
       <DependentUpon>AffairPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Affair\Employee_View.xaml.cs">
+      <DependentUpon>Employee_View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Employee\CourseOpen_View.xaml.cs">
       <DependentUpon>CourseOpen_View.xaml</DependentUpon>
@@ -249,6 +254,33 @@
     </Compile>
     <Compile Include="Views\Employee\Unit_View.xaml.cs">
       <DependentUpon>Unit_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\General\CourseOpenSchedule_View.xaml.cs">
+      <DependentUpon>CourseOpenSchedule_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\General\Course_View.xaml.cs">
+      <DependentUpon>Course_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\General\InsertCourseOpenSchedule_Dialog.xaml.cs">
+      <DependentUpon>InsertCourseOpenSchedule_Dialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\General\InsertCourse_Dialog.xaml.cs">
+      <DependentUpon>InsertCourse_Dialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\General\InsertUnit_Dialog.xaml.cs">
+      <DependentUpon>InsertUnit_Dialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\General\Unit_View.xaml.cs">
+      <DependentUpon>Unit_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\General\UpdateCourseOpenSchedule_Dialog.xaml.cs">
+      <DependentUpon>UpdateCourseOpenSchedule_Dialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\General\UpdateCourse_Dialog.xaml.cs">
+      <DependentUpon>UpdateCourse_Dialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\General\UpdateUnit_Dialog.xaml.cs">
+      <DependentUpon>UpdateUnit_Dialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HeadUnit\HeadUnitPage.xaml.cs">
       <DependentUpon>HeadUnitPage.xaml</DependentUpon>
@@ -342,6 +374,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Affair\Employee_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Employee\CourseOpen_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -363,6 +399,42 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Employee\Unit_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\General\CourseOpenSchedule_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\General\Course_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\General\InsertCourseOpenSchedule_Dialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\General\InsertCourse_Dialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\General\InsertUnit_Dialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\General\Unit_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\General\UpdateCourseOpenSchedule_Dialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\General\UpdateCourse_Dialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\General\UpdateUnit_Dialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

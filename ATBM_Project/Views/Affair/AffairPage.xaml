@@ -43,7 +43,7 @@ Background="Transparent" WindowStyle="None"
 
                         <!--Menu Buttons-->
                         <StackPanel DockPanel.Dock="Top" Margin="10">
-                            <Button Name="infoButton"  Margin="5"  >
+                            <Button Name="infoButton"  Margin="5" Click="infoButton_Click" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Account" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Thông tin" Margin="10,0,0,0" Foreground="Black"/>
@@ -57,23 +57,25 @@ Background="Transparent" WindowStyle="None"
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="compartmentButton"  Margin="5" >
+                            <Button Name="unitButton" Click="unitButton_Click"  Margin="5" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Table" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Đơn vị" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="moduleButton"  Margin="5"  >
+                        
+                            <Button Name="courseButton" Click="courseButton_Click"  Margin="5"  >
                                 <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Book" Width="15" Height="15" Foreground="black"/>
+                                    <Icon:PackIconMaterial Kind="BookAccountOutline" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Học phần" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
-                            <Button Name="courseButton"  Margin="5"  >
+
+                            <Button Name="courseOpenScheduleButton"  Margin="5" Click="courseOpenScheduleButton_Click" >
                                 <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="BookAccountOutline" Width="15" Height="15" Foreground="black"/>
-                                    <TextBlock Text="Khóa học mở" Margin="10,0,0,0" Foreground="black"/>
+                                    <Icon:PackIconMaterial Kind="Book" Width="15" Height="15" Foreground="black"/>
+                                    <TextBlock Text="Kế hoạch mở" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
 
