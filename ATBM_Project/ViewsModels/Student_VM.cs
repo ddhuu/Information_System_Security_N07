@@ -1,11 +1,7 @@
 ﻿using ATBM_Project.Models;
 using Oracle.ManagedDataAccess.Client;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ATBM_Project.ViewsModels
 {
@@ -30,7 +26,7 @@ namespace ATBM_Project.ViewsModels
                     string phoneNumber = reader.GetString(reader.GetOrdinal("DT"));
                     string address = reader.GetString(reader.GetOrdinal("DCHI"));
                     int cummulativeCredits = reader.GetInt32(reader.GetOrdinal("SOTCTL"));
-                    double avgGrade = reader.GetInt32(reader.GetOrdinal("DTBTL"));
+                    double avgGrade = reader.GetDouble(reader.GetOrdinal("DTBTL"));
                     string major = reader.GetString(reader.GetOrdinal("MANGANH"));
                     DateTime dob = reader.GetDateTime(reader.GetOrdinal("NGSINH"));
                     return new Student
@@ -52,6 +48,43 @@ namespace ATBM_Project.ViewsModels
                 }
             }
         }
+
+        public ObservableCollection<Models.Student> getStudentList()
+        {
+            ObservableCollection<Models.Student> students = new ObservableCollection<Models.Student>();
+            string SQLcontext = $"SELECT * FROM ADMIN.SINHVIEN";
+            OracleCommand cmd = new OracleCommand(SQLcontext, connection);
+                using (OracleDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string studentID = reader.GetString(reader.GetOrdinal("MASV"));
+                        string fullName = reader.GetString(reader.GetOrdinal("HOTEN"));
+                        string gender = reader.GetString(reader.GetOrdinal("PHAI"));
+                        string phoneNumber = reader.GetString(reader.GetOrdinal("DT"));
+                        string address = reader.GetString(reader.GetOrdinal("DCHI"));
+                        int cummulativeCredits = reader.GetInt32(reader.GetOrdinal("SOTCTL"));
+                        double avgGrade = reader.GetDouble(reader.GetOrdinal("DTBTL"));
+                        string major = reader.GetString(reader.GetOrdinal("MANGANH"));
+                        string program = reader.GetString(reader.GetOrdinal("MACT"));
+                        DateTime dob = reader.GetDateTime(reader.GetOrdinal("NGSINH"));
+                        students.Add (new Models.Student{
+                            Id = studentID, 
+                            Name = fullName, 
+                            Gender = gender,
+                            DOB = dob,
+                            Address = address,
+                            PhoneNumber = phoneNumber,
+                            Program = program,
+                            Major = major,
+                            CummulativeCredits = cummulativeCredits, 
+                            AvgGrade = avgGrade});
+                    }
+                    reader.Close();
+                }
+            return students;
+        }
+
         public int updateInfor(Student student)
         {
             string sql = $"UPDATE ADMIN.SINHIEN SET DT = {student.PhoneNumber}, DCHI = {student.Address}";

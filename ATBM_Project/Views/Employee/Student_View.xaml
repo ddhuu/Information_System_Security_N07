@@ -24,19 +24,19 @@
         </StackPanel>
 
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-            <ListView Name="StudentListView" Margin="5">
+            <ListView x:Name="StudentListView" Margin="5">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="MSSV" DisplayMemberBinding="{Binding studentID}" Width="60"/>
-                        <GridViewColumn Header="Họ tên" DisplayMemberBinding="{Binding studentName}" Width="100"/>
-                        <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding gender}" Width="55"/>
-                        <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding dob, StringFormat=\{0:dd/MM/yyyy\}}" Width="90"/>
-                        <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding address}" Width="100"/>
-                        <GridViewColumn Header="Điện thoại" DisplayMemberBinding="{Binding phoneNum}" Width="100"/>
-                        <GridViewColumn Header="Chương trình" DisplayMemberBinding="{Binding program}" Width="80"/>
-                        <GridViewColumn Header="Ngành" DisplayMemberBinding="{Binding majorID}" Width="80"/>
-                        <GridViewColumn Header="Tín tích lũy" DisplayMemberBinding="{Binding accumulatedCredit}" Width="70"/>
-                        <GridViewColumn Header="Điểm TB" DisplayMemberBinding="{Binding avgScore}" Width="70"/>
+                        <GridViewColumn Header="MSSV" DisplayMemberBinding="{Binding Id}" Width="60"/>
+                        <GridViewColumn Header="Họ tên" DisplayMemberBinding="{Binding Name}" Width="100"/>
+                        <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding Gender}" Width="55"/>
+                        <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding DOB, StringFormat=\{0:dd/MM/yyyy\}}" Width="90"/>
+                        <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding Address}" Width="100"/>
+                        <GridViewColumn Header="Điện thoại" DisplayMemberBinding="{Binding PhoneNumber}" Width="100"/>
+                        <GridViewColumn Header="Chương trình" DisplayMemberBinding="{Binding Program}" Width="80"/>
+                        <GridViewColumn Header="Ngành" DisplayMemberBinding="{Binding Major}" Width="80"/>
+                        <GridViewColumn Header="Tín tích lũy" DisplayMemberBinding="{Binding CummulativeCredits}" Width="70"/>
+                        <GridViewColumn Header="Điểm TB" DisplayMemberBinding="{Binding AvgGrade}" Width="70"/>
                         <GridViewColumn Header="Actions" Width="60">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>

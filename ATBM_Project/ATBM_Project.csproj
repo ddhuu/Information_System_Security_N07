@@ -238,8 +238,8 @@
     <Compile Include="Views\Employee\Course_View.xaml.cs">
       <DependentUpon>Course_View.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Employee\EmployeeInfo.xaml.cs">
-      <DependentUpon>EmployeeInfo.xaml</DependentUpon>
+    <Compile Include="Views\Employee\Employee_View.xaml.cs">
+      <DependentUpon>Employee_View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Employee\EmployeePage.xaml.cs">
       <DependentUpon>EmployeePage.xaml</DependentUpon>
@@ -350,7 +350,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Employee\EmployeeInfo.xaml">
+    <Page Include="Views\Employee\Employee_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
