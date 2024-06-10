@@ -1,0 +1,33 @@
+﻿<Window x:Class="ATBM_Project.Views.General.InsertCourseOpenSchedule_Dialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ATBM_Project.Views.General"
+        mc:Ignorable="d"
+        Title="Insert Course Open Schedule" Height="300" Width="450">
+    <StackPanel Orientation="Vertical" Margin="20">
+        <TextBlock FontSize="20" Text="Nhập thông tin kế hoạch mở"/>
+
+        <StackPanel Orientation="Horizontal" Margin="0 20 20 10">
+            <TextBlock Text="Mã học phần: " Width="100"/>
+            <TextBox x:Name="inputCourseID" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 0 20 10">
+            <TextBlock Text="Học kỳ:" Width="100"/>
+            <TextBox x:Name="inputSemester" Width="200"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"  Margin="0 0 20 10">
+            <TextBlock Text="Năm:" Width="100"/>
+            <TextBox x:Name="inputYear" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 0 20 10">
+            <TextBlock Text="Chương trình:" Width="100"/>
+            <TextBox x:Name="inputProgram" Width="200"/>
+        </StackPanel>
+        <Button x:Name="btnInsert" Click="btnInsert_Click" Width="80" >Thêm</Button>
+
+
+    </StackPanel>
+</Window>

@@ -1,0 +1,30 @@
+﻿<Window x:Class="ATBM_Project.Views.General.InsertUnit_Dialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ATBM_Project.Views.General"
+        mc:Ignorable="d"
+        Title="Insert Unit" Height="300" Width="450">
+    <StackPanel Orientation="Vertical" Margin="20">
+        <TextBlock FontSize="20" Text="Nhập thông tin đơn vị"/>
+
+        <StackPanel Orientation="Horizontal" Margin="0 20 20 10">
+            <TextBlock Text="Mã đơn vị: " Width="100"/>
+            <TextBox x:Name="inputUnitID" Width="200"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="0 0 20 10">
+            <TextBlock Text="Tên đơn vị:" Width="100"/>
+            <TextBox x:Name="inputUnitName" Width="200"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"  Margin="0 0 20 10">
+            <TextBlock Text="Trưởng đơn vị:" Width="100"/>
+            <TextBox x:Name="inputHeadUnit" Width="200"/>
+        </StackPanel>
+        <Button x:Name="btnInsert" Click="btnInsert_Click" Width="80" >Thêm</Button>
+
+
+    </StackPanel>
+</Window>
