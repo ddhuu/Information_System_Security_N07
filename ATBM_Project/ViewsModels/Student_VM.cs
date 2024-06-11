@@ -128,7 +128,6 @@ namespace ATBM_Project.ViewsModels
             Course course = null;
             using(OracleDataReader reader = cmd.ExecuteReader())
             {
-                int i = 1;
                 while (reader.Read())
                 {
                     string courseID = reader.GetString(reader.GetOrdinal("MAHP"));
@@ -149,7 +148,6 @@ namespace ATBM_Project.ViewsModels
                         MaxNumParticipatient = maxNumParticipient
                     };
                     courses.Add(course);
-                    i++;
                 }
                 reader.Close();
             }

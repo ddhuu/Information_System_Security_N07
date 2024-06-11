@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ATBM_Project.Views.Employee" xmlns:Icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material"
+        xmlns:local="clr-namespace:ATBM_Project.Views.Employee" 
+        xmlns:Icon="clr-namespace:MahApps.Metro.IconPacks;assembly=MahApps.Metro.IconPacks.Material"
         mc:Ignorable="d"
         Height="720" Width="1080" WindowStartupLocation="CenterScreen" AllowsTransparency="True"
 Background="Transparent" WindowStyle="None"
@@ -43,7 +44,7 @@ Background="Transparent" WindowStyle="None"
 
                         <!--Menu Buttons-->
                         <StackPanel DockPanel.Dock="Top" Margin="10">
-                            <Button Name="infoButton"  Margin="5" Click="infoButton_Click"  >
+                            <Button Name="infoButton"  Margin="5" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Account" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Thông tin" Margin="10,0,0,0" Foreground="Black"/>

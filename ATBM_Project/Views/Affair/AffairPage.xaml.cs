@@ -37,17 +37,17 @@ namespace ATBM_Project.Views.Affair
 
         private void courseButton_Click(object sender, RoutedEventArgs e)
         {
-            UserController.Content = new Course_View(_connection, true);
+            UserController.Content = new General.Course_View(_connection, true);
         }
 
         private void courseOpenScheduleButton_Click(object sender, RoutedEventArgs e)
         {
-            UserController.Content = new CourseOpenSchedule_View(_connection, true);
+            UserController.Content = new General.CourseOpenSchedule_View(_connection, true);
         }
 
         private void unitButton_Click(object sender, RoutedEventArgs e)
         {
-            UserController.Content = new Unit_View(_connection, true);
+            UserController.Content = new General.Unit_View(_connection, true);
         }
     }
 }

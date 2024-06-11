@@ -3,94 +3,97 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ATBM_Project.Views.General"
+             xmlns:local="clr-namespace:ATBM_Project.Views.Employee"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             Height="600" Width="800" Padding="5">
-    <StackPanel Orientation="Vertical">
+             Height="550" Width="840">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Padding" Value="5"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <Line X1="0" Y1="0" X2="150" Y2="0" Stroke="#154c79" StrokeThickness="2" Margin="0,0,20,0"/>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="HOCPHAN" FontSize="32" FontWeight="SemiBold" Margin="0,20,0,5" Foreground="#121518" HorizontalAlignment="Left" Grid.Column="0"/>
-            <StackPanel Orientation="Horizontal" Grid.Column="1">
-                <Button x:Name="btnUpdate" Click="btnUpdate_Click" Margin="20 0" Width="100" Height="40" FontSize="16">Cập nhật</Button>
-                <Button x:Name="btnInsert" Click="btnInsert_Click" Width="100" Height="40" FontSize="16">Thêm</Button>
-                <Button x:Name="btnSelect" Click="btnSelect_Click" Margin="20 0" Width="100" Height="40" FontSize="16">Lấy dữ liệu</Button>
-            </StackPanel>
-        </Grid>
-
-        <Separator Height="1" Background="#DAE2EA" Margin="0,6,0,13"/>
-        
-        <DataGrid ScrollViewer.CanContentScroll="True" x:Name="coursesDataGrid" AutoGenerateColumns="false" Height="400">
-            <DataGrid.Columns>
-                
-                <DataGridTemplateColumn Header="Mã HP" IsReadOnly="True" Width="80">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding CourseID}" VerticalAlignment="Center"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+        <TextBlock Text="HOCPHAN" FontSize="32" FontWeight="SemiBold" Margin="0,20,0,5" Foreground="#121518" HorizontalAlignment="Left" Grid.Column="1"/>
 
 
-                <DataGridTemplateColumn Header="Tên học phần" IsReadOnly="True" Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding CourseName}" VerticalAlignment="Center"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+            <Button x:Name="btnInsert" Click="btnInsert_Click" Width="100" Margin="20 0" Height="40" FontSize="16">Thêm</Button>
+            <Button x:Name="btnSelect" Click="btnSelect_Click" Margin="0 0" Width="100" Height="40" FontSize="16">Lấy dữ liệu</Button>
+        </StackPanel>
 
-
-                <DataGridTemplateColumn Header="Số tín chỉ" IsReadOnly="True" Width="80">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding TotalCredit}" VerticalAlignment="Center"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-                
-                <DataGridTemplateColumn Header="Số tín chỉ LT" IsReadOnly="True" Width="80">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding TheoryCredit}" VerticalAlignment="Center"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-
-                <DataGridTemplateColumn Header="Số tín chỉ TH" IsReadOnly="True" Width="80">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding LabCredit}" VerticalAlignment="Center"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-
-                <DataGridTemplateColumn Header="Số sinh viên tối đa" IsReadOnly="True" Width="120">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding MaxNumParticipatient}" VerticalAlignment="Center"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-
-                <DataGridTemplateColumn Header="Đơn vị" IsReadOnly="True" Width="80">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Unit}" VerticalAlignment="Center"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-            </DataGrid.Columns>
-        </DataGrid>
-
-
-    </StackPanel>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <ListView x:Name="coursesDataGrid" Margin="5">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Mã học phần" Width="80">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding CourseID}" HorizontalAlignment="Center" Margin="15 0 0 0"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Tên học phần" x:Name="courseNameCol" Width="150">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding CourseName}" HorizontalAlignment="Left"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Số tín chỉ" Width="80">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding TotalCredit}" HorizontalAlignment="Center" Margin="30 0 0 0"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Số tiết lý thuyết" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding TheoryCredit}" HorizontalAlignment="Center" Margin="40 0 0 0"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Số tiết thực hành" Width="120">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding LabCredit}" HorizontalAlignment="Center" Margin="50 0 0 0"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Số sinh viên tối đa" Width="120">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding MaxNumParticipatient}" HorizontalAlignment="Center" Margin="40 0 0 0"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Mã đơn vị" Width="90">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Unit}" HorizontalAlignment="Center" Margin="25 0 0 0"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn x:Name="ActionsCol" Header="Actions" Width="80">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button x:Name="btnUpdate" Click="btnUpdate_Click" HorizontalAlignment="Center" Margin="10 0 0 0">
+                                            <materialDesign:PackIcon Kind="Pencil" Width="16" Height="16"/>
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </ScrollViewer>
+    </Grid>
 </UserControl>

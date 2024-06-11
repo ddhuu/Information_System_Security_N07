@@ -31,7 +31,8 @@ namespace ATBM_Project.Views.General
             {
                 btnInsert.Visibility = Visibility.Hidden;
                 btnSelect.Visibility = Visibility.Hidden;
-                btnUpdate.Visibility = Visibility.Hidden;
+                ActionsCol.Width = 0;
+                unitNameCol.Width += 90;
             }
             unitsDataGrid.ItemsSource = getUnits();
         }

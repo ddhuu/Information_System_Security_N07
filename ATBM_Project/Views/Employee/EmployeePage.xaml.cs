@@ -35,10 +35,10 @@ namespace ATBM_Project.Views.Employee
             login.Show();
         }
 
-        private void infoButton_Click(object sender, RoutedEventArgs e)
+        /*private void infoButton_Click(object sender, RoutedEventArgs e)
         {
-            UserController.Content = new Employee_View(employee_VM);
-        }
+            UserController.Content = new General.IndividualInfo_View(employee_VM);
+        }*/
 
         private void studentButton_Click(object sender, RoutedEventArgs e)
         {
@@ -47,17 +47,17 @@ namespace ATBM_Project.Views.Employee
 
         private void compartmentButton_Click(object sender, RoutedEventArgs e)
         {
-            UserController.Content = new Unit_View();
+            UserController.Content = new General.Unit_View(_connection);
         }
 
         private void moduleButton_Click(object sender, RoutedEventArgs e)
         {
-            UserController.Content = new Course_View();
+            UserController.Content = new General.Course_View(_connection);
         }
 
         private void courseButton_Click(object sender, RoutedEventArgs e)
         {
-            UserController.Content = new CourseOpen_View();
+            UserController.Content = new General.CourseOpenSchedule_View(_connection);
         }
     }
 }
