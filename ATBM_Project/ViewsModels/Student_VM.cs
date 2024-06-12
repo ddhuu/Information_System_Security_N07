@@ -99,7 +99,6 @@ namespace ATBM_Project.ViewsModels
             CourseOpenSchedule schedule = null;
             using (OracleDataReader reader = cmd.ExecuteReader())
             {
-                int i = 1;
                 while (reader.Read())
                 {
                     string courseID = reader.GetString(reader.GetOrdinal("MAHP"));
@@ -114,7 +113,6 @@ namespace ATBM_Project.ViewsModels
                         Program = program
                     };
                     openSchedules.Add(schedule);
-                    i++;
                 }
                 reader.Close(); 
             }
@@ -161,7 +159,6 @@ namespace ATBM_Project.ViewsModels
             CourseRegistration registration = null;
             using (OracleDataReader reader = cmd.ExecuteReader())
             {
-                int i = 1;
                 while (reader.Read())
                 {
                     string courseID = reader.GetString(reader.GetOrdinal("MAHP"));
@@ -187,7 +184,6 @@ namespace ATBM_Project.ViewsModels
                         FinalExamGrade = finalExamGrade,
                         FinalGrade = finalGrade
                     };
-                    i++;
                 }
                 reader.Close();
             }
