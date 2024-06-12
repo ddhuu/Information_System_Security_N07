@@ -39,7 +39,7 @@ namespace ATBM_Project.ViewsModels
                         Major = major,
                         AvgGrade = avgGrade,
                         CummulativeCredits = cummulativeCredits,
-                        DOB = dob
+                        DOB = dob.ToShortDateString()
                     };
                 }
                 else
@@ -72,7 +72,7 @@ namespace ATBM_Project.ViewsModels
                             Id = studentID, 
                             Name = fullName, 
                             Gender = gender,
-                            DOB = dob,
+                            DOB = dob.ToShortDateString(),
                             Address = address,
                             PhoneNumber = phoneNumber,
                             Program = program,

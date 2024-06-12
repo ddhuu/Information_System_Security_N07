@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ATBM_Project.Views.Employee
+namespace ATBM_Project.Views.Lecturer
 {
     /// <summary>
-    /// Interaction logic for Course_View.xaml
+    /// Interaction logic for UpdateCourseRegistration_Dialog.xaml
     /// </summary>
-    public partial class Course_View : UserControl
+    public partial class UpdateCourseRegistration_Dialog : Window
     {
-        public Course_View()
+        public UpdateCourseRegistration_Dialog()
         {
             InitializeComponent();
         }

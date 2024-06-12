@@ -13,9 +13,6 @@ namespace ATBM_Project.Views.Employee
     {
         private string _userName { get; set; }
         private OracleConnection _connection;
-        private Employee_VM employee_VM;
-        private Student_VM student_VM;
-        private UserControl _userControl;
 
         public EmployeePage(OracleConnection connection, string userName)
         {
@@ -23,8 +20,6 @@ namespace ATBM_Project.Views.Employee
             _connection = connection;
             InitializeComponent();
             Title.Text = _userName;
-            employee_VM = new Employee_VM(connection);
-            student_VM = new Student_VM(connection);
         }
 
         public void clickBack(object sender, RoutedEventArgs e)
@@ -35,14 +30,9 @@ namespace ATBM_Project.Views.Employee
             login.Show();
         }
 
-        /*private void infoButton_Click(object sender, RoutedEventArgs e)
-        {
-            UserController.Content = new General.IndividualInfo_View(employee_VM);
-        }*/
-
         private void studentButton_Click(object sender, RoutedEventArgs e)
         {
-            UserController.Content = new Student_View(student_VM);
+            UserController.Content = new General.Student_View(_connection);
         }
 
         private void compartmentButton_Click(object sender, RoutedEventArgs e)
@@ -58,6 +48,11 @@ namespace ATBM_Project.Views.Employee
         private void courseButton_Click(object sender, RoutedEventArgs e)
         {
             UserController.Content = new General.CourseOpenSchedule_View(_connection);
+        }
+
+        private void infoButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserController.Content = new General.Employee_View(_connection);
         }
     }
 }
