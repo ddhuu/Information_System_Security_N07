@@ -79,14 +79,14 @@ Background="Transparent" WindowStyle="None"
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="assignmentButton"  Margin="5" >
+                            <Button Name="assignmentButton"  Margin="5" Click="assignmentButton_Click" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Assistant" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Phân công " Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="registerButton"  Margin="5" Click="registerButton_Click"  >
+                            <Button Name="registerButton" Click="registerButton_Click" Margin="5"  >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Note" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Đăng ký" Margin="10,0,0,0" Foreground="black"/>

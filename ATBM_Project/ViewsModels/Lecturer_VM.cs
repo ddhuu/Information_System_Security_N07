@@ -9,49 +9,50 @@ using ATBM_Project.Models;
 
 namespace ATBM_Project.ViewsModels
 {
-    public class Lecturer_VM : Employee_VM
+    public class Lecturer_VM
     {
-        public Lecturer_VM(OracleConnection _connection) :base(_connection)
+        private OracleConnection _connection;
+        public Lecturer_VM(OracleConnection connection)
         {
-
+            _connection = connection;
         }
 
-        public ObservableCollection<Models.Assignment> getAssignmentList()
+        public List<Models.Assignment> getAssignmentList()
         {
-            ObservableCollection<Models.Assignment> assignments = new ObservableCollection<Models.Assignment>();
+            List<Models.Assignment> assignments = new List<Models.Assignment>();
             string SQLcontext = $"SELECT * FROM ADMIN.UV_CANHAN_PHANCONG";
-/*            string SQLcontext = $"SELECT * FROM ADMIN.PHANCONG";*/
 
-            OracleCommand cmd = new OracleCommand(SQLcontext, connection);
-                using (OracleDataReader reader = cmd.ExecuteReader())
+            OracleCommand cmd = new OracleCommand(SQLcontext, _connection);
+            using (OracleDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
                 {
-                    while (reader.Read())
+                    string lecturerID = reader.GetString(reader.GetOrdinal("MAGV"));
+                    string courseID = reader.GetString(reader.GetOrdinal("MAHP"));
+                    int semester = reader.GetInt16(reader.GetOrdinal("HK"));
+                    int year = reader.GetInt16(reader.GetOrdinal("NAM"));
+                    string program = reader.GetString(reader.GetOrdinal("MACT"));
+                    assignments.Add(new Models.Assignment
                     {
-                        string lecturerID = reader.GetString(reader.GetOrdinal("MAGV"));
-                        string courseID = reader.GetString(reader.GetOrdinal("MAHP"));
-                        int semester = reader.GetInt16(reader.GetOrdinal("HK"));
-                        int year = reader.GetInt16(reader.GetOrdinal("NAM"));
-                        string program = reader.GetString(reader.GetOrdinal("MACT"));
-                        assignments.Add(new Models.Assignment
-                        {
-                            LecturerID = lecturerID,
-                            CourseID = courseID,
-                            Semester = semester,
-                            Year = year,
-                            Program = program
-                        });
-                    }
-                    reader.Close();
+                        LecturerID = lecturerID,
+                        CourseID = courseID,
+                        Semester = semester,
+                        Year = year,
+                        Program = program
+                    });
                 }
-            
+                reader.Close();
+            }
+
             return assignments;
         }
 
-        public ObservableCollection<Models.CourseRegistration> getRegistrations()
+        public List<CourseRegistration> GetRegistrations()
         {
-            ObservableCollection<Models.CourseRegistration> registrations = new ObservableCollection<Models.CourseRegistration>();
-            string SQLcontext = $"SELECT * FROM ADMIN.UV_CANHAN_DANGKY";
-            OracleCommand cmd = new OracleCommand(SQLcontext, connection);
+            string sql = $"SELECT * FROM ADMIN.UV_CANHAN_DANGKY";
+            List<CourseRegistration> courseRegistrations = new List<CourseRegistration>();
+
+            OracleCommand cmd = new OracleCommand(sql, _connection);
             using (OracleDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
@@ -66,9 +67,7 @@ namespace ATBM_Project.ViewsModels
                     double processGrade = reader.GetDouble(reader.GetOrdinal("DIEMQT"));
                     double finalExamGrade = reader.GetDouble(reader.GetOrdinal("DIEMCK"));
                     double finalGrade = reader.GetDouble(reader.GetOrdinal("DIEMTK"));
-
-
-                    registrations.Add(new Models.CourseRegistration
+                    courseRegistrations.Add(new CourseRegistration
                     {
                         StudentId = studentId,
                         LecturerId = lecturerId,
@@ -84,8 +83,9 @@ namespace ATBM_Project.ViewsModels
                 }
                 reader.Close();
             }
-            return registrations;
+
+            return courseRegistrations;
         }
     }
-   
+
 }

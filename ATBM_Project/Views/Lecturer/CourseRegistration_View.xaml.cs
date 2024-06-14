@@ -30,7 +30,7 @@ namespace ATBM_Project.Views.Lecturer
             _connection = connection;
             InitializeComponent();
             lecturer_VM = new Lecturer_VM(_connection);
-            registrationsDataGrid.ItemsSource = lecturer_VM.getRegistrations();
+            registrationsDataGrid.ItemsSource = lecturer_VM.GetRegistrations();
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
@@ -51,7 +51,7 @@ namespace ATBM_Project.Views.Lecturer
 
         private void btnSelect_Click(object sender, RoutedEventArgs e)
         {
-            registrationsDataGrid.ItemsSource = lecturer_VM.getRegistrations();
+            registrationsDataGrid.ItemsSource = lecturer_VM.GetRegistrations();
         }
     }
 }

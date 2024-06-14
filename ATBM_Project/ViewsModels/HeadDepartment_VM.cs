@@ -10,17 +10,18 @@ using System.Threading.Tasks;
 
 namespace ATBM_Project.ViewsModels
 {
-    public class HeadDepartment_VM : Lecturer_VM
+    public class HeadDepartment_VM 
     {
-        public HeadDepartment_VM(OracleConnection _connection) : base(_connection)
+        private OracleConnection _connection;
+        public HeadDepartment_VM(OracleConnection connection)
         {
-            
+            _connection = connection;
         }
-        public ObservableCollection<Employee> getAllEmps()
+        public List<Employee> getAllEmps()
         {
-            ObservableCollection<Employee> employees = new ObservableCollection<Employee>();
+            List<Employee> employees = new List<Employee>();
             string sql = $"SELECT * FROM ADMIN.NHANSU";
-            OracleCommand cmd =  new OracleCommand(sql, connection);
+            OracleCommand cmd =  new OracleCommand(sql, _connection);
             Employee emp = null;
             using (OracleDataReader reader = cmd.ExecuteReader())
             {
@@ -53,32 +54,6 @@ namespace ATBM_Project.ViewsModels
             return employees;
 
         }
-        public int addEmployee(Employee emp)
-        {
-            string sql = $"INSERT INTO ADMIN.NHANVIEN(MANV, HOTEN, NGAYSINH, PHAI, PHUCAP, DT, VAITRO, MADV)" +
-                $" values ({emp.ID}, {emp.FullName}, {emp.DOB}, {emp.Gender}, {emp.Grant}, {emp.PhoneNumber}, {emp.Role}, {emp.Unit})";
-
-            OracleCommand cmd = new OracleCommand(sql, connection);
-            return cmd.ExecuteNonQuery();
-        }
-        public int deleteEmployee(Employee emp)
-        {
-            string sql = $"DELETE FROM ADMIN.NHANVIEN WHERE MANV = {emp.ID}";
-            OracleCommand cmd = new OracleCommand(sql, connection);
-            return cmd.ExecuteNonQuery();
-        }
-        public int updateEmp(string empID, Employee emp)
-        {
-            string sql = $"UPDATE ADMIN.NHANVIEN" +
-                $" SET HOTEN = {emp.FullName}, PHAI = {emp.Gender}, NGAYSINH = {emp.DOB}, PHUCAP = {emp.Grant}, DT = {emp.PhoneNumber}, VAITRO = ${emp.Role}, MADV = {emp.Unit}"
-                + $"WHERE MASV = {emp.ID}";
-            OracleCommand cmd = new OracleCommand(sql, connection);
-            return cmd.ExecuteNonQuery();
-        }
-        
-        
-        
-
         
     }
 }
