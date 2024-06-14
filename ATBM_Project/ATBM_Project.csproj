@@ -241,7 +241,6 @@
     <Compile Include="Models\CourseRegistration.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\PrivilegeOfTable.cs" />
-    <Compile Include="Models\Registration.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\Student.cs" />
@@ -251,7 +250,6 @@
     <Compile Include="ViewsModels\Admin_VM.cs" />
     <Compile Include="ViewsModels\Affair_VM.cs" />
     <Compile Include="ViewsModels\ConnectionDB_VM.cs" />
-    <Compile Include="ViewsModels\Employee_VM.cs" />
     <Compile Include="ViewsModels\HeadDepartment_VM.cs" />
     <Compile Include="ViewsModels\Lecturer_VM.cs" />
     <Compile Include="ViewsModels\Student_VM.cs" />
@@ -345,14 +343,8 @@
     <Compile Include="Views\Role\PrivOnColumn_View.xaml.cs">
       <DependentUpon>PrivOnColumn_View.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Student\StudentCourse.xaml.cs">
-      <DependentUpon>StudentCourse.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Student\StudentPage.xaml.cs">
       <DependentUpon>StudentPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Student\StudentInfor.xaml.cs">
-      <DependentUpon>StudentInfor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Table\Table_Detail_View.xaml.cs">
       <DependentUpon>Table_Detail_View.xaml</DependentUpon>
@@ -538,15 +530,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Student\StudentCourse.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Student\StudentPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Student\StudentInfor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

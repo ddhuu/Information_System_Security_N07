@@ -9,66 +9,41 @@ using ATBM_Project.Models;
 
 namespace ATBM_Project.ViewsModels
 {
-    public class Lecturer_VM : Employee_VM
+    public class Lecturer_VM 
     {
-        public Lecturer_VM(OracleConnection _connection) :base(_connection)
+        private OracleConnection _connection;
+        public Lecturer_VM(OracleConnection connection)
         {
-
+            _connection = connection;
         }
 
-        public ObservableCollection<Models.Assignment> getAssignmentList(bool isAffair = false)
+        public List<Models.Assignment> getAssignmentList()
         {
-            ObservableCollection<Models.Assignment> assignments = new ObservableCollection<Models.Assignment>();
+            List<Models.Assignment> assignments = new List<Models.Assignment>();
             string SQLcontext = $"SELECT * FROM ADMIN.UV_CANHAN_PHANCONG";
-            string SQLcontext2 = $"SELECT * FROM ADMIN.PHANCONG";
-            if (isAffair)
+
+            OracleCommand cmd = new OracleCommand(SQLcontext, _connection);
+            using (OracleDataReader reader = cmd.ExecuteReader())
             {
-                OracleCommand cmd = new OracleCommand(SQLcontext2, connection);
-                using (OracleDataReader reader = cmd.ExecuteReader())
+                while (reader.Read())
                 {
-                    while (reader.Read())
+                    string lecturerID = reader.GetString(reader.GetOrdinal("MAGV"));
+                    string courseID = reader.GetString(reader.GetOrdinal("MAHP"));
+                    int semester = reader.GetInt16(reader.GetOrdinal("HK"));
+                    int year = reader.GetInt16(reader.GetOrdinal("NAM"));
+                    string program = reader.GetString(reader.GetOrdinal("MACT"));
+                    assignments.Add(new Models.Assignment
                     {
-                        string lecturerID = reader.GetString(reader.GetOrdinal("MAGV"));
-                        string courseID = reader.GetString(reader.GetOrdinal("MAHP"));
-                        int semester = reader.GetInt16(reader.GetOrdinal("HK"));
-                        int year = reader.GetInt16(reader.GetOrdinal("NAM"));
-                        string program = reader.GetString(reader.GetOrdinal("MACT"));
-                        assignments.Add(new Models.Assignment
-                        {
-                            LecturerID = lecturerID,
-                            CourseID = courseID,
-                            Semester = semester,
-                            Year = year,
-                            Program = program
-                        });
-                    }
-                    reader.Close();
+                        LecturerID = lecturerID,
+                        CourseID = courseID,
+                        Semester = semester,
+                        Year = year,
+                        Program = program
+                    });
                 }
+                reader.Close();
             }
-            else
-            {
-                OracleCommand cmd = new OracleCommand(SQLcontext, connection);
-                using (OracleDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        string lecturerID = reader.GetString(reader.GetOrdinal("MAGV"));
-                        string courseID = reader.GetString(reader.GetOrdinal("MAHP"));
-                        int semester = reader.GetInt16(reader.GetOrdinal("HK"));
-                        int year = reader.GetInt16(reader.GetOrdinal("NAM"));
-                        string program = reader.GetString(reader.GetOrdinal("MACT"));
-                        assignments.Add(new Models.Assignment
-                        {
-                            LecturerID = lecturerID,
-                            CourseID = courseID,
-                            Semester = semester,
-                            Year = year,
-                            Program = program
-                        });
-                    }
-                    reader.Close();
-                }
-            }
+
             return assignments;
         }
 

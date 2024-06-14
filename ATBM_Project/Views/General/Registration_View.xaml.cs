@@ -32,7 +32,7 @@ namespace ATBM_Project.Views.General
             student_VM = new Student_VM(_connection);
             if (isAffair)
             {
-                registrationsDataGrid.ItemsSource = student_VM.GetRegistrations(true);
+                registrationsDataGrid.ItemsSource = student_VM.GetRegistrations();
             }
              registrationsDataGrid.ItemsSource = student_VM.GetRegistrations();
         }

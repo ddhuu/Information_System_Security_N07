@@ -34,20 +34,15 @@ namespace ATBM_Project.Views.Student
         }
         private void inforButton_Click(object sender, RoutedEventArgs e)
         {
-            UserController.Content = new StudentInfor(student_VM);
-            
-            MessageBox.Show(student_VM.getInfor().Name);
+
         }
         private void courseButton_Click(object sender, RoutedEventArgs e)
         {
-            UserController.Content = new StudentInfor(student_VM);
-           ;
+
         }
         private void moduleButton_Click(object sender, RoutedEventArgs e)
         {
-            UserController.Content = new StudentInfor(student_VM);
-            ObservableCollection<Course> courses = student_VM.FindCourses();
-            MessageBox.Show($"Number of courses {courses.Count}");
+
         }
 
     }

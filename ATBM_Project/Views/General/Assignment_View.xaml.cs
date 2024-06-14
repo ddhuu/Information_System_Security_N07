@@ -31,7 +31,7 @@ namespace ATBM_Project.Views.General
                 if (isAffair)
                 {
 
-                    assignmentsDataGrid.ItemsSource = _lecturer.getAssignmentList(true);
+                    assignmentsDataGrid.ItemsSource = _lecturer.getAssignmentList();
                     btnSelect.Visibility = Visibility.Visible;
                     ActionsCol.Width += 140;
 
