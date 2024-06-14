@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Oracle.ManagedDataAccess.Client;
+using ATBM_Project.ViewsModels;
+using ATBM_Project.Models;
 
 namespace ATBM_Project.Views.Lecturer
 {
@@ -20,9 +13,31 @@ namespace ATBM_Project.Views.Lecturer
     /// </summary>
     public partial class Assignment_View : UserControl
     {
-        public Assignment_View()
+        private OracleConnection _connection;
+        private Lecturer_VM _lecturer;
+        public Assignment_View(OracleConnection connection)
         {
+            _connection = connection;
+            _lecturer = new Lecturer_VM(_connection);
             InitializeComponent();
+            assignmentsDataGrid.ItemsSource = _lecturer.getAssignmentList();
         }
+
+/*        private void BtnUpdate_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                Assignment assignment = ((Button)sender).Tag as Assignment;
+                if (assignment != null)
+                {
+                    (new UpdateAssignment_Dialog(_connection, assignment)).ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                // nothing to do
+            }
+        }*/
     }
 }

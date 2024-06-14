@@ -57,12 +57,12 @@ namespace ATBM_Project.Views.Affair
 
         private void assignmentButton_Click(object sender, RoutedEventArgs e)
         {
-            UserController.Content = new General.Assignment_View(_connection, false ,true);
+            
         }
 
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
-            UserController.Content = new General.Registration_View(_connection, true);
+            
         }
     }
 }

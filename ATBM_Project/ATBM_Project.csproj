@@ -261,9 +261,6 @@
     <Compile Include="Views\Employee\EmployeePage.xaml.cs">
       <DependentUpon>EmployeePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\General\Assignment_View.xaml.cs">
-      <DependentUpon>Assignment_View.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\General\CourseOpenSchedule_View.xaml.cs">
       <DependentUpon>CourseOpenSchedule_View.xaml</DependentUpon>
     </Compile>
@@ -282,9 +279,6 @@
     <Compile Include="Views\General\InsertUnit_Dialog.xaml.cs">
       <DependentUpon>InsertUnit_Dialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\General\Registration_View.xaml.cs">
-      <DependentUpon>Registration_View.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\General\Student_View.xaml.cs">
       <DependentUpon>Student_View.xaml</DependentUpon>
     </Compile>
@@ -302,9 +296,6 @@
     </Compile>
     <Compile Include="Views\General\UpdateEmployee_Dialog.xaml.cs">
       <DependentUpon>UpdateEmployee_Dialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\General\UpdateGrade_Dialog.xaml.cs">
-      <DependentUpon>UpdateGrade_Dialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\General\UpdateUnit_Dialog.xaml.cs">
       <DependentUpon>UpdateUnit_Dialog.xaml</DependentUpon>
@@ -414,10 +405,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\General\Assignment_View.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\General\CourseOpenSchedule_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -442,10 +429,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\General\Registration_View.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\General\Student_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -467,10 +450,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\General\UpdateEmployee_Dialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\General\UpdateGrade_Dialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -33,6 +33,8 @@ namespace ATBM_Project.Views.General
                 btnInsert.Visibility = Visibility.Hidden;
                 btnSelect.Visibility = Visibility.Hidden;
                 ActionsCol.Width = 0;
+                programCol.Width += 80;
+                courseIdCol.Width += 80;
             }
             courseOpenSchedulesDataGrid.ItemsSource = getData();
         }
