@@ -33,7 +33,6 @@ namespace ATBM_Project.Views.General
                 btnInsert.Visibility = Visibility.Hidden;
                 btnSelect.Visibility = Visibility.Hidden;
                 ActionsCol.Width = 0;
-                programCol.Width += 58;
             }
             courseOpenSchedulesDataGrid.ItemsSource = getData();
         }
@@ -70,14 +69,17 @@ namespace ATBM_Project.Views.General
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            CourseOpenSchedule cos = courseOpenSchedulesDataGrid.SelectedItem as CourseOpenSchedule;
-            if (cos == null)
+            try
             {
-                MessageBox.Show("Vui lòng chọn một khóa học để cập nhật");
+                CourseOpenSchedule cos = ((Button)sender).Tag as CourseOpenSchedule;
+                if (cos != null)
+                {
+                    (new UpdateCourseOpenSchedule_Dialog(_connection, cos)).ShowDialog();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                (new UpdateCourseOpenSchedule_Dialog(_connection, cos)).ShowDialog();
+                // nothing to do
             }
         }
     }

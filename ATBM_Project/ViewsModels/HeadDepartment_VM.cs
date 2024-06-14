@@ -43,7 +43,7 @@ namespace ATBM_Project.ViewsModels
                         Role = role,
                         Unit = unit,
                         Grant = grant,
-                        DOB = dob
+                        DOB = dob.ToShortDateString()
                     };
                     employees.Add(emp);
                 }

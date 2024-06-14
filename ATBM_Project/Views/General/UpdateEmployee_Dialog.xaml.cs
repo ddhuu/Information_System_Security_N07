@@ -1,6 +1,4 @@
-﻿using ATBM_Project.Models;
-using Oracle.ManagedDataAccess.Client;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,35 +11,45 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Oracle.ManagedDataAccess.Client;
+using ATBM_Project.Models;
 
 namespace ATBM_Project.Views.General
 {
     /// <summary>
-    /// Interaction logic for UpdatePhoneNum_Dialog.xaml
+    /// Interaction logic for UpdateEmployee_Dialog.xaml
     /// </summary>
-    public partial class UpdatePhoneNum_Dialog : Window
+    public partial class UpdateEmployee_Dialog : Window
     {
         private OracleConnection _connection;
-        private string _phoneNumber;
-        public UpdatePhoneNum_Dialog(OracleConnection conn, string phoneNumber)
+        private Models.Employee _employee;
+        public UpdateEmployee_Dialog(OracleConnection conn, Models.Employee emp)
         {
             _connection = conn;
-            _phoneNumber = phoneNumber;
+            _employee = emp;
             InitializeComponent();
-            inputPhoneNum.Text = _phoneNumber;
+            inputID.Text = _employee.ID;
+            inputFullName.Text = _employee.FullName;
+            inputGender.Text = _employee.Gender;
+            inputDOB.Text = _employee.DOB;
+            inputGrant.Text = _employee.Grant.ToString();
+            inputRole.Text = _employee.Role; 
+            inputPhoneNumber.Text = _employee.PhoneNumber;
+            inputUnit.Text = _employee.Unit;
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            string phoneNumber = inputPhoneNum.Text.Trim();
+            string ID = _employee.ID;
+            string phoneNumber = inputPhoneNumber.Text.Trim();
 
-            if (string.IsNullOrEmpty(phoneNumber))
+            if (string.IsNullOrEmpty(phoneNumber) || phoneNumber.Length > 10)
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin");
+                MessageBox.Show("Vui lòng nhập số điện thoại hợp lệ!");
                 return;
             }
 
-            string updateQuery = "UPDATE ADMIN.NHANSU SET DT = :sodt";
+            string updateQuery = "UPDATE ADMIN.UV_CANHAN_NHANSU SET DT = :dt WHERE MANV = :manv";
 
             // Tạo đối tượng OracleCommand
             try
@@ -49,14 +57,12 @@ namespace ATBM_Project.Views.General
                 using (OracleCommand command = new OracleCommand(updateQuery, _connection))
                 {
                     // Thêm tham số và gán giá trị
-
-                    command.Parameters.Add(new OracleParameter("sodt", phoneNumber));
-
+                    command.Parameters.Add(new OracleParameter("dt", phoneNumber));
+                    command.Parameters.Add(new OracleParameter("manv", ID));
 
                     // Thực thi câu lệnh
                     int rowsAffected = command.ExecuteNonQuery();
-                    MessageBox.Show($"Đã cập nhật số điện thoại");
-                    MessageBox.Show(rowsAffected.ToString());
+                    MessageBox.Show($"Đã cập nhật {rowsAffected} nhân viên");
                     if (rowsAffected > 0)
                     {
                         this.Close();
@@ -67,8 +73,6 @@ namespace ATBM_Project.Views.General
             {
                 MessageBox.Show("Đã xảy ra lỗi khi cập nhật dữ liệu. Vui lòng thử lại sau!");
             }
-
-
         }
     }
 }

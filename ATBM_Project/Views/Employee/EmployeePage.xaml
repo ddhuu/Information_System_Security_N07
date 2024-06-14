@@ -44,7 +44,7 @@ Background="Transparent" WindowStyle="None"
 
                         <!--Menu Buttons-->
                         <StackPanel DockPanel.Dock="Top" Margin="10">
-                            <Button Name="infoButton"  Margin="5" >
+                            <Button Name="infoButton" Click="infoButton_Click"  Margin="5" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Account" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Thông tin" Margin="10,0,0,0" Foreground="Black"/>

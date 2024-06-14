@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Oracle.ManagedDataAccess.Client;
 using ATBM_Project.Models;
+using System;
 
 namespace ATBM_Project.Views.General
 {
@@ -21,7 +22,7 @@ namespace ATBM_Project.Views.General
                 btnInsert.Visibility = Visibility.Hidden;
                 btnSelect.Visibility = Visibility.Hidden;
                 ActionsCol.Width = 0;
-                courseNameCol.Width += 63;
+                courseNameCol.Width += 80;
             }
             coursesDataGrid.ItemsSource = getCourses();
         }
@@ -60,14 +61,17 @@ namespace ATBM_Project.Views.General
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            Course course = coursesDataGrid.SelectedItem as Course;
-            if (course == null)
+            try
             {
-                MessageBox.Show("Vui lòng chọn một học phần để cập nhật");
+                Course course = ((Button)sender).Tag as Course;
+                if(course != null)
+                {
+                    (new UpdateCourse_Dialog(_connection, course)).ShowDialog();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                (new UpdateCourse_Dialog(_connection, course)).ShowDialog();
+                // nothing to do
             }
         }
 

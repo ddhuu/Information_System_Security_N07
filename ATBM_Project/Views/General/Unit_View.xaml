@@ -6,7 +6,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:ATBM_Project.Views.General"
              mc:Ignorable="d" 
-             Height="550" Width="620">
+             Height="550" Width="800">
     <UserControl.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="2"/>
@@ -25,48 +25,47 @@
             <Button x:Name="btnSelect" Click="btnSelect_Click" Margin="20 0" Width="100" Height="40" FontSize="16">Lấy dữ liệu</Button>
         </StackPanel>
 
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-            <ListView Name="unitsDataGrid" Margin="5">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Mã đơn vị" Width="150">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding UnitID}" HorizontalAlignment="Center" Margin="55 0 0 0"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Tên đơn vị" Width="180" x:Name="unitNameCol">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding UnitName}" HorizontalAlignment="Center" Margin="60 0 0 0"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Trưởng đơn vị" Width="180">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding HeadUnit}" HorizontalAlignment="Center" Margin="70 0 0 0"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn x:Name="ActionsCol" Header="Actions" Width="80">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <Button ToolTip="Update"  x:Name="btnUpdate" Click="btnUpdate_Click" Margin="30 0 0 0">
-                                            <materialDesign:PackIcon Kind="Pencil" Width="16" Height="16"/>
-                                        </Button>
-                                        <Button ToolTip="Delete">
-                                            <materialDesign:PackIcon Kind="Delete" Width="16" Height="16"/>
-                                        </Button>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </ScrollViewer>
+
+        <ListView Grid.Row="1" Name="unitsDataGrid" Margin="5" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Mã đơn vị" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding UnitID}" Width="200" TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Tên đơn vị" Width="200" x:Name="unitNameCol">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding UnitName}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Trưởng đơn vị" Width="190">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding HeadUnit}" Width="200" TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="ActionsCol" Header="Actions" Width="190">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Tag="{Binding}" ToolTip="Update" x:Name="btnUpdate" Click="btnUpdate_Click" HorizontalAlignment="Center" Margin="70 0 0 0">
+                                        <materialDesign:PackIcon Kind="Pencil" Width="12" Height="12"/>
+                                    </Button>
+                                    <!--<Button ToolTip="Delete">
+                                        <materialDesign:PackIcon Kind="Delete" Width="12" Height="12"/>
+                                    </Button>-->
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>

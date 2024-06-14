@@ -32,7 +32,7 @@ namespace ATBM_Project.Views.General
                 btnInsert.Visibility = Visibility.Hidden;
                 btnSelect.Visibility = Visibility.Hidden;
                 ActionsCol.Width = 0;
-                unitNameCol.Width += 90;
+                unitNameCol.Width += 190;
             }
             unitsDataGrid.ItemsSource = getUnits();
         }
@@ -73,12 +73,8 @@ namespace ATBM_Project.Views.General
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            Unit unit = unitsDataGrid.SelectedItem as Unit;
-            if(unit == null)
-            {
-                MessageBox.Show("Vui lòng chọn một đơn vị để cập nhật"); 
-            }
-            else
+            Unit unit = ((Button)sender).Tag as Unit;
+            if(unit != null)
             {
                 (new UpdateUnit_Dialog(_connection, unit)).ShowDialog();
             }

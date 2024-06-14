@@ -32,7 +32,7 @@ namespace ATBM_Project.Views.Affair
 
         private void infoButton_Click(object sender, RoutedEventArgs e)
         {
-            UserController.Content = new Employee_View(_affair);
+            UserController.Content = new General.Employee_View(_connection);
         }
 
         private void courseButton_Click(object sender, RoutedEventArgs e)
@@ -48,6 +48,21 @@ namespace ATBM_Project.Views.Affair
         private void unitButton_Click(object sender, RoutedEventArgs e)
         {
             UserController.Content = new General.Unit_View(_connection, true);
+        }
+
+        private void studentButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserController.Content = new General.Student_View(_connection, true);
+        }
+
+        private void assignmentButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserController.Content = new General.Assignment_View(_connection, false ,true);
+        }
+
+        private void registerButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserController.Content = new General.Registration_View(_connection, true);
         }
     }
 }

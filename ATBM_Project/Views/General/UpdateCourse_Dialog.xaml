@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Update Course" Height="400" Width="450">
     <StackPanel Orientation="Vertical" Margin="20">
-        <TextBlock FontSize="20" Text="Nhập thông tin học phần"/>
+        <TextBlock FontSize="20" Text="Cập nhật thông tin học phần" HorizontalAlignment="Center"/>
 
         <StackPanel Orientation="Horizontal" Margin="0 20 20 10">
             <TextBlock Text="Mã học phần: " Width="100"/>

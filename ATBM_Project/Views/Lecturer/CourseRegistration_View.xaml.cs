@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ATBM_Project.Views.Employee
+namespace ATBM_Project.Views.Lecturer
 {
     /// <summary>
-    /// Interaction logic for CourseOpen_View.xaml
+    /// Interaction logic for CourseRegistration_View.xaml
     /// </summary>
-    public partial class CourseOpen_View : UserControl
+    public partial class CourseRegistration_View : UserControl
     {
-        public CourseOpen_View()
+        public CourseRegistration_View()
         {
             InitializeComponent();
         }

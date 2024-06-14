@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ATBM_Project.Views.Employee
+namespace ATBM_Project.Views.Lecturer
 {
     /// <summary>
-    /// Interaction logic for Unit_View.xaml
+    /// Interaction logic for Assignment_View.xaml
     /// </summary>
-    public partial class Unit_View : UserControl
+    public partial class Assignment_View : UserControl
     {
-        public Unit_View()
+        public Assignment_View()
         {
             InitializeComponent();
         }

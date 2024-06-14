@@ -39,7 +39,7 @@ namespace ATBM_Project.ViewsModels
                         Major = major,
                         AvgGrade = avgGrade,
                         CummulativeCredits = cummulativeCredits,
-                        DOB = dob
+                        DOB = dob.ToShortDateString()
                     };
                 }
                 else
@@ -72,7 +72,7 @@ namespace ATBM_Project.ViewsModels
                             Id = studentID, 
                             Name = fullName, 
                             Gender = gender,
-                            DOB = dob,
+                            DOB = dob.ToShortDateString(),
                             Address = address,
                             PhoneNumber = phoneNumber,
                             Program = program,
@@ -123,7 +123,6 @@ namespace ATBM_Project.ViewsModels
             string sql = $"SELECT * FROM ADMIN.HOCPHAN";
             OracleCommand cmd = new OracleCommand(sql, connection);
             ObservableCollection<Course> courses = new ObservableCollection<Course>();
-            Course course = null;
             using(OracleDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
@@ -135,7 +134,7 @@ namespace ATBM_Project.ViewsModels
                     int labCredits = reader.GetInt32(reader.GetOrdinal("STTH"));
                     string unit = reader.GetString(reader.GetOrdinal("MADV"));
                     int maxNumParticipient = reader.GetInt32(reader.GetOrdinal("SOSVTD"));
-                    course = new Course
+                    courses.Add(new Course
                     {
                         CourseID = courseID,
                         CourseName = courseName,
@@ -144,51 +143,89 @@ namespace ATBM_Project.ViewsModels
                         LabCredit = labCredits,
                         Unit = unit,
                         MaxNumParticipatient = maxNumParticipient
-                    };
-                    courses.Add(course);
+                    });
                 }
                 reader.Close();
             }
             return courses;
         }
-        public ObservableCollection<CourseRegistration> GetRegistrations()
+
+        public ObservableCollection<CourseRegistration> GetRegistrations(bool isAffair = false)
         {
-            string sql = $"SELECT * FROM ADMIN.DANGKY";
-            OracleCommand cmd = new OracleCommand(sql, connection);
+            string sql = $"SELECT * FROM ADMIN.UV_CANHAN_DANGKY";
+            string sql2 = $"SELECT * FROM ADMIN.DANGKY";
             ObservableCollection<CourseRegistration> courseRegistrations = new ObservableCollection<CourseRegistration>();
-            CourseRegistration registration = null;
-            using (OracleDataReader reader = cmd.ExecuteReader())
+            if (isAffair)
             {
-                while (reader.Read())
+                OracleCommand cmd = new OracleCommand(sql2, connection);
+                using (OracleDataReader reader = cmd.ExecuteReader())
                 {
-                    string courseID = reader.GetString(reader.GetOrdinal("MAHP"));
-                    string lecturerId = reader.GetString(reader.GetOrdinal("MAGV"));
-                    string studentId = reader.GetString(reader.GetOrdinal("MASV"));
-                    int semester = reader.GetInt32(reader.GetOrdinal("HK"));
-                    int year = reader.GetInt32(reader.GetOrdinal("NAM"));
-                    string program = reader.GetString(reader.GetOrdinal("MACT"));
-                    double labGrade = reader.GetDouble(reader.GetOrdinal("DIEMTH"));
-                    double processGrade = reader.GetDouble(reader.GetOrdinal("DIEMQT"));
-                    double finalExamGrade = reader.GetDouble(reader.GetOrdinal("DIEMCK"));
-                    double finalGrade = reader.GetDouble(reader.GetOrdinal("DIEMTK"));
-                    registration = new CourseRegistration
+                    while (reader.Read())
                     {
-                        StudentId = studentId,
-                        LecturerId = lecturerId,
-                        CourseId = courseID,
-                        Semester = semester,
-                        Year = year,
-                        Program = program,
-                        LabGrade = labGrade,
-                        ProcessGrade = processGrade,
-                        FinalExamGrade = finalExamGrade,
-                        FinalGrade = finalGrade
-                    };
+                        string courseID = reader.GetString(reader.GetOrdinal("MAHP"));
+                        string lecturerId = reader.GetString(reader.GetOrdinal("MAGV"));
+                        string studentId = reader.GetString(reader.GetOrdinal("MASV"));
+                        int semester = reader.GetInt32(reader.GetOrdinal("HK"));
+                        int year = reader.GetInt32(reader.GetOrdinal("NAM"));
+                        string program = reader.GetString(reader.GetOrdinal("MACT"));
+                        double labGrade = reader.GetDouble(reader.GetOrdinal("DIEMTH"));
+                        double processGrade = reader.GetDouble(reader.GetOrdinal("DIEMQT"));
+                        double finalExamGrade = reader.GetDouble(reader.GetOrdinal("DIEMCK"));
+                        double finalGrade = reader.GetDouble(reader.GetOrdinal("DIEMTK"));
+                        courseRegistrations.Add(new CourseRegistration
+                        {
+                            StudentId = studentId,
+                            LecturerId = lecturerId,
+                            CourseId = courseID,
+                            Semester = semester,
+                            Year = year,
+                            Program = program,
+                            LabGrade = labGrade,
+                            ProcessGrade = processGrade,
+                            FinalExamGrade = finalExamGrade,
+                            FinalGrade = finalGrade
+                        });
+                    }
+                    reader.Close();
                 }
-                reader.Close();
+            }
+            else
+            {
+                OracleCommand cmd = new OracleCommand(sql, connection);
+                using (OracleDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string courseID = reader.GetString(reader.GetOrdinal("MAHP"));
+                        string lecturerId = reader.GetString(reader.GetOrdinal("MAGV"));
+                        string studentId = reader.GetString(reader.GetOrdinal("MASV"));
+                        int semester = reader.GetInt32(reader.GetOrdinal("HK"));
+                        int year = reader.GetInt32(reader.GetOrdinal("NAM"));
+                        string program = reader.GetString(reader.GetOrdinal("MACT"));
+                        double labGrade = reader.GetDouble(reader.GetOrdinal("DIEMTH"));
+                        double processGrade = reader.GetDouble(reader.GetOrdinal("DIEMQT"));
+                        double finalExamGrade = reader.GetDouble(reader.GetOrdinal("DIEMCK"));
+                        double finalGrade = reader.GetDouble(reader.GetOrdinal("DIEMTK"));
+                        courseRegistrations.Add(new CourseRegistration
+                        {
+                            StudentId = studentId,
+                            LecturerId = lecturerId,
+                            CourseId = courseID,
+                            Semester = semester,
+                            Year = year,
+                            Program = program,
+                            LabGrade = labGrade,
+                            ProcessGrade = processGrade,
+                            FinalExamGrade = finalExamGrade,
+                            FinalGrade = finalGrade
+                        });
+                    }
+                    reader.Close();
+                }
             }
             return courseRegistrations;
         }
+
         public int deleteRegistration(string studentID, string lecturerID, string courseId, string program, int semester, int year)
         {
             string sql = $"DELETE FROM ADMIN.DANGKY";
