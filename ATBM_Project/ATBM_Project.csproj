@@ -257,6 +257,18 @@
     <Compile Include="Views\Affair\AffairPage.xaml.cs">
       <DependentUpon>AffairPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Affair\Assignment_View.xaml.cs">
+      <DependentUpon>Assignment_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Affair\CourseRegistration_View.xaml.cs">
+      <DependentUpon>CourseRegistration_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Affair\InsertCourseRegistration_Dialog.xaml.cs">
+      <DependentUpon>InsertCourseRegistration_Dialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Affair\UpdateAssignment_Dialog.xaml.cs">
+      <DependentUpon>UpdateAssignment_Dialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Employee\EmployeePage.xaml.cs">
       <DependentUpon>EmployeePage.xaml</DependentUpon>
     </Compile>
@@ -394,6 +406,22 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Affair\AffairPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Affair\Assignment_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Affair\CourseRegistration_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Affair\InsertCourseRegistration_Dialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Affair\UpdateAssignment_Dialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
