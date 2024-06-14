@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Update Employee" Height="400" Width="450">
     <StackPanel Orientation="Vertical" Margin="20">
-        <TextBlock FontSize="20" Text="Cập nhật thông tin"/>
+        <TextBlock FontSize="20" Text="Cập nhật thông tin" HorizontalAlignment="Center"/>
 
         <StackPanel Orientation="Horizontal" Margin="0 20 20 10">
             <TextBlock Text="Mã nhân viên: " Width="100"/>

@@ -241,6 +241,7 @@
     <Compile Include="Models\CourseRegistration.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\PrivilegeOfTable.cs" />
+    <Compile Include="Models\Registration.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\Student.cs" />
@@ -272,6 +273,9 @@
     <Compile Include="Views\Employee\EmployeePage.xaml.cs">
       <DependentUpon>EmployeePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\General\Assignment_View.xaml.cs">
+      <DependentUpon>Assignment_View.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\General\CourseOpenSchedule_View.xaml.cs">
       <DependentUpon>CourseOpenSchedule_View.xaml</DependentUpon>
     </Compile>
@@ -290,11 +294,17 @@
     <Compile Include="Views\General\InsertUnit_Dialog.xaml.cs">
       <DependentUpon>InsertUnit_Dialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\General\Registration_View.xaml.cs">
+      <DependentUpon>Registration_View.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\General\Student_View.xaml.cs">
       <DependentUpon>Student_View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\General\Unit_View.xaml.cs">
       <DependentUpon>Unit_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\General\UpdateAssignment_Dialog.xaml.cs">
+      <DependentUpon>UpdateAssignment_Dialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\General\UpdateCourseOpenSchedule_Dialog.xaml.cs">
       <DependentUpon>UpdateCourseOpenSchedule_Dialog.xaml</DependentUpon>
@@ -304,6 +314,9 @@
     </Compile>
     <Compile Include="Views\General\UpdateEmployee_Dialog.xaml.cs">
       <DependentUpon>UpdateEmployee_Dialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\General\UpdateGrade_Dialog.xaml.cs">
+      <DependentUpon>UpdateGrade_Dialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\General\UpdateUnit_Dialog.xaml.cs">
       <DependentUpon>UpdateUnit_Dialog.xaml</DependentUpon>
@@ -429,6 +442,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\General\Assignment_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\General\CourseOpenSchedule_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -453,11 +470,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\General\Registration_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\General\Student_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\General\Unit_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\General\UpdateAssignment_Dialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -470,6 +495,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\General\UpdateEmployee_Dialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\General\UpdateGrade_Dialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

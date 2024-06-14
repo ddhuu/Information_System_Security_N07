@@ -24,7 +24,6 @@ namespace ATBM_Project.ViewsModels
             Employee emp = null;
             using (OracleDataReader reader = cmd.ExecuteReader())
             {
-                int i = 0;
                 while (reader.Read())
                 {
                     string empID = reader.GetString(reader.GetOrdinal("MANV"));
@@ -47,7 +46,6 @@ namespace ATBM_Project.ViewsModels
                         DOB = dob.ToShortDateString()
                     };
                     employees.Add(emp);
-                    i++;
                 }
                 reader.Close();
                

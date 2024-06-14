@@ -26,6 +26,39 @@ namespace ATBM_Project.Views.Lecturer
             login.Show();
         }
 
+        private void infoButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserController.Content = new General.Employee_View(_connection);
+        }
 
+        private void studentButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserController.Content = new General.Student_View(_connection);
+        }
+
+        private void compartmentButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserController.Content = new General.Unit_View(_connection);
+        }
+
+        private void moduleButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserController.Content = new General.Course_View(_connection);
+        }
+
+        private void courseButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserController.Content = new General.CourseOpenSchedule_View(_connection);
+        }
+
+        private void assignmentButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserController.Content = new General.Assignment_View(_connection);
+        }
+
+        private void registerButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserController.Content = new General.Registration_View(_connection);
+        }
     }
 }

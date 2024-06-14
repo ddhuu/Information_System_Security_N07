@@ -1,6 +1,4 @@
-﻿
-
-using ATBM_Project.Models;
+﻿using ATBM_Project.Models;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Data;

@@ -23,10 +23,17 @@ namespace ATBM_Project.Views.General
     public partial class Student_View : UserControl
     {
         private OracleConnection _connection;
-        public Student_View(OracleConnection conn)
+        public Student_View(OracleConnection conn, bool isAffair = false)
         {
             _connection = conn;
             InitializeComponent();
+            if (!isAffair)
+            {
+                btnInsert.Visibility = Visibility.Hidden;
+                btnSelect.Visibility = Visibility.Hidden;
+                ActionsCol.Width = 0;
+                /*addressCol.Width += 0;*/
+            }
             studentsDataGrid.ItemsSource = GetStudents();
         }
 
@@ -67,6 +74,21 @@ namespace ATBM_Project.Views.General
                 }
             }
             return students;
+        }
+
+        private void btnInsert_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnSelect_Click(object sender, RoutedEventArgs e)
+        {
+            studentsDataGrid.ItemsSource = GetStudents();
+        }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

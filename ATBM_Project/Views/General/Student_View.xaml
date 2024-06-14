@@ -20,7 +20,10 @@
         </Grid.RowDefinitions>
         <Line X1="0" Y1="0" X2="150" Y2="0" Stroke="#154c79" StrokeThickness="2" Margin="0,0,20,0"/>
         <TextBlock Text="SINHVIEN" FontSize="32" FontWeight="SemiBold" Margin="0,20,0,5" Foreground="#121518" HorizontalAlignment="Left"/>
-        
+        <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+            <Button x:Name="btnInsert" Click="btnInsert_Click" Width="100" Height="40" FontSize="16">Thêm</Button>
+            <Button x:Name="btnSelect" Click="btnSelect_Click" Margin="20 0" Width="100" Height="40" FontSize="16">Lấy dữ liệu</Button>
+        </StackPanel>
         <ListView x:Name="studentsDataGrid" Grid.Row="1" Margin="5" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListView.View>
                 <GridView>
@@ -45,17 +48,17 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Ngày sinh" Width="100">
+                    <GridViewColumn Header="Ngày sinh" Width="70">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding DOB}" Width="100" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding DOB}" Width="70" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Địa chỉ" Width="130">
+                    <GridViewColumn Header="Địa chỉ" Width="120" x:Name="addressCol">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Address}"/>
+                                <TextBlock Text="{Binding Address}" Width="120"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -91,6 +94,20 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding AvgGrade}" Width="60" TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="ActionsCol" Header="Actions" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Tag="{Binding}" ToolTip="Update" x:Name="btnUpdate" Click="btnUpdate_Click" Margin="25 0 0 0">
+                                        <materialDesign:PackIcon Kind="Pencil" Width="12" Height="12"/>
+                                    </Button>
+                                    <!--<Button ToolTip="Delete">
+                                        <materialDesign:PackIcon Kind="Delete" Width="12" Height="12"/>
+                                    </Button>-->
+                                </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
