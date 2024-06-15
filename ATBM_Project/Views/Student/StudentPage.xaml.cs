@@ -34,7 +34,7 @@ namespace ATBM_Project.Views.Student
         }
         private void inforButton_Click(object sender, RoutedEventArgs e)
         {
-
+            UserController.Content = new Student_View(_connection);
         }
         private void courseButton_Click(object sender, RoutedEventArgs e)
         {

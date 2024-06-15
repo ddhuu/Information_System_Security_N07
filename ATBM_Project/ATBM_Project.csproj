@@ -350,6 +350,9 @@
     <Compile Include="Views\Student\StudentPage.xaml.cs">
       <DependentUpon>StudentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Student\Student_View.xaml.cs">
+      <DependentUpon>Student_View.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Table\Table_Detail_View.xaml.cs">
       <DependentUpon>Table_Detail_View.xaml</DependentUpon>
     </Compile>
@@ -539,6 +542,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Student\StudentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Student\Student_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
