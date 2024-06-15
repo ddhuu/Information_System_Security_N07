@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ATBM_Project.Views.HeadUnit" xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-                        Height="720" Width="1080" WindowStartupLocation="CenterScreen" AllowsTransparency="True"
+        Height="720" Width="1080" WindowStartupLocation="CenterScreen" AllowsTransparency="True"
 Background="Transparent" WindowStyle="None"
        
         >
@@ -44,41 +44,41 @@ Background="Transparent" WindowStyle="None"
 
                         <!--Menu Buttons-->
                         <StackPanel DockPanel.Dock="Top" Margin="10">
-                            <Button Name="infoButton"  Margin="5"  >
+                            <Button Name="infoButton" Click="infoButton_Click"  Margin="5"  >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Account" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Thông tin" Margin="10,0,0,0" Foreground="Black"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="studentButton"  Margin="5"  >
+                            <Button Name="studentButton" Click="studentButton_Click"  Margin="5"  >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="AccountCog" Width="15" Height="15" Foreground="Black"/>
                                     <TextBlock Text="Sinh viên" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="compartmentButton"  Margin="5" >
+                            <Button Name="compartmentButton" Click="compartmentButton_Click"  Margin="5" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Table" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Đơn vị" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="moduleButton"  Margin="5"  >
+                            <Button Name="courseButton" Click="courseButton_Click" Margin="5"  >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Book" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Học phần" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
-                            <Button Name="courseButton"  Margin="5"  >
+                            <Button Name="openScheduleButton" Click="openScheduleButton_Click" Margin="5"  >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="BookAccountOutline" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Khóa học mở" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="assignmentButton"  Margin="5"  >
+                            <Button Name="assignmentButton" Click="assignmentButton_Click" Margin="5"  >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Assistant" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Phân công " Margin="10,0,0,0" Foreground="black"/>
@@ -89,13 +89,6 @@ Background="Transparent" WindowStyle="None"
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Note" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Đăng ký" Margin="10,0,0,0" Foreground="black"/>
-                                </StackPanel>
-                            </Button>
-
-                            <Button Name="employeeButton"  Margin="5"  >
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Account" Width="15" Height="15" Foreground="black"/>
-                                    <TextBlock Text="Nhân sự" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
 

@@ -251,6 +251,7 @@
     <Compile Include="ViewsModels\Affair_VM.cs" />
     <Compile Include="ViewsModels\ConnectionDB_VM.cs" />
     <Compile Include="ViewsModels\HeadDepartment_VM.cs" />
+    <Compile Include="ViewsModels\HeadUnit_VM.cs" />
     <Compile Include="ViewsModels\Lecturer_VM.cs" />
     <Compile Include="ViewsModels\Student_VM.cs" />
     <Compile Include="Views\Affair\AffairPage.xaml.cs">
@@ -318,6 +319,9 @@
     </Compile>
     <Compile Include="Views\General\UpdateUnit_Dialog.xaml.cs">
       <DependentUpon>UpdateUnit_Dialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HeadUnit\Assigment_View.xaml.cs">
+      <DependentUpon>Assigment_View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HeadUnit\HeadUnitPage.xaml.cs">
       <DependentUpon>HeadUnitPage.xaml</DependentUpon>
@@ -495,6 +499,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\General\UpdateUnit_Dialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HeadUnit\Assigment_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
