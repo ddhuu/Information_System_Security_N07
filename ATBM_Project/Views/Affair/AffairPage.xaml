@@ -79,7 +79,7 @@ Background="Transparent" WindowStyle="None"
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="assignmentButton"  Margin="5" Click="assignmentButton_Click"  >
+                            <Button Name="assignmentButton"  Margin="5" Click="assignmentButton_Click" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Assistant" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Phân công " Margin="10,0,0,0" Foreground="black"/>

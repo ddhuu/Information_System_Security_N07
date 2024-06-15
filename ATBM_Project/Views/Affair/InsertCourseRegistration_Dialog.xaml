@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ATBM_Project.Views.Affair"
         mc:Ignorable="d"
-        Title="Insert Registration" Height="300" Width="450">
+        Title="Insert Registration" Height="350" Width="450">
     <StackPanel Orientation="Vertical" Margin="20">
-        <TextBlock FontSize="20" Text="Nhập thông tin đăng ký"/>
+        <TextBlock FontSize="20" Text="Nhập thông tin đăng ký" HorizontalAlignment="Center"/>
 
         <StackPanel Orientation="Horizontal" Margin="0 20 20 10">
             <TextBlock Text="Mã SV: " Width="100"/>

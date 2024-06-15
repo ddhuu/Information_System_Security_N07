@@ -53,12 +53,12 @@ namespace ATBM_Project.Views.Lecturer
 
         private void assignmentButton_Click(object sender, RoutedEventArgs e)
         {
-            UserController.Content = new General.Assignment_View(_connection);
+            UserController.Content = new Assignment_View(_connection);
         }
 
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
-            UserController.Content = new General.Registration_View(_connection);
+            UserController.Content = new CourseRegistration_View(_connection);
         }
     }
 }

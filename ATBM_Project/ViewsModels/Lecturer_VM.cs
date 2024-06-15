@@ -9,7 +9,7 @@ using ATBM_Project.Models;
 
 namespace ATBM_Project.ViewsModels
 {
-    public class Lecturer_VM 
+    public class Lecturer_VM
     {
         private OracleConnection _connection;
         public Lecturer_VM(OracleConnection connection)
@@ -47,45 +47,45 @@ namespace ATBM_Project.ViewsModels
             return assignments;
         }
 
-        /*public ObservableCollection<Models.Registration> getRegistrations()
+        public List<CourseRegistration> GetRegistrations()
         {
-            ObservableCollection<Models.Registration> registrations = new ObservableCollection<Models.Registration>();
-            string SQLcontext = $"SELECT * FROM ADMIN.UV_CANHAN_DANGKY";
-            OracleCommand cmd = new OracleCommand(SQLcontext, connection);
+            string sql = $"SELECT * FROM ADMIN.UV_CANHAN_DANGKY";
+            List<CourseRegistration> courseRegistrations = new List<CourseRegistration>();
+
+            OracleCommand cmd = new OracleCommand(sql, _connection);
             using (OracleDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    string lecturerID = reader.GetString(reader.GetOrdinal("MAGV"));
                     string courseID = reader.GetString(reader.GetOrdinal("MAHP"));
-                    int semester = reader.GetInt16(reader.GetOrdinal("HK"));
-                    int year = reader.GetInt16(reader.GetOrdinal("NAM"));
+                    string lecturerId = reader.GetString(reader.GetOrdinal("MAGV"));
+                    string studentId = reader.GetString(reader.GetOrdinal("MASV"));
+                    int semester = reader.GetInt32(reader.GetOrdinal("HK"));
+                    int year = reader.GetInt32(reader.GetOrdinal("NAM"));
                     string program = reader.GetString(reader.GetOrdinal("MACT"));
-                    string studentID = reader.GetString(reader.GetOrdinal("MASV"));
                     double labGrade = reader.GetDouble(reader.GetOrdinal("DIEMTH"));
-                    double progressGrade = reader.GetDouble(reader.GetOrdinal("DIEMQT"));
-                    double finalGrade = reader.GetDouble(reader.GetOrdinal("DIEMCK"));
-                    double totalGrade = reader.GetDouble(reader.GetOrdinal("DIEMTK"));
-
-
-                    registrations.Add(new Models.Registration
+                    double processGrade = reader.GetDouble(reader.GetOrdinal("DIEMQT"));
+                    double finalExamGrade = reader.GetDouble(reader.GetOrdinal("DIEMCK"));
+                    double finalGrade = reader.GetDouble(reader.GetOrdinal("DIEMTK"));
+                    courseRegistrations.Add(new CourseRegistration
                     {
-                        studentID = studentID,
-                        lecturerID = lecturerID,
-                        courseID = courseID,
+                        StudentId = studentId,
+                        LecturerId = lecturerId,
+                        CourseId = courseID,
                         Semester = semester,
                         Year = year,
                         Program = program,
-                        labGrade = labGrade,
-                        progressGrade = progressGrade,
-                        finalGrade = finalGrade,
-                        totalGrade = totalGrade
+                        LabGrade = labGrade,
+                        ProcessGrade = processGrade,
+                        FinalExamGrade = finalExamGrade,
+                        FinalGrade = finalGrade
                     });
                 }
                 reader.Close();
             }
-            return registrations;
-        }*/
+
+            return courseRegistrations;
+        }
     }
-   
+
 }

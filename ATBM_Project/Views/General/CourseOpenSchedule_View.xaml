@@ -29,7 +29,7 @@
         <ListView Grid.Row="1" x:Name="courseOpenSchedulesDataGrid" Margin="5" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Mã học phần" Width="150">
+                    <GridViewColumn Header="Mã học phần" Width="150" x:Name="courseIdCol">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock  Text="{Binding courseId}" Width="150" TextAlignment="Center"/>
@@ -53,7 +53,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Chương trình" Width="150">
+                    <GridViewColumn Header="Chương trình" Width="150" x:Name="programCol">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Program}" Width="150" TextAlignment="Center"/>
