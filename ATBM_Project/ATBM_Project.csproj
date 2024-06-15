@@ -311,8 +311,20 @@
     <Compile Include="Views\HeadUnit\Assigment_View.xaml.cs">
       <DependentUpon>Assigment_View.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\HeadUnit\CourseRegistration_View.xaml.cs">
+      <DependentUpon>CourseRegistration_View.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HeadUnit\HeadUnitPage.xaml.cs">
       <DependentUpon>HeadUnitPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HeadUnit\InsertAssigment_Dialog.xaml.cs">
+      <DependentUpon>InsertAssigment_Dialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HeadUnit\UpdateAssigment_Dialog.xaml.cs">
+      <DependentUpon>UpdateAssigment_Dialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HeadUnit\UpdateCourseRegistration_Dialog.xaml.cs">
+      <DependentUpon>UpdateCourseRegistration_Dialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Lecturer\Assignment_View.xaml.cs">
       <DependentUpon>Assignment_View.xaml</DependentUpon>
@@ -478,7 +490,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\HeadUnit\CourseRegistration_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\HeadUnit\HeadUnitPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HeadUnit\InsertAssigment_Dialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HeadUnit\UpdateAssigment_Dialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HeadUnit\UpdateCourseRegistration_Dialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

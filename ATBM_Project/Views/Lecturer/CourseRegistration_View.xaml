@@ -35,66 +35,66 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Mã giảng viên" Width="100">
+                    <GridViewColumn Header="Mã GV" Width="70">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding LecturerId}" TextAlignment="Center" Width="100" Margin="0 10 0 0"/>
+                                <TextBlock Text="{Binding LecturerId}" TextAlignment="Center" Width="60"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Mã học phần" Width="100">
+                    <GridViewColumn Header="Mã HP" Width="70">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding CourseId}" TextAlignment="Center" Width="100" Margin="0 10 0 0"/>
+                                <TextBlock Text="{Binding CourseId}" TextAlignment="Center" Width="60"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Học kì" Width="70">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Semester}" TextAlignment="Center" Width="70" Margin="0 10 0 0"/>
+                                <TextBlock Text="{Binding Semester}" TextAlignment="Center" Width="60"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Năm" Width="80">
+                    <GridViewColumn Header="Năm" Width="70">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Year}" Margin="0 10 0 0" Width="80" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Year}" Width="60" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Mã chương trình" Width="100">
+                    <GridViewColumn Header="Chương trình" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Program}" TextAlignment="Center" Width="100" Margin="0 10 0 0"/>
+                                <TextBlock Text="{Binding Program}" TextAlignment="Center" Width="100"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Điểm TH" Width="60">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding LabGrade}" Margin="0 10 0 0" Width="60" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding LabGrade}" Width="60" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Điểm QT" Width="80">
+                    <GridViewColumn Header="Điểm QT" Width="60">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding ProcessGrade}" Margin="0 10 0 0" Width="80" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding ProcessGrade}" Width="60" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Điểm CK" Width="60">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding FinalExamGrade}" Margin="0 10 0 0" Width="60" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding FinalExamGrade}" Width="60" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Điểm TK" Width="60">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding FinalGrade}" Margin="0 10 0 0" Width="60" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding FinalGrade}" Width="60" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

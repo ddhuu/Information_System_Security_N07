@@ -63,10 +63,46 @@ namespace ATBM_Project.ViewsModels
                     int semester = reader.GetInt32(reader.GetOrdinal("HK"));
                     int year = reader.GetInt32(reader.GetOrdinal("NAM"));
                     string program = reader.GetString(reader.GetOrdinal("MACT"));
-                    double labGrade = reader.GetDouble(reader.GetOrdinal("DIEMTH"));
-                    double processGrade = reader.GetDouble(reader.GetOrdinal("DIEMQT"));
-                    double finalExamGrade = reader.GetDouble(reader.GetOrdinal("DIEMCK"));
-                    double finalGrade = reader.GetDouble(reader.GetOrdinal("DIEMTK"));
+                    double? processGrade;
+                    if (reader.IsDBNull(reader.GetOrdinal("DIEMQT")))
+                    {
+                        processGrade = null;
+                    }
+                    else
+                    {
+                        processGrade = reader.GetDouble(reader.GetOrdinal("DIEMQT"));
+                    }
+
+                    double? labGrade;
+                    if (reader.IsDBNull(reader.GetOrdinal("DIEMTH")))
+                    {
+                        labGrade = null;
+                    }
+                    else
+                    {
+                        labGrade = reader.GetDouble(reader.GetOrdinal("DIEMTH"));
+                    }
+
+                    double? finalExamGrade;
+                    if (reader.IsDBNull(reader.GetOrdinal("DIEMCK")))
+                    {
+                        finalExamGrade = null;
+                    }
+                    else
+                    {
+                        finalExamGrade = reader.GetDouble(reader.GetOrdinal("DIEMCK"));
+                    }
+
+                    double? finalGrade;
+                    if (reader.IsDBNull(reader.GetOrdinal("DIEMTK")))
+                    {
+                        finalGrade = null;
+                    }
+                    else
+                    {
+                        finalGrade = reader.GetDouble(reader.GetOrdinal("DIEMTK"));
+                    }
+
                     courseRegistrations.Add(new CourseRegistration
                     {
                         StudentId = studentId,
