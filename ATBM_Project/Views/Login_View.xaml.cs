@@ -1,6 +1,7 @@
 ﻿using ATBM_Project.Models;
 using ATBM_Project.Views.Affair;
 using ATBM_Project.Views.Employee;
+using ATBM_Project.Views.HeadDepartment;
 using ATBM_Project.Views.HeadUnit;
 using ATBM_Project.Views.Lecturer;
 using ATBM_Project.Views.Student;
@@ -27,6 +28,15 @@ namespace ATBM_Project.Views
 
 
             string role = session.Role;
+
+            // truong khoa chi co 1 nguoi
+            if(session.Username == "NV001")
+            {
+                HeadDepartmentPage headDepartment = new HeadDepartmentPage(connection, session.Username);
+                this.Close();
+                headDepartment.Show();
+                return;
+            }
 
             switch (role)
             {

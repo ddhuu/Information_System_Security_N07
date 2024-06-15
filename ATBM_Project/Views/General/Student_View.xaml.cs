@@ -56,7 +56,7 @@ namespace ATBM_Project.Views.General
                     int cummulativeCredits = reader.GetInt32(reader.GetOrdinal("SOTCTL"));
                     double avgGrade = reader.GetDouble(reader.GetOrdinal("DTBTL"));
                     string major = reader.GetString(reader.GetOrdinal("MANGANH"));
-                    string dob = reader.GetDateTime(reader.GetOrdinal("NGSINH")).ToShortDateString();
+                    string dob = reader.GetDateTime(reader.GetOrdinal("NGSINH")).ToString("dd/MM/yyyy");
                     string program = reader.GetString(reader.GetOrdinal("MACT"));
                     students.Add(new Models.Student
                     {
@@ -78,7 +78,7 @@ namespace ATBM_Project.Views.General
 
         private void btnInsert_Click(object sender, RoutedEventArgs e)
         {
-
+            (new InsertStudent_Dialog(_connection)).ShowDialog();
         }
 
         private void btnSelect_Click(object sender, RoutedEventArgs e)
@@ -88,7 +88,13 @@ namespace ATBM_Project.Views.General
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
+            Models.Student student = ((Button)sender).Tag as Models.Student;
+            if(student == null)
+            {
+                return;
+            }
 
+            (new UpdateStudent_Dialog(_connection, student)).ShowDialog();  
         }
     }
 }

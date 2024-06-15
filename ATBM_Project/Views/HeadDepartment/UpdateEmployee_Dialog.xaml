@@ -1,0 +1,49 @@
+﻿<Window x:Class="ATBM_Project.Views.HeadDepartment.UpdateEmployee_Dialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ATBM_Project.Views.HeadDepartment"
+        mc:Ignorable="d"
+        Title="Update Employee" Height="400" Width="450">
+    <StackPanel Orientation="Vertical" Margin="20">
+        <TextBlock FontSize="20" Text="Cập nhật thông tin" HorizontalAlignment="Center"/>
+
+        <StackPanel Orientation="Horizontal" Margin="0 20 20 10">
+            <TextBlock Text="Mã nhân viên: " Width="100"/>
+            <TextBox x:Name="inputID" Width="200" IsEnabled="False"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 0 20 10">
+            <TextBlock Text="Họ tên:" Width="100"/>
+            <TextBox x:Name="inputFullName" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"  Margin="0 0 20 10">
+            <TextBlock Text="Phái:" Width="100"/>
+            <TextBox x:Name="inputGender" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 0 20 10">
+            <TextBlock Text="Ngày sinh:" Width="100"/>
+            <TextBox x:Name="inputDOB" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"  Margin="0 0 20 10">
+            <TextBlock Text="Phụ cấp:" Width="100"/>
+            <TextBox x:Name="inputGrant" Width="200" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 0 20 10">
+            <TextBlock Text="Điện thoại:" Width="100"/>
+            <TextBox x:Name="inputPhoneNumber" Width="200"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"  Margin="0 0 20 10">
+            <TextBlock Text="Vai trò:" Width="100"/>
+            <TextBox x:Name="inputRole" Width="200" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+            <TextBlock Text="Mã đơn vị: " Width="100"/>
+            <TextBox x:Name="inputUnit" Width="200" />
+        </StackPanel>
+
+        <Button x:Name="btnUpdate" Click="btnUpdate_Click" Width="80" >Cập nhật</Button>
+
+
+    </StackPanel>
+</Window>

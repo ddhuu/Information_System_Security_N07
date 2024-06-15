@@ -110,12 +110,12 @@ namespace ATBM_Project.ViewsModels
 
         public int deleteAssigment(Assignment assignment)
         {
-            string updateQuery = "DELETE FROM ADMIN.PHANCONG WHERE MAGV = :magv AND MAHP = :mahp and HK = :hk and NAM = :nam and MACT = :mact";
+            string deleteQuery = "DELETE FROM ADMIN.PHANCONG WHERE MAGV = :magv AND MAHP = :mahp and HK = :hk and NAM = :nam and MACT = :mact";
 
             // Tạo đối tượng OracleCommand
             try
             {
-                using (OracleCommand command = new OracleCommand(updateQuery, _connection))
+                using (OracleCommand command = new OracleCommand(deleteQuery, _connection))
                 {
                     // Thêm tham số và gán giá trị
                     command.Parameters.Add(new OracleParameter("magv", assignment.LecturerID));

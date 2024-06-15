@@ -25,12 +25,14 @@ namespace ATBM_Project.Views.Lecturer
     {
         private OracleConnection _connection;
         private Lecturer_VM lecturer_VM;
-        public CourseRegistration_View(OracleConnection connection)
+        private bool _isHeadDepartment;
+        public CourseRegistration_View(OracleConnection connection, bool isHeadDepartment = false)
         {
             _connection = connection;
+            _isHeadDepartment = isHeadDepartment;
             InitializeComponent();
             lecturer_VM = new Lecturer_VM(_connection);
-            registrationsDataGrid.ItemsSource = lecturer_VM.GetRegistrations();
+            registrationsDataGrid.ItemsSource = lecturer_VM.GetRegistrations(_isHeadDepartment);
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
@@ -51,7 +53,7 @@ namespace ATBM_Project.Views.Lecturer
 
         private void btnSelect_Click(object sender, RoutedEventArgs e)
         {
-            registrationsDataGrid.ItemsSource = lecturer_VM.GetRegistrations();
+            registrationsDataGrid.ItemsSource = lecturer_VM.GetRegistrations(_isHeadDepartment);
         }
     }
 }
