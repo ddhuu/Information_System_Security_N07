@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
         <Line X1="0" Y1="0" X2="150" Y2="0"
               Stroke="#154c79" StrokeThickness="2" Margin="0,0,20,0"/>
-        <TextBlock Text="PHANCONG" FontSize="32" FontWeight="SemiBold" Margin="0,20,0,5" Foreground="#121518" HorizontalAlignment="Left" Grid.Column="0"/>
+        <TextBlock Text="DANGKY" FontSize="32" FontWeight="SemiBold" Margin="0,20,0,5" Foreground="#121518" HorizontalAlignment="Left" Grid.Column="0"/>
         <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
             <Button x:Name="btnInsert" Click="btnInsert_Click" Width="100" Height="40" FontSize="16">Thêm</Button>
             <Button x:Name="btnSelect" Click="btnSelect_Click" Margin="20 0" Width="100" Height="40" FontSize="16">Lấy dữ liệu</Button>
@@ -30,18 +30,18 @@
             <ListView.View>
                 <GridView>
 
-                    <GridViewColumn Header="Mã SV" Width="80">
+                    <GridViewColumn Header="Mã SV" Width="70">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock  Text="{Binding StudentId}"/>
+                                <TextBlock Width="60" Text="{Binding StudentId}" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Mã GV" Width="80">
+                    <GridViewColumn Header="Mã GV" Width="70">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock  Text="{Binding LecturerId}"/>
+                                <TextBlock Width="60" Text="{Binding LecturerId}" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -49,23 +49,23 @@
                     <GridViewColumn Header="Mã học phần" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock  Text="{Binding CourseId}" Width="80" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding CourseId}" Width="70" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Học kì" Width="80">
+                    <GridViewColumn Header="Học kì" Width="60">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Semester}" Width="80" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Semester}" Width="50" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Năm" Width="80">
+                    <GridViewColumn Header="Năm" Width="60">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Year}" Width="80" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Year}" Width="50" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -78,10 +78,10 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Điểm TH" Width="80">
+                    <GridViewColumn Header="Điểm TH" Width="70">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding LabGrade}" Width="80" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding LabGrade}" Width="60" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -89,7 +89,7 @@
                     <GridViewColumn Header="Điểm QT" Width="70">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding ProcessGrade}" Width="70" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding ProcessGrade}" Width="60" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -97,7 +97,7 @@
                     <GridViewColumn Header="Điểm CK" Width="70">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding FinalExamGrade}" Width="70" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding FinalExamGrade}" Width="60" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -105,11 +105,23 @@
                     <GridViewColumn Header="Điểm TK" Width="70">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding FinalGrade}" Width="70" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding FinalGrade}" Width="60" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    
+
+                    <GridViewColumn Header="Actions" Width="70">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Tag="{Binding}" ToolTip="Xóa" Margin="10 0 0 0" Click="btnDelete_Click">
+                                        <materialDesign:PackIcon Kind="Delete" Width="12" Height="12"/>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
                 </GridView>
             </ListView.View>
         </ListView>

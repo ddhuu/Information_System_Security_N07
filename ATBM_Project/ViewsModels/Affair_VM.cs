@@ -65,16 +65,6 @@ namespace ATBM_Project.ViewsModels
                     command.Parameters.Add(new OracleParameter("oldhk", oldAssigment.Semester));
                     command.Parameters.Add(new OracleParameter("oldnam", oldAssigment.Year));
                     command.Parameters.Add(new OracleParameter("oldmact", oldAssigment.Program));
-                    Console.WriteLine(newAssignment.LecturerID);
-                    Console.WriteLine(oldAssigment.LecturerID);
-                    Console.WriteLine(newAssignment.CourseID);
-                    Console.WriteLine(oldAssigment.CourseID);
-                    Console.WriteLine(newAssignment.Semester);
-                    Console.WriteLine(oldAssigment.Semester);
-                    Console.WriteLine(newAssignment.Year);
-                    Console.WriteLine(oldAssigment.Year);
-                    Console.WriteLine(newAssignment.Program);
-                    Console.WriteLine(oldAssigment.Program);
 
 
                     // Thực thi câu lệnh
@@ -186,6 +176,36 @@ namespace ATBM_Project.ViewsModels
                     // Thực thi câu lệnh
                     int rowsAffected = command.ExecuteNonQuery();
                     MessageBox.Show($"Đã thêm {rowsAffected} đăng ký");
+                    return rowsAffected;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã quá thời hạn điều chỉnh đăng ký học phần trong học kỳ {registration.Semester} năm {registration.Year}");
+            }
+            return 0;
+        }
+
+        public int deleteRegistration(CourseRegistration registration)
+        {
+            string updateQuery = "DELETE FROM ADMIN.DANGKY WHERE MASV = :masv AND MAGV = :magv AND MAHP = :mahp and HK = :hk and NAM = :nam and MACT = :mact";
+
+            // Tạo đối tượng OracleCommand
+            try
+            {
+                using (OracleCommand command = new OracleCommand(updateQuery, connection))
+                {
+                    // Thêm tham số và gán giá trị
+                    command.Parameters.Add(new OracleParameter("masv", registration.StudentId));
+                    command.Parameters.Add(new OracleParameter("magv", registration.LecturerId));
+                    command.Parameters.Add(new OracleParameter("mahp", registration.CourseId));
+                    command.Parameters.Add(new OracleParameter("hk", registration.Semester));
+                    command.Parameters.Add(new OracleParameter("nam", registration.Year));
+                    command.Parameters.Add(new OracleParameter("mact", registration.Program));
+
+                    // Thực thi câu lệnh
+                    int rowsAffected = command.ExecuteNonQuery();
+                    MessageBox.Show($"Đã xóa {rowsAffected} đăng ký");
                     return rowsAffected;
                 }
             }
