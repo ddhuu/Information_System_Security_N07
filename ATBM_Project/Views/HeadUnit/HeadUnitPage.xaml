@@ -85,7 +85,7 @@ Background="Transparent" WindowStyle="None"
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="registerButton"  Margin="5"  >
+                            <Button Name="registerButton" Click="registerButton_Click" Margin="5"  >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Note" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Đăng ký" Margin="10,0,0,0" Foreground="black"/>

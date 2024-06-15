@@ -39,5 +39,20 @@ namespace ATBM_Project.Views.Affair
         {
             (new InsertCourseRegistration_Dialog(_affair)).ShowDialog();
         }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            CourseRegistration registration = ((Button)sender).Tag as CourseRegistration;
+            if(registration == null)
+            {
+                return;
+            }
+
+            MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn là muốn xóa dòng này?", "Xác nhận", MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
+            {
+                _affair.deleteRegistration(registration);
+            }
+        }
     }
 }

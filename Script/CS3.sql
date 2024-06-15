@@ -87,15 +87,15 @@ BEGIN
         
         -- NOTE: CO THE THAY DOI THOI HAN DIEU CHINH DANG KY HOC PHAN O DAY
         if (v_month = 1) then
-            if v_day < 15 then
+            if v_day <= 15 then
                 return 'HK = 1 AND NAM = ' || v_year;
             end if;
         elsif (v_month = 6) then
-            if v_day < 15 then
+            if v_day <= 30 then
                 return 'HK = 2 AND NAM = ' || v_year;
             end if;
         elsif (v_month = 9) then
-            if v_day < 15 then
+            if v_day <= 15 then
                 return 'HK = 3 AND NAM = ' || v_year;
             end if;
         end if;

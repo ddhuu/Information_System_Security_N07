@@ -25,7 +25,7 @@ namespace ATBM_Project.Views.Lecturer
     {
         private OracleConnection _connection;
         private Lecturer_VM lecturer_VM;
-        public CourseRegistration_View(OracleConnection connection, bool isAffair = false)
+        public CourseRegistration_View(OracleConnection connection)
         {
             _connection = connection;
             InitializeComponent();

@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ATBM_Project.Views.HeadUnit"
         mc:Ignorable="d"
-        Title="InsertAssigment_Dialog" Height="450" Width="800">
-    <Grid>
+        Title="Insert Assigment" Height="300" Width="450">
+    <StackPanel Orientation="Vertical" Margin="20">
+        <TextBlock FontSize="20" Text="Nhập thông tin phân công"/>
+
+        <StackPanel Orientation="Horizontal" Margin="0 20 20 10">
+            <TextBlock Text="Mã giảng viên: " Width="100"/>
+            <TextBox x:Name="inputLecturerID" Width="200"/>
+        </StackPanel>
         
-    </Grid>
+        <StackPanel Orientation="Horizontal" Margin="0 0 20 10">
+            <TextBlock Text="Mã học phần: " Width="100"/>
+            <TextBox x:Name="inputCourseID" Width="200"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="0 0 20 10">
+            <TextBlock Text="Học kỳ:" Width="100"/>
+            <TextBox x:Name="inputSemester" Width="200"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"  Margin="0 0 20 10">
+            <TextBlock Text="Năm:" Width="100"/>
+            <TextBox x:Name="inputYear" Width="200"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="0 0 20 10">
+            <TextBlock Text="Chương trình:" Width="100"/>
+            <TextBox x:Name="inputProgram" Width="200"/>
+        </StackPanel>
+        
+        <Button x:Name="btnInsert" Click="btnInsert_Click" Width="80" >Thêm</Button>
+
+
+    </StackPanel>
 </Window>
