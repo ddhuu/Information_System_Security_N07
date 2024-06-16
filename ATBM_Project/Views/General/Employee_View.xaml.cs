@@ -57,7 +57,7 @@ namespace ATBM_Project.Views.General
                         Role = role,
                         Unit = unit,
                         Grant = grant,
-                        DOB = dob.ToShortDateString()
+                        DOB = dob.ToString("dd/MM/yyyy")
                     });
                 }
             }

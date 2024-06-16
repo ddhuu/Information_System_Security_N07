@@ -47,9 +47,9 @@ namespace ATBM_Project.ViewsModels
             return assignments;
         }
 
-        public List<CourseRegistration> GetRegistrations()
+        public List<CourseRegistration> GetRegistrations(bool isHeadDepartment = false)
         {
-            string sql = $"SELECT * FROM ADMIN.UV_CANHAN_DANGKY";
+            string sql = isHeadDepartment ? "SELECT * FROM ADMIN.DANGKY" : "SELECT * FROM ADMIN.UV_CANHAN_DANGKY";
             List<CourseRegistration> courseRegistrations = new List<CourseRegistration>();
 
             OracleCommand cmd = new OracleCommand(sql, _connection);

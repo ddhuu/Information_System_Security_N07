@@ -13,6 +13,46 @@ namespace ATBM_Project.ViewsModels
         public Student_VM(OracleConnection _conn) { 
             connection = _conn;
         }
+<<<<<<< HEAD
+=======
+        public Student getInfor()
+        {
+            string SQLcontex = $"SELECT * FROM ADMIN.SINHVIEN";
+            OracleCommand cmd = new OracleCommand(SQLcontex, connection);
+
+            using (OracleDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    string studentID = reader.GetString(reader.GetOrdinal("MASV"));
+                    string fullName = reader.GetString(reader.GetOrdinal("HOTEN"));
+                    string gender = reader.GetString(reader.GetOrdinal("PHAI"));
+                    string phoneNumber = reader.GetString(reader.GetOrdinal("DT"));
+                    string address = reader.GetString(reader.GetOrdinal("DCHI"));
+                    int cummulativeCredits = reader.GetInt32(reader.GetOrdinal("SOTCTL"));
+                    double avgGrade = reader.GetDouble(reader.GetOrdinal("DTBTL"));
+                    string major = reader.GetString(reader.GetOrdinal("MANGANH"));
+                    DateTime dob = reader.GetDateTime(reader.GetOrdinal("NGSINH"));
+                    return new Student
+                    {
+                        Id = studentID,
+                        Name = fullName,
+                        Gender = gender,
+                        PhoneNumber = phoneNumber,
+                        Address = address,
+                        Major = major,
+                        AvgGrade = avgGrade,
+                        CummulativeCredits = cummulativeCredits,
+                        DOB = dob.ToString("dd/MM/yyyy")
+                    };
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+>>>>>>> 6cefbae6efdbfe50c05a701b934dd18709767ec4
 
         public List<Models.Student> getStudentList()
         {
@@ -37,7 +77,7 @@ namespace ATBM_Project.ViewsModels
                             Id = studentID, 
                             Name = fullName, 
                             Gender = gender,
-                            DOB = dob.ToShortDateString(),
+                            DOB = dob.ToString("dd/MM/yyyy"),
                             Address = address,
                             PhoneNumber = phoneNumber,
                             Program = program,
