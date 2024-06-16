@@ -55,15 +55,23 @@ Background="Transparent" WindowStyle="None"
 
                             
 
-                            <Button Name="moduleButton"  Margin="5" Click="moduleButton_Click" >
+                            <Button Name="courseButton"  Margin="5" Click="courseButton_Click" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Book" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Học phần" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
-                            <Button Name="courseButton"  Margin="5" Click="courseButton_Click"  >
+
+                            <Button Name="courseOpenButton"  Margin="5" Click="courseOpenButton_Click" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="BookAccountOutline" Width="15" Height="15" Foreground="black"/>
+                                    <TextBlock Text="Khóa học mở" Margin="10,0,0,0" Foreground="black"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button Name="registerButton"  Margin="5" Click="registerButton_Click"  >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Note" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Đăng ký" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>

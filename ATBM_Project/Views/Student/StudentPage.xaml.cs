@@ -38,12 +38,18 @@ namespace ATBM_Project.Views.Student
         }
         private void courseButton_Click(object sender, RoutedEventArgs e)
         {
+            UserController.Content = new General.Course_View(_connection);
 
         }
-        private void moduleButton_Click(object sender, RoutedEventArgs e)
+
+        private void courseOpenButton_Click(object sender, RoutedEventArgs e)
         {
-
+            UserController.Content = new General.CourseOpenSchedule_View(_connection);
         }
 
+        private void registerButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserController.Content = new CourseRegistration_View(_connection);
+        }
     }
 }

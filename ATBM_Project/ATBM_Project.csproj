@@ -341,11 +341,20 @@
     <Compile Include="Views\Role\PrivOnColumn_View.xaml.cs">
       <DependentUpon>PrivOnColumn_View.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Student\CourseRegistration_View.xaml.cs">
+      <DependentUpon>CourseRegistration_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Student\RegisterCourse_Dialog.xaml.cs">
+      <DependentUpon>RegisterCourse_Dialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Student\StudentPage.xaml.cs">
       <DependentUpon>StudentPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Student\Student_View.xaml.cs">
       <DependentUpon>Student_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Student\UpdateInfoStudent_Dialog.xaml.cs">
+      <DependentUpon>UpdateInfoStudent_Dialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Table\Table_Detail_View.xaml.cs">
       <DependentUpon>Table_Detail_View.xaml</DependentUpon>
@@ -527,11 +536,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Student\CourseRegistration_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Student\RegisterCourse_Dialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Student\StudentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Student\Student_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Student\UpdateInfoStudent_Dialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
