@@ -71,7 +71,14 @@
                                 </StackPanel>
                             </Button>
 
-                            
+                            <Button Name="auditButton"  Margin="5" Click ="auditButtonClick">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Trackpad" Width="15" Height="15" Foreground="black"/>
+                                    <TextBlock Text="Audit" Margin="10,0,0,0" Foreground="black"/>
+                                </StackPanel>
+                            </Button>
+
+
                         </StackPanel>
 
                         

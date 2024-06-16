@@ -1,7 +1,9 @@
 ﻿using ATBM_Project.Models;
 using Oracle.ManagedDataAccess.Client;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Windows;
 using System.Windows.Media;
 
@@ -565,6 +567,147 @@ namespace ATBM_Project.ViewsModels
 
         }
 
+        public List<Audits> GetStandardAudit()
+        {
+            try
+            {
+                var list = new List<Audits>();
+                string SQLcontext = $"SELECT SESSIONID, USERNAME, ACTION_NAME, OBJ_NAME, TO_CHAR(TIMESTAMP, 'DD/MM/YYYY HH24:MI:SS')" +
+                    $" AS TIMESTAMP FROM DBA_AUDIT_TRAIL WHERE OWNER='ADMIN' ORDER BY TIMESTAMP DESC ";
+
+                using (OracleCommand cmd = new OracleCommand(SQLcontext, connection))
+                {
+                    using (OracleDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            list.Add(new Audits
+                            {
+                                SESSION_ID = reader.GetString(reader.GetOrdinal("SESSIONID")),
+                                USERNAME = reader.GetString(reader.GetOrdinal("USERNAME")),
+                                ACTION_NAME = reader.GetString(reader.GetOrdinal("ACTION_NAME")),
+                                OBJECT_NAME = reader.GetString(reader.GetOrdinal("OBJ_NAME")),
+                                TIMESTAMP = reader.GetString(reader.GetOrdinal("TIMESTAMP"))
+                            });
+
+                        }
+                    }
+                }
+
+
+                return list;
+
+            }
+            catch
+            {
+                return new List<Audits>();
+            }
+        }
+
+        public List<Audits> GetFGAudit(string policyName)
+        {
+            try
+            {
+                var list = new List<Audits>();
+                string SQLcontext = $"SELECT SESSION_ID, DB_USER, STATEMENT_TYPE, OBJECT_NAME, TO_CHAR(TIMESTAMP, 'DD/MM/YYYY HH24:MI:SS')" +
+                    $" AS TIMESTAMP, SQL_TEXT FROM DBA_FGA_AUDIT_TRAIL WHERE OBJECT_SCHEMA='ADMIN' AND POLICY_NAME='{policyName}' ORDER BY TIMESTAMP DESC ";
+
+                using (OracleCommand cmd = new OracleCommand(SQLcontext, connection))
+                {
+                    using (OracleDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            list.Add(new Audits
+                            {
+                                SESSION_ID = reader.GetString(reader.GetOrdinal("SESSION_ID")),
+                                USERNAME = reader.GetString(reader.GetOrdinal("DB_USER")),
+                                ACTION_NAME = reader.GetString(reader.GetOrdinal("STATEMENT_TYPE")),
+                                OBJECT_NAME = reader.GetString(reader.GetOrdinal("OBJECT_NAME")),
+                                TIMESTAMP = reader.GetString(reader.GetOrdinal("TIMESTAMP")),
+                                SQL_TEXT = reader.GetString(reader.GetOrdinal("SQL_TEXT"))
+                            });
+
+                        }
+                    }
+                }
+
+
+                return list;
+
+            }
+            catch
+            {
+                return new List<Audits>();
+            }
+
+        }
+
+        public void execProcedure(string procedureName, params object[] parameters)
+        {
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = procedureName;
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+
+            for (int i = 0; i < parameters.Length; i++)
+            {
+                cmd.Parameters.Add(new OracleParameter("param" + (i + 1), parameters[i]));
+            }
+
+            cmd.ExecuteNonQuery();
+        }
+
+        public void execProcedure(string procedureName, out int result)
+        {
+            OracleCommand cmd = new OracleCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = procedureName;
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            OracleParameter outputParam = new OracleParameter("result", OracleDbType.Int32, ParameterDirection.Output);
+            cmd.Parameters.Add(outputParam);
+
+            cmd.ExecuteNonQuery();
+            result = int.Parse(cmd.Parameters["result"].Value.ToString());
+        }
+
+        public void EnableAuditPolicy(string schema, string objectName, string policyName, bool enable)
+        {
+            string plsql = $@"
+    BEGIN
+        dbms_fga.enable_policy(
+            object_schema => '{schema}',
+            object_name   => '{objectName}',
+            policy_name   => '{policyName}',
+            enable        => {enable.ToString().ToLower()}
+        );
+    END;";
+
+            using (OracleCommand cmd = new OracleCommand(plsql, connection))
+            {
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void DisableAuditPolicy(string schema, string objectName, string policyName)
+        {
+            string plsql = $@"
+    BEGIN
+        dbms_fga.disable_policy(
+            object_schema => '{schema}',
+            object_name   => '{objectName}',
+            policy_name   => '{policyName}'
+        );
+    END;";
+
+            using (OracleCommand cmd = new OracleCommand(plsql, connection))
+            {
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+            }
+        }
 
 
 

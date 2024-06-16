@@ -2,7 +2,6 @@
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace ATBM_Project.ViewsModels
@@ -10,19 +9,19 @@ namespace ATBM_Project.ViewsModels
     public class Student_VM
     {
         private OracleConnection connection;
-        public Student_VM(OracleConnection _conn) { 
+        public Student_VM(OracleConnection _conn)
+        {
             connection = _conn;
         }
-<<<<<<< HEAD
-=======
-        public Student getInfor()
-        {
-            string SQLcontex = $"SELECT * FROM ADMIN.SINHVIEN";
-            OracleCommand cmd = new OracleCommand(SQLcontex, connection);
 
+        public List<Models.Student> getStudentList()
+        {
+            List<Models.Student> students = new List<Models.Student>();
+            string SQLcontext = $"SELECT * FROM ADMIN.SINHVIEN";
+            OracleCommand cmd = new OracleCommand(SQLcontext, connection);
             using (OracleDataReader reader = cmd.ExecuteReader())
             {
-                if (reader.Read())
+                while (reader.Read())
                 {
                     string studentID = reader.GetString(reader.GetOrdinal("MASV"));
                     string fullName = reader.GetString(reader.GetOrdinal("HOTEN"));
@@ -32,61 +31,24 @@ namespace ATBM_Project.ViewsModels
                     int cummulativeCredits = reader.GetInt32(reader.GetOrdinal("SOTCTL"));
                     double avgGrade = reader.GetDouble(reader.GetOrdinal("DTBTL"));
                     string major = reader.GetString(reader.GetOrdinal("MANGANH"));
+                    string program = reader.GetString(reader.GetOrdinal("MACT"));
                     DateTime dob = reader.GetDateTime(reader.GetOrdinal("NGSINH"));
-                    return new Student
+                    students.Add(new Models.Student
                     {
                         Id = studentID,
                         Name = fullName,
                         Gender = gender,
-                        PhoneNumber = phoneNumber,
+                        DOB = dob.ToString("dd/MM/yyyy"),
                         Address = address,
+                        PhoneNumber = phoneNumber,
+                        Program = program,
                         Major = major,
-                        AvgGrade = avgGrade,
                         CummulativeCredits = cummulativeCredits,
-                        DOB = dob.ToString("dd/MM/yyyy")
-                    };
+                        AvgGrade = avgGrade
+                    });
                 }
-                else
-                {
-                    return null;
-                }
+                reader.Close();
             }
-        }
->>>>>>> 6cefbae6efdbfe50c05a701b934dd18709767ec4
-
-        public List<Models.Student> getStudentList()
-        {
-            List<Models.Student> students = new List<Models.Student>();
-            string SQLcontext = $"SELECT * FROM ADMIN.SINHVIEN";
-            OracleCommand cmd = new OracleCommand(SQLcontext, connection);
-                using (OracleDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        string studentID = reader.GetString(reader.GetOrdinal("MASV"));
-                        string fullName = reader.GetString(reader.GetOrdinal("HOTEN"));
-                        string gender = reader.GetString(reader.GetOrdinal("PHAI"));
-                        string phoneNumber = reader.GetString(reader.GetOrdinal("DT"));
-                        string address = reader.GetString(reader.GetOrdinal("DCHI"));
-                        int cummulativeCredits = reader.GetInt32(reader.GetOrdinal("SOTCTL"));
-                        double avgGrade = reader.GetDouble(reader.GetOrdinal("DTBTL"));
-                        string major = reader.GetString(reader.GetOrdinal("MANGANH"));
-                        string program = reader.GetString(reader.GetOrdinal("MACT"));
-                        DateTime dob = reader.GetDateTime(reader.GetOrdinal("NGSINH"));
-                        students.Add (new Models.Student{
-                            Id = studentID, 
-                            Name = fullName, 
-                            Gender = gender,
-                            DOB = dob.ToString("dd/MM/yyyy"),
-                            Address = address,
-                            PhoneNumber = phoneNumber,
-                            Program = program,
-                            Major = major,
-                            CummulativeCredits = cummulativeCredits, 
-                            AvgGrade = avgGrade});
-                    }
-                    reader.Close();
-                }
             return students;
         }
 
@@ -110,7 +72,7 @@ namespace ATBM_Project.ViewsModels
                     int semester = reader.GetInt32(reader.GetOrdinal("HK"));
                     string program = reader.GetString(reader.GetOrdinal("MACT"));
                     int year = reader.GetInt32(reader.GetOrdinal("NAM"));
-                     schedule = new CourseOpenSchedule
+                    schedule = new CourseOpenSchedule
                     {
                         courseId = courseID,
                         Semester = semester,
@@ -119,7 +81,7 @@ namespace ATBM_Project.ViewsModels
                     };
                     openSchedules.Add(schedule);
                 }
-                reader.Close(); 
+                reader.Close();
             }
             return openSchedules;
         }
@@ -128,7 +90,7 @@ namespace ATBM_Project.ViewsModels
             string sql = $"SELECT * FROM ADMIN.HOCPHAN";
             OracleCommand cmd = new OracleCommand(sql, connection);
             List<Course> courses = new List<Course>();
-            using(OracleDataReader reader = cmd.ExecuteReader())
+            using (OracleDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {

@@ -1,4 +1,5 @@
 ﻿using ATBM_Project.Models;
+using ATBM_Project.Views.Audit;
 using ATBM_Project.Views.Table;
 using ATBM_Project.ViewsModels;
 using Oracle.ManagedDataAccess.Client;
@@ -61,6 +62,11 @@ namespace ATBM_Project.Views
         private void viewsViewButton_Click(object sender, RoutedEventArgs e)
         {
             UserController.Content = new Table_View(_admin, UserController, "View");
+        }
+
+        private void auditButtonClick(object sender, RoutedEventArgs e)
+        {
+            UserController.Content = new Audit_View(_admin, UserController);
         }
     }
 }

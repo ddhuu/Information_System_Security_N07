@@ -235,6 +235,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\Assignment.cs" />
+    <Compile Include="Models\Audits.cs" />
     <Compile Include="Models\Column.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseOpenSchedule.cs" />
@@ -268,6 +269,9 @@
     </Compile>
     <Compile Include="Views\Affair\UpdateAssignment_Dialog.xaml.cs">
       <DependentUpon>UpdateAssignment_Dialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Audit\Audit_View.xaml.cs">
+      <DependentUpon>Audit_View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Employee\EmployeePage.xaml.cs">
       <DependentUpon>EmployeePage.xaml</DependentUpon>
@@ -455,6 +459,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Affair\UpdateAssignment_Dialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Audit\Audit_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
