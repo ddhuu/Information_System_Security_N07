@@ -60,5 +60,10 @@ namespace ATBM_Project.Views.HeadDepartment
         {
             UserController.Content = new Lecturer.CourseRegistration_View(_connection, true);
         }
+
+        private void messageButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserController.Content = new Message.Message_View(_connection);
+        }
     }
 }

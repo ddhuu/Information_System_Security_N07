@@ -29,10 +29,10 @@
         <ListView Grid.Row="1" x:Name="courseOpenSchedulesDataGrid" Margin="5" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Mã học phần" Width="150" x:Name="courseIdCol">
+                    <GridViewColumn Header="Mã học phần" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock  Text="{Binding courseId}" Width="150" TextAlignment="Center"/>
+                                <TextBlock  Text="{Binding courseId}" Width="140" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -40,7 +40,7 @@
                     <GridViewColumn Header="Học kì" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Semester}" Width="150" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Semester}" Width="140" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -48,15 +48,15 @@
                     <GridViewColumn Header="Năm" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Year}" Width="150" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Year}" Width="140" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="Chương trình" Width="150" x:Name="programCol">
+                    <GridViewColumn Header="Chương trình" Width="150">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Program}" Width="150" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Program}" Width="140" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

@@ -91,6 +91,12 @@ Background="Transparent" WindowStyle="None"
                                     <TextBlock Text="Đăng ký" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
+                            <Button Name="messageButton" Click="messageButton_Click" Margin="5"  >
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="Bell" Width="15" Height="15" Foreground="black"/>
+                                    <TextBlock Text="Thông báo" Margin="10,0,0,0" Foreground="black"/>
+                                </StackPanel>
+                            </Button>
 
                         </StackPanel>
 

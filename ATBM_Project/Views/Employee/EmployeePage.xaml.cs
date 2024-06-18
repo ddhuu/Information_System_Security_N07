@@ -54,5 +54,10 @@ namespace ATBM_Project.Views.Employee
         {
             UserController.Content = new General.Employee_View(_connection);
         }
+
+        private void messageButton_Click(object sender, RoutedEventArgs e)
+        {
+            UserController.Content = new Message.Message_View(_connection);
+        }
     }
 }

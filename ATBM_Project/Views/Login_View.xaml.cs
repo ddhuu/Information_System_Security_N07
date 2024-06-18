@@ -30,7 +30,7 @@ namespace ATBM_Project.Views
             string role = session.Role;
 
             // truong khoa chi co 1 nguoi
-            if(session.Username == "NV001")
+            if(session.Username.ToUpper() == "NV001")
             {
                 HeadDepartmentPage headDepartment = new HeadDepartmentPage(connection, session.Username);
                 this.Close();
@@ -122,7 +122,7 @@ namespace ATBM_Project.Views
             {
 
                 HandleSession(oracleConnection, username);
-                MessageBox.Show("Login Successfully");
+                //MessageBox.Show("Login Successfully");
             }
         }
 

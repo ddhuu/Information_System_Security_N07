@@ -241,6 +241,7 @@
     <Compile Include="Models\CourseOpenSchedule.cs" />
     <Compile Include="Models\CourseRegistration.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\PrivilegeOfTable.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Session.cs" />
@@ -353,6 +354,9 @@
     </Compile>
     <Compile Include="Views\Lecturer\UpdateCourseRegistration_Dialog.xaml.cs">
       <DependentUpon>UpdateCourseRegistration_Dialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Message\Message_View.xaml.cs">
+      <DependentUpon>Message_View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Role\AddRole_View.xaml.cs">
       <DependentUpon>AddRole_View.xaml</DependentUpon>
@@ -571,6 +575,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Lecturer\UpdateCourseRegistration_Dialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Message\Message_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

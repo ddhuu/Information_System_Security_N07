@@ -84,8 +84,8 @@ AS
     IsLecturer NUMBER := 0;
     CURSOR RoleCursor IS
         SELECT granted_role
-        FROM dba_role_privs
-        WHERE grantee = SYS_CONTEXT('USERENV', 'SESSION_USER');
+        FROM user_role_privs
+        WHERE username = SYS_CONTEXT('USERENV', 'SESSION_USER');
 BEGIN
     IF (SYS_CONTEXT('USERENV', 'SESSION_USER') = 'ADMIN') THEN 
         RETURN 0;

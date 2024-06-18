@@ -32,7 +32,7 @@
                     <GridViewColumn Header="Mã đơn vị" Width="200">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding UnitID}" Width="200" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding UnitID}" Width="190" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -46,7 +46,7 @@
                     <GridViewColumn Header="Trưởng đơn vị" Width="190">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding HeadUnit}" Width="200" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding HeadUnit}" Width="180" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

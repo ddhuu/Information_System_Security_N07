@@ -32,7 +32,7 @@
                     <GridViewColumn Header="Mã học phần" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding CourseID}" Width="80" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding CourseID}" Width="70" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -46,28 +46,28 @@
                     <GridViewColumn Header="Số tín chỉ" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding TotalCredit}" Width="80" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding TotalCredit}" Width="70" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Số tiết lý thuyết" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding TheoryCredit}" Width="100" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding TheoryCredit}" Width="90" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Số tiết thực hành" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding LabCredit}" Width="100" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding LabCredit}" Width="90" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Số SV tối đa" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding MaxNumParticipatient}" Width="100" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding MaxNumParticipatient}" Width="90" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
