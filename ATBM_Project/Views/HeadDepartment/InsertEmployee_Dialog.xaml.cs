@@ -41,6 +41,7 @@ namespace ATBM_Project.Views.HeadDepartment
             string phoneNumber = inputPhoneNumber.Text.Trim();
             string unit = inputUnit.Text.Trim();
             string role = inputRole.Text.Trim();
+            string group = inputGroup.Text.Trim();
             
             if(string.IsNullOrEmpty(id) || string.IsNullOrEmpty(fullName) || string.IsNullOrEmpty(gender) || string.IsNullOrEmpty(role) 
                 || string.IsNullOrEmpty(unit) || string.IsNullOrEmpty(phoneNumber) || !grantSuccess || string.IsNullOrEmpty(dob))
@@ -49,9 +50,9 @@ namespace ATBM_Project.Views.HeadDepartment
                 return;
             }
 
-            if (phoneNumber.Length > 10)
+            if (group != "CS1" && group != "CS2" && group != "CS1,CS2")
             {
-                MessageBox.Show("Số điện thoại không hợp lệ!");
+                MessageBox.Show("Cơ sở không hợp lệ!");
                 return;
             }
 
@@ -64,7 +65,8 @@ namespace ATBM_Project.Views.HeadDepartment
                 PhoneNumber = phoneNumber,
                 Unit = unit,
                 DOB = dob,
-                Grant = grant
+                Grant = grant,
+                Group = group,
             });
 
             if(result > 0)

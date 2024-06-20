@@ -54,7 +54,7 @@ namespace ATBM_Project.Views.General
                 using (OracleCommand command = new OracleCommand(updateQuery, _connection))
                 {
                     // Thêm tham số và gán giá trị
-                    command.Parameters.Add(new OracleParameter("tendv", unitName));
+                    command.Parameters.Add(new OracleParameter("tendv", OracleDbType.NVarchar2)).Value = unitName;
                     command.Parameters.Add(new OracleParameter("trgdv", headUnit));
                     command.Parameters.Add(new OracleParameter("madv", unitID));
 

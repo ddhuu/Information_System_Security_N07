@@ -50,7 +50,7 @@ namespace ATBM_Project.Views.General
                 {
                     // Thêm tham số và gán giá trị
                     command.Parameters.Add(new OracleParameter("value1", unitID));
-                    command.Parameters.Add(new OracleParameter("value2", unitName));
+                    command.Parameters.Add(new OracleParameter("value2", OracleDbType.NVarchar2)).Value = unitName;
                     command.Parameters.Add(new OracleParameter("value3", headUnit));
 
                     // Thực thi câu lệnh

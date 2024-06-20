@@ -67,7 +67,7 @@ namespace ATBM_Project.Views.General
                 {
                     // Thêm tham số và gán giá trị
                     
-                    command.Parameters.Add(new OracleParameter("tenhp", courseName));
+                    command.Parameters.Add(new OracleParameter("tenhp", OracleDbType.NVarchar2)).Value = courseName;
                     command.Parameters.Add(new OracleParameter("sotc", totalCredit));
                     command.Parameters.Add(new OracleParameter("stlt", theoryCredit));
                     command.Parameters.Add(new OracleParameter("stth", labCredit));

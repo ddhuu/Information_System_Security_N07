@@ -13,5 +13,6 @@ namespace ATBM_Project.Models
         public string PhoneNumber { get; set; }
         public string Unit { get; set; }
         public double Grant { get; set; }
+        public string Group { get; set; }
     }
 }

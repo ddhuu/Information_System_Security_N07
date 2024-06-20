@@ -37,6 +37,7 @@ namespace ATBM_Project.Views.General
             string phoneNumber = inputPhoneNumber.Text.Trim();
             string program = inputProgram.Text.Trim();
             string major = inputMajor.Text.Trim();
+            string group = inputGroup.Text.Trim();
 
             if(string.IsNullOrEmpty(id) || string.IsNullOrEmpty(fullName) || string.IsNullOrEmpty(gender) || string.IsNullOrEmpty(dob)
                 || string.IsNullOrEmpty(phoneNumber) || string.IsNullOrEmpty(program) || string.IsNullOrEmpty(major) || string.IsNullOrEmpty(address))
@@ -45,13 +46,13 @@ namespace ATBM_Project.Views.General
                 return;
             }
 
-            if(phoneNumber.Length > 10)
+            if (group != "CS1" && group != "CS2")
             {
-                MessageBox.Show("Số điện thoại không hợp lệ!");
+                MessageBox.Show("Cơ sở không hợp lệ!");
                 return;
             }
 
-            string insertQuery = "INSERT INTO ADMIN.SINHVIEN (MASV, HOTEN, PHAI, NGSINH, DCHI, DT, MACT, MANGANH, SOTCTL, DTBTL) VALUES (:value1, :value2, :value3, TO_DATE(:value4, 'DD/MM/YYYY'), :value5, :value6, :value7, :value8, 0, 0)";
+            string insertQuery = "INSERT INTO ADMIN.SINHVIEN (MASV, HOTEN, PHAI, NGSINH, DCHI, DT, MACT, MANGANH, SOTCTL, DTBTL, COSO) VALUES (:value1, :value2, :value3, TO_DATE(:value4, 'DD/MM/YYYY'), :value5, :value6, :value7, :value8, 0, 0, :value9)";
 
             // Tạo đối tượng OracleCommand
             try
@@ -60,13 +61,14 @@ namespace ATBM_Project.Views.General
                 {
                     // Thêm tham số và gán giá trị
                     command.Parameters.Add(new OracleParameter("value1", id));
-                    command.Parameters.Add(new OracleParameter("value2", fullName));
+                    command.Parameters.Add(new OracleParameter("value2", OracleDbType.NVarchar2)).Value = fullName;
                     command.Parameters.Add(new OracleParameter("value3", gender));
                     command.Parameters.Add(new OracleParameter("value4", dob));
-                    command.Parameters.Add(new OracleParameter("value5", address));
+                    command.Parameters.Add(new OracleParameter("value5", OracleDbType.NVarchar2)).Value = address;
                     command.Parameters.Add(new OracleParameter("value6", phoneNumber));
                     command.Parameters.Add(new OracleParameter("value7", program));
                     command.Parameters.Add(new OracleParameter("value8", major));
+                    command.Parameters.Add(new OracleParameter("value9", group));
 
                     // Thực thi câu lệnh
                     int rowsAffected = command.ExecuteNonQuery();

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ATBM_Project.Views.General"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             Height="550" Width="800">
+             Height="550" Width="850">
     <UserControl.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="2"/>
@@ -28,10 +28,10 @@
         <ListView x:Name="empDataGrid" Grid.Row="1" Margin="5" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Mã NV" Width="80">
+                    <GridViewColumn Header="Mã NV" Width="70">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding ID}" Width="80" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding ID}" Width="60" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -42,53 +42,60 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Phái" Width="60">
+                    <GridViewColumn Header="Phái" Width="50">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Gender}" Width="60" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Gender}" Width="40" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Ngày sinh" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding DOB}" Width="100" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding DOB}" Width="90" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Phụ cấp" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Grant}" Width="80" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Grant}" Width="70" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Điện thoại" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding PhoneNumber}" Width="100" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding PhoneNumber}" Width="90" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="Vai trò" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Role}" Width="100" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Role}" Width="90" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Mã đơn vị" Width="70">
+                    <GridViewColumn Header="Mã ĐV" Width="70">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Unit}" Width="70" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Unit}" Width="60" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="ActionsCol" Header="Actions" Width="65">
+                    <GridViewColumn Header="Cơ sở" Width="60">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Group}" Width="50" TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="ActionsCol" Header="Actions" Width="60">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button Tag="{Binding}"  x:Name="btnUpdate" Click="btnUpdate_Click" HorizontalAlignment="Center" Margin="20 0 0 0">
+                                    <Button Tag="{Binding}" ToolTip="Cập nhật" Click="btnUpdate_Click" HorizontalAlignment="Center" Margin="20 0 0 0">
                                         <materialDesign:PackIcon Kind="Pencil" Width="12" Height="12"/>
                                     </Button>
                                 </StackPanel>

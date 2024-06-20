@@ -37,6 +37,7 @@ namespace ATBM_Project.Views.Student
             inputMajor.Text = _student.Major;
             inputCummulativeCredit.Text = _student.CummulativeCredits.ToString();
             inputAvgGrade.Text = _student.AvgGrade.ToString();
+            inputGroup.Text = _student.Group;
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
@@ -56,12 +57,12 @@ namespace ATBM_Project.Views.Student
             {
                 using (OracleCommand command = new OracleCommand(updateQuery, _connection))
                 {
-                    command.Parameters.Add(new OracleParameter("dchi", address));
+                    command.Parameters.Add(new OracleParameter("dchi", OracleDbType.NVarchar2)).Value = address;
                     command.Parameters.Add(new OracleParameter("dt", phoneNumber));
 
 
                     int rowsAffected = command.ExecuteNonQuery();
-                    MessageBox.Show($"Đã cập nhật {rowsAffected} học phần");
+                    MessageBox.Show($"Đã cập nhật {rowsAffected} sinh viên");
                     if (rowsAffected > 0)
                     {
                         this.Close();

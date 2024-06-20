@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ATBM_Project.Views.HeadDepartment"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             Height="550" Width="820">
+             Height="550" Width="850">
     <UserControl.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="2"/>
@@ -29,10 +29,10 @@
         <ListView x:Name="empDataGrid" Grid.Row="1" Margin="5" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Mã NV" Width="70">
+                    <GridViewColumn Header="Mã NV" Width="60">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding ID}" Width="60" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding ID}" Width="50" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -43,10 +43,10 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Phái" Width="60">
+                    <GridViewColumn Header="Phái" Width="50">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Gender}" Width="50" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Gender}" Width="40" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -57,10 +57,10 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Phụ cấp" Width="70">
+                    <GridViewColumn Header="Phụ cấp" Width="60">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Grant}" Width="60" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Grant}" Width="55" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -81,7 +81,14 @@
                     <GridViewColumn Header="Mã đơn vị" Width="70">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Unit}" Width="70" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Unit}" Width="60" TextAlignment="Center"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Cơ sở" Width="60">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Group}" Width="55" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

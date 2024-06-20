@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ATBM_Project.Views.Lecturer"
         mc:Ignorable="d"
-        Title="Update Information" Height="430" Width="450">
+        Title="Update Information" Height="470" Width="450">
     <StackPanel Orientation="Vertical" Margin="20">
         <TextBlock FontSize="20" Text="Cập nhật thông tin" HorizontalAlignment="Center"/>
 
@@ -49,6 +49,10 @@
         <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
             <TextBlock Text="Điểm TB tích lũy:" Width="100"/>
             <TextBox x:Name="inputAvgGrade" Width="200" IsEnabled="False"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+            <TextBlock Text="Cơ sở:" Width="100"/>
+            <TextBox x:Name="inputGroup" Width="200" IsEnabled="False"/>
         </StackPanel>
 
         <Button x:Name="btnUpdate" Click="btnUpdate_Click" Width="80" >Cập nhật</Button>

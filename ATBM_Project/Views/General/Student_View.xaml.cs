@@ -58,6 +58,7 @@ namespace ATBM_Project.Views.General
                     string major = reader.GetString(reader.GetOrdinal("MANGANH"));
                     string dob = reader.GetDateTime(reader.GetOrdinal("NGSINH")).ToString("dd/MM/yyyy");
                     string program = reader.GetString(reader.GetOrdinal("MACT"));
+                    string group = reader.GetString(reader.GetOrdinal("COSO"));
                     students.Add(new Models.Student
                     {
                         Id = studentID,
@@ -69,7 +70,8 @@ namespace ATBM_Project.Views.General
                         AvgGrade = avgGrade,
                         CummulativeCredits = cummulativeCredits,
                         DOB = dob,
-                        Program = program
+                        Program = program,
+                        Group = group,
                     });
                 }
             }

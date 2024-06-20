@@ -36,6 +36,7 @@ namespace ATBM_Project.Views.HeadDepartment
             inputRole.Text = _employee.Role;
             inputPhoneNumber.Text = _employee.PhoneNumber;
             inputUnit.Text = _employee.Unit;
+            inputGroup.Text = _employee.Group;
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)

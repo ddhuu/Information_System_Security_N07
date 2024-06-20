@@ -37,6 +37,7 @@ namespace ATBM_Project.ViewsModels
                         string unit = reader.GetString(reader.GetOrdinal("MADV"));
                         double grant = reader.GetDouble(reader.GetOrdinal("PHUCAP"));
                         DateTime dob = reader.GetDateTime(reader.GetOrdinal("NGSINH"));
+                        string group = reader.GetString(reader.GetOrdinal("COSO"));
                         
                         employees.Add(new Employee
                         {
@@ -47,7 +48,8 @@ namespace ATBM_Project.ViewsModels
                             Role = role,
                             Unit = unit,
                             Grant = grant,
-                            DOB = dob.ToString("dd/MM/yyyy")
+                            DOB = dob.ToString("dd/MM/yyyy"),
+                            Group = group
                         });
                     }
 
@@ -64,7 +66,7 @@ namespace ATBM_Project.ViewsModels
 
         public int insertEmployee(Employee employee)
         {
-            string insertQuery = "INSERT INTO ADMIN.NHANSU (MANV, HOTEN, PHAI, NGSINH, PHUCAP, DT, VAITRO, MADV) VALUES (:value1, :value2, :value3, TO_DATE(:value4, 'DD/MM/YYYY'), :value5, :value6, :value7, :value8)";
+            string insertQuery = "INSERT INTO ADMIN.NHANSU (MANV, HOTEN, PHAI, NGSINH, PHUCAP, DT, VAITRO, MADV, COSO) VALUES (:value1, :value2, :value3, TO_DATE(:value4, 'DD/MM/YYYY'), :value5, :value6, :value7, :value8, :value9)";
             // Tạo đối tượng OracleCommand
             try
             {
@@ -72,13 +74,14 @@ namespace ATBM_Project.ViewsModels
                 {
                     // Thêm tham số và gán giá trị
                     command.Parameters.Add(new OracleParameter("value1", employee.ID));
-                    command.Parameters.Add(new OracleParameter("value2", employee.FullName));
+                    command.Parameters.Add(new OracleParameter("value2", OracleDbType.NVarchar2)).Value = employee.FullName;
                     command.Parameters.Add(new OracleParameter("value3", employee.Gender));
                     command.Parameters.Add(new OracleParameter("value4", employee.DOB));
                     command.Parameters.Add(new OracleParameter("value5", employee.Grant));
                     command.Parameters.Add(new OracleParameter("value6", employee.PhoneNumber));
                     command.Parameters.Add(new OracleParameter("value7", employee.Role));
                     command.Parameters.Add(new OracleParameter("value8", employee.Unit));
+                    command.Parameters.Add(new OracleParameter("value9", employee.Group));
 
                     int rowsAffected = command.ExecuteNonQuery();
                     MessageBox.Show($"Đã thêm {rowsAffected} nhân viên");
@@ -105,7 +108,7 @@ namespace ATBM_Project.ViewsModels
                 using (OracleCommand command = new OracleCommand(updateQuery, _connection))
                 {
                     // Thêm tham số và gán giá trị
-                    command.Parameters.Add(new OracleParameter("hoten", newEmployee.FullName));
+                    command.Parameters.Add(new OracleParameter("hoten", OracleDbType.NVarchar2)).Value = newEmployee.FullName;
                     command.Parameters.Add(new OracleParameter("phai", newEmployee.Gender));
                     command.Parameters.Add(new OracleParameter("ngsinh", newEmployee.DOB));
                     command.Parameters.Add(new OracleParameter("dt", newEmployee.PhoneNumber));

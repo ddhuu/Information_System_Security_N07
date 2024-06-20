@@ -33,6 +33,7 @@ namespace ATBM_Project.ViewsModels
                     string major = reader.GetString(reader.GetOrdinal("MANGANH"));
                     string program = reader.GetString(reader.GetOrdinal("MACT"));
                     DateTime dob = reader.GetDateTime(reader.GetOrdinal("NGSINH"));
+                    string group = reader.GetString(reader.GetOrdinal("COSO"));
                     students.Add(new Models.Student
                     {
                         Id = studentID,
@@ -44,77 +45,13 @@ namespace ATBM_Project.ViewsModels
                         Program = program,
                         Major = major,
                         CummulativeCredits = cummulativeCredits,
-                        AvgGrade = avgGrade
+                        AvgGrade = avgGrade,
+                        Group = group,
                     });
                 }
                 reader.Close();
             }
             return students;
-        }
-
-        public int updateInfor(Student student)
-        {
-            string sql = $"UPDATE ADMIN.SINHIEN SET DT = {student.PhoneNumber}, DCHI = {student.Address}";
-            OracleCommand cmd = new OracleCommand(sql, connection);
-            return cmd.ExecuteNonQuery();
-        }
-        public List<CourseOpenSchedule> getOpenSchedule()
-        {
-            List<CourseOpenSchedule> openSchedules = new List<CourseOpenSchedule>();
-            string sql = $"SELECT * FROM ADMIN.HOCPHAN";
-            OracleCommand cmd = new OracleCommand(sql, connection);
-            CourseOpenSchedule schedule = null;
-            using (OracleDataReader reader = cmd.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    string courseID = reader.GetString(reader.GetOrdinal("MAHP"));
-                    int semester = reader.GetInt32(reader.GetOrdinal("HK"));
-                    string program = reader.GetString(reader.GetOrdinal("MACT"));
-                    int year = reader.GetInt32(reader.GetOrdinal("NAM"));
-                    schedule = new CourseOpenSchedule
-                    {
-                        courseId = courseID,
-                        Semester = semester,
-                        Year = year,
-                        Program = program
-                    };
-                    openSchedules.Add(schedule);
-                }
-                reader.Close();
-            }
-            return openSchedules;
-        }
-        public List<Course> FindCourses()
-        {
-            string sql = $"SELECT * FROM ADMIN.HOCPHAN";
-            OracleCommand cmd = new OracleCommand(sql, connection);
-            List<Course> courses = new List<Course>();
-            using (OracleDataReader reader = cmd.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    string courseID = reader.GetString(reader.GetOrdinal("MAHP"));
-                    string courseName = reader.GetString(reader.GetOrdinal("TENHP"));
-                    int totalCredits = reader.GetInt32(reader.GetOrdinal("SOTC"));
-                    int theoryCredits = reader.GetInt32(reader.GetOrdinal("STLT"));
-                    int labCredits = reader.GetInt32(reader.GetOrdinal("STTH"));
-                    string unit = reader.GetString(reader.GetOrdinal("MADV"));
-                    int maxNumParticipient = reader.GetInt32(reader.GetOrdinal("SOSVTD"));
-                    courses.Add(new Course
-                    {
-                        CourseID = courseID,
-                        CourseName = courseName,
-                        TotalCredit = totalCredits,
-                        TheoryCredit = theoryCredits,
-                        LabCredit = labCredits,
-                        Unit = unit,
-                        MaxNumParticipatient = maxNumParticipient
-                    });
-                }
-                reader.Close();
-            }
-            return courses;
         }
 
         public List<CourseRegistration> GetRegistrations()

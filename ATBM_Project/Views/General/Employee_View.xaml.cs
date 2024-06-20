@@ -48,6 +48,7 @@ namespace ATBM_Project.Views.General
                     string unit = reader.GetString(reader.GetOrdinal("MADV"));
                     double grant = reader.GetDouble(reader.GetOrdinal("PHUCAP"));
                     DateTime dob = reader.GetDateTime(reader.GetOrdinal("NGSINH"));
+                    string group = reader.GetString(reader.GetOrdinal("COSO"));
                     emps.Add(new Models.Employee
                     {
                         ID = empID,
@@ -57,7 +58,8 @@ namespace ATBM_Project.Views.General
                         Role = role,
                         Unit = unit,
                         Grant = grant,
-                        DOB = dob.ToString("dd/MM/yyyy")
+                        DOB = dob.ToString("dd/MM/yyyy"),
+                        Group = group
                     });
                 }
             }

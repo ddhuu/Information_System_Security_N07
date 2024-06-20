@@ -37,6 +37,7 @@ namespace ATBM_Project.Views.General
             inputPhoneNumber.Text = _student.PhoneNumber;
             inputAvgGrade.Text = _student.AvgGrade.ToString();
             inputCummulativeCredits.Text = _student.CummulativeCredits.ToString();
+            inputGroup.Text = _student.Group;
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
@@ -62,12 +63,6 @@ namespace ATBM_Project.Views.General
                 return;
             }
 
-            if (phoneNumber.Length > 10)
-            {
-                MessageBox.Show("Số điện thoại không hợp lệ!");
-                return;
-            }
-
             string updateQuery = "UPDATE ADMIN.SINHVIEN SET HOTEN = :hoten, PHAI = :phai, NGSINH = TO_DATE(:ngsinh, 'DD/MM/YYYY'), DCHI = :dchi, DT = :dt, MACT = :mact, MANGANH = :manganh, SOTCTL = :sotctl, DTBTL = :dtbtl where MASV = :masv";
 
             // Tạo đối tượng OracleCommand
@@ -77,10 +72,10 @@ namespace ATBM_Project.Views.General
                 {
                     // Thêm tham số và gán giá trị
 
-                    command.Parameters.Add(new OracleParameter("hoten", fullName));
+                    command.Parameters.Add(new OracleParameter("hoten", OracleDbType.NVarchar2)).Value = fullName;
                     command.Parameters.Add(new OracleParameter("phai", gender));
                     command.Parameters.Add(new OracleParameter("ngsinh", dob));
-                    command.Parameters.Add(new OracleParameter("dchi", address));
+                    command.Parameters.Add(new OracleParameter("dchi", OracleDbType.NVarchar2)).Value = address;
                     command.Parameters.Add(new OracleParameter("dt", phoneNumber));
                     command.Parameters.Add(new OracleParameter("mact", program));
                     command.Parameters.Add(new OracleParameter("manganh", major));

@@ -18,5 +18,6 @@ namespace ATBM_Project.Models
         public string Major { get; set; }
         public double AvgGrade { get; set; }
         public int CummulativeCredits { get; set; }
+        public string Group { get; set; }
     }
 }

@@ -41,6 +41,10 @@
             <TextBlock Text="Mã ngành: " Width="100"/>
             <TextBox x:Name="inputMajor" Width="200" />
         </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+            <TextBlock Text="Cơ sở: " Width="100"/>
+            <TextBox x:Name="inputGroup" Width="200" />
+        </StackPanel>
 
         <Button x:Name="btnInsert" Click="btnInsert_Click" Width="80" >Thêm</Button>
 

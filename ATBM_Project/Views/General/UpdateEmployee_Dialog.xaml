@@ -41,7 +41,11 @@
             <TextBlock Text="Mã đơn vị: " Width="100"/>
             <TextBox x:Name="inputUnit" Width="200" IsEnabled="False"/>
         </StackPanel>
-
+        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+            <TextBlock Text="Cơ sở: " Width="100"/>
+            <TextBox x:Name="inputGroup" Width="200" IsEnabled="False"/>
+        </StackPanel>
+        
         <Button x:Name="btnUpdate" Click="btnUpdate_Click" Width="80" >Cập nhật</Button>
 
 
