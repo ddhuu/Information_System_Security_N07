@@ -1,7 +1,7 @@
--- CS#1: Nguoi dung co VAITRO là “Nhân viên co ban” có quyen truy cap du lieu:
--- - Xem dòng du lieu cua chính mình trong quan he NHANSU, có the chinh sua so dien thoai (DT) cua chính mình (neu so dien thoai có thay doi).
--- - Xem thông tin cua tat ca SINHVIEN, DONVI, HOCPHAN, KHMO.
--- - Xem dòng du lieu cua chính mình trong quan he NHANSU
+-- CS#1: Nguoi dung co VAITRO lï¿½ ï¿½Nhï¿½n viï¿½n co banï¿½ cï¿½ quyen truy cap du lieu:
+-- - Xem dï¿½ng du lieu cua chï¿½nh mï¿½nh trong quan he NHANSU, cï¿½ the chinh sua so dien thoai (DT) cua chï¿½nh mï¿½nh (neu so dien thoai cï¿½ thay doi).
+-- - Xem thï¿½ng tin cua tat ca SINHVIEN, DONVI, HOCPHAN, KHMO.
+-- - Xem dï¿½ng du lieu cua chï¿½nh mï¿½nh trong quan he NHANSU
 CREATE OR REPLACE VIEW UV_CANHAN_NHANSU AS
 SELECT * FROM ADMIN.NHANSU WHERE MANV = SYS_CONTEXT('USERENV', 'SESSION_USER');
 
@@ -18,7 +18,7 @@ END;
 GRANT SELECT, UPDATE(DT) ON ADMIN.UV_CANHAN_NHANSU TO RL_NHANVIENCOBAN;
 
 -- Trao quyen SELECT tren cac bang SINHVIEN, DONVI, HOCPHAN, KHMO.
--- - Xem thông tin cua tat ca SINHVIEN, DONVI, HOCPHAN, KHMO.
+-- - Xem thï¿½ng tin cua tat ca SINHVIEN, DONVI, HOCPHAN, KHMO.
 GRANT SELECT ON ADMIN.SINHVIEN TO RL_NHANVIENCOBAN;
 GRANT SELECT ON ADMIN.DONVI TO RL_NHANVIENCOBAN;
 GRANT SELECT ON ADMIN.HOCPHAN TO RL_NHANVIENCOBAN;

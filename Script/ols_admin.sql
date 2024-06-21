@@ -51,28 +51,30 @@ CREATE TABLE THONGBAO
     NOIDUNG NVARCHAR2(200)
 );
 
-INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(1,N'ThÙng b·o d‡nh cho Tr˝?ng khoa');
-INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(2,N'ThÙng b·o d‡nh cho Tr˝?ng b? mÙn khÙng ph‚n bi?t v? trÌ ?a l?');
-INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(3,N'ThÙng b·o d‡nh cho Gi·o v?'); 
-INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(4,N'ThÙng b·o d‡nh cho t?t c? c·c Tr˝?ng ın v?'); 
-INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(5,N'ThÙng b·o d‡nh cho Sinh viÍn ng‡nh HTTT ? CS1'); 
-INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(6,N'ThÙng b·o d‡nh cho Tr˝?nng b? mÙn KHMT ? CS1'); 
-INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(7,N'ThÙng b·o d‡nh cho Tr˝?ng b? mÙn KHMT ? CS1 v‡ CS2'); 
-INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(8,N'ThÙng b·o d‡nh cho Gi?ng viÍn b? mÙn HTTT ? CS1'); 
-INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(9,N'ThÙng b·o d‡nh cho t?t c? Nh‚n viÍn ? CS1'); 
-INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(10,N'ThÙng b·o d‡nh cho Sinh viÍn ng‡nh CNPM ? CS1 v‡ CS2'); 
+INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(1,N'Th√¥ng b√°o d√†nh cho Tr∆∞·ªüng khoa');
+INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(2,N'Th√¥ng b√°o d√†nh cho Tr∆∞·ªüng b·ªô m√¥n kh√¥ng ph√¢n bi·ªát v·ªã tr√≠ ƒë·ªãa l√Ω');
+INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(3,N'Th√¥ng b√°o d√†nh cho Gi√°o v·ª•'); 
+INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(4,N'Th√¥ng b√°o d√†nh cho t·∫•t c·∫£ c√°c Tr∆∞·ªüng ƒë∆°n v·ªã'); 
+INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(5,N'Th√¥ng b√°o d√†nh cho Sinh vi√™n ng√†nh HTTT ·ªü CS1'); 
+INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(6,N'Th√¥ng b√°o d√†nh cho Tr∆∞·ªüng b·ªô m√¥n KHMT ·ªü CS1'); 
+INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(7,N'Th√¥ng b√°o d√†nh cho Tr∆∞·ªüng b·ªô m√¥n KHMT ·ªü CS1 v√† CS2'); 
+INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(8,N'Th√¥ng b√°o d√†nh cho Gi·∫£ng vi√™n b·ªô m√¥n HTTT ·ªü CS1'); 
+INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(9,N'Th√¥ng b√°o d√†nh cho t·∫•t c·∫£ Nh√¢n vi√™n ·ªü CS1'); 
+INSERT INTO THONGBAO(ID, NOIDUNG) VALUES(10,N'Th√¥ng b√°o d√†nh cho Sinh vi√™n ng√†nh CNPM ·ªü CS1 v√† CS2'); 
 
 SELECT * FROM THONGBAO; 
 
 -- grant quyen select thong bao
-BEGIN
-    FOR emp IN (SELECT MANV FROM NHANSU) LOOP
-        EXECUTE IMMEDIATE 'GRANT SELECT ON THONGBAO TO ' || emp.MANV;
-    END LOOP;
-    FOR student IN (SELECT MASV FROM SINHVIEN) LOOP
-        EXECUTE IMMEDIATE 'GRANT SELECT ON THONGBAO TO ' || student.MASV;
-    END LOOP;
-END;
+GRANT SELECT ON THONGBAO TO RL_SINHVIEN;
+GRANT SELECT ON THONGBAO TO RL_NHANVIENCOBAN;
+-- BEGIN
+--     FOR emp IN (SELECT MANV FROM NHANSU) LOOP
+--         EXECUTE IMMEDIATE 'GRANT SELECT ON THONGBAO TO ' || emp.MANV;
+--     END LOOP;
+--     FOR student IN (SELECT MASV FROM SINHVIEN) LOOP
+--         EXECUTE IMMEDIATE 'GRANT SELECT ON THONGBAO TO ' || student.MASV;
+--     END LOOP;
+-- END;
 
 
 --Them truong co so vao bang NHANSU va NHANVIEN

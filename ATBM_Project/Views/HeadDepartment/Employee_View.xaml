@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ATBM_Project.Views.HeadDepartment"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             Height="550" Width="850">
+             Height="550" Width="840">
     <UserControl.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="2"/>
@@ -92,14 +92,14 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Actions" Width="90">
+                    <GridViewColumn Header="Actions" Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button Tag="{Binding}" ToolTip="Cập nhật" Margin="10 0 0 0" Click="btnUpdate_Click">
+                                    <Button Tag="{Binding}" ToolTip="Cập nhật" Margin="5 0 0 0" Click="btnUpdate_Click">
                                         <materialDesign:PackIcon Kind="Pencil" Width="12" Height="12"/>
                                     </Button>
-                                    <Button Tag="{Binding}" ToolTip="Xóa" Margin="10 0 0 0" Click="btnDelete_Click">
+                                    <Button Tag="{Binding}" ToolTip="Xóa" Margin="5 0 0 0" Click="btnDelete_Click">
                                         <materialDesign:PackIcon Kind="Delete" Width="12" Height="12"/>
                                     </Button>
                                 </StackPanel>

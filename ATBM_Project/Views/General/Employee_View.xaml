@@ -28,10 +28,10 @@
         <ListView x:Name="empDataGrid" Grid.Row="1" Margin="5" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Mã NV" Width="70">
+                    <GridViewColumn Header="Mã NV" Width="60">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding ID}" Width="60" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding ID}" Width="50" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -56,10 +56,10 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Phụ cấp" Width="80">
+                    <GridViewColumn Header="Phụ cấp" Width="70">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Grant}" Width="70" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Grant}" Width="60" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -70,10 +70,10 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Vai trò" Width="100">
+                    <GridViewColumn Header="Vai trò" Width="115">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Role}" Width="90" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Role}" Width="110" TextAlignment="Center"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -95,7 +95,7 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button Tag="{Binding}" ToolTip="Cập nhật" Click="btnUpdate_Click" HorizontalAlignment="Center" Margin="20 0 0 0">
+                                    <Button Tag="{Binding}" ToolTip="Cập nhật" Click="btnUpdate_Click" HorizontalAlignment="Center" Margin="10 0 0 0">
                                         <materialDesign:PackIcon Kind="Pencil" Width="12" Height="12"/>
                                     </Button>
                                 </StackPanel>

@@ -45,56 +45,56 @@ Background="Transparent" WindowStyle="None"
                         <!--Menu Buttons-->
                         <StackPanel DockPanel.Dock="Top" Margin="10">
                             <Button Name="infoButton" Click="infoButton_Click"  Margin="5"  >
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Account" Width="15" Height="15" Foreground="black"/>
-                                    <TextBlock Text="Thông tin" Margin="10,0,0,0" Foreground="Black"/>
+                                <StackPanel Orientation="Horizontal" Width="160">
+                                    <Icon:PackIconMaterial Kind="AccountOutline" Margin="40,0,0,0" Width="15" Height="15" Foreground="black"/>
+                                    <TextBlock Text="Nhân sự" Margin="10,0,0,0" Foreground="Black"/>
                                 </StackPanel>
                             </Button>
 
                             <Button Name="studentButton" Click="studentButton_Click"  Margin="5"  >
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="AccountCog" Width="15" Height="15" Foreground="Black"/>
+                                <StackPanel Orientation="Horizontal" Width="160">
+                                    <Icon:PackIconMaterial Kind="AccountSchoolOutline" Margin="40,0,0,0" Width="15" Height="15" Foreground="Black"/>
                                     <TextBlock Text="Sinh viên" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
 
                             <Button Name="compartmentButton" Click="compartmentButton_Click"  Margin="5" >
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Table" Width="15" Height="15" Foreground="black"/>
+                                <StackPanel Orientation="Horizontal" Width="160">
+                                    <Icon:PackIconMaterial Kind="Warehouse" Margin="40,0,0,0" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Đơn vị" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
 
                             <Button Name="courseButton" Click="courseButton_Click" Margin="5"  >
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Book" Width="15" Height="15" Foreground="black"/>
+                                <StackPanel Orientation="Horizontal" Width="160">
+                                    <Icon:PackIconMaterial Kind="BookOutline" Margin="40,0,0,0" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Học phần" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
                             <Button Name="openScheduleButton" Click="openScheduleButton_Click" Margin="5"  >
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="BookAccountOutline" Width="15" Height="15" Foreground="black"/>
+                                <StackPanel Orientation="Horizontal" Width="160">
+                                    <Icon:PackIconMaterial Kind="Calendar" Margin="40,0,0,0" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Khóa học mở" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
 
                             <Button Name="assignmentButton" Click="assignmentButton_Click" Margin="5"  >
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Assistant" Width="15" Height="15" Foreground="black"/>
+                                <StackPanel Orientation="Horizontal" Width="160">
+                                    <Icon:PackIconMaterial Kind="BookAccountOutline" Margin="40,0,0,0" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Phân công " Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
 
                             <Button Name="registerButton" Click="registerButton_Click" Margin="5"  >
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Note" Width="15" Height="15" Foreground="black"/>
+                                <StackPanel Orientation="Horizontal" Width="160">
+                                    <Icon:PackIconMaterial Kind="FileSign" Margin="40,0,0,0" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Đăng ký" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
 
                             <Button Name="messageButton" Click="messageButton_Click" Margin="5"  >
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Bell" Width="15" Height="15" Foreground="black"/>
+                                <StackPanel Orientation="Horizontal" Width="160">
+                                    <Icon:PackIconMaterial Kind="BellOutline" Margin="40,0,0,0" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Thông báo" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>

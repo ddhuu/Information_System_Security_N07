@@ -128,35 +128,39 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="USERNAME" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding USERNAME}">
+                <DataGridTextColumn Header="USERNAME" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding USERNAME}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="TextWrapping" Value="Wrap" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="OBJECT NAME" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding OBJECT_NAME}">
+                <DataGridTextColumn Header="OBJECT" IsReadOnly="True" CanUserResize="False" Width="70" Binding="{Binding OBJECT_NAME}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="TextWrapping" Value="Wrap" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="ACTION NAME" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding ACTION_NAME}">
+                <DataGridTextColumn Header="ACTION" IsReadOnly="True" CanUserResize="False" Width="70" Binding="{Binding ACTION_NAME}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="TextWrapping" Value="Wrap" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="TIMESTAMP" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding TIMESTAMP}">
+                <DataGridTextColumn Header="TIME" IsReadOnly="True" CanUserResize="False" Width="70" Binding="{Binding TIMESTAMP}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="TextWrapping" Value="Wrap" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn x:Name="STATUS" Header="STATUS" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding STATUS}">
+                <DataGridTextColumn x:Name="STATUS" Header="STATUS" IsReadOnly="True" CanUserResize="False" Width="70" Binding="{Binding STATUS}">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="HorizontalAlignment" Value="Center" />

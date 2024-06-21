@@ -45,21 +45,21 @@
                         <StackPanel DockPanel.Dock="Top" Margin="10">
                             <Button Name="userButton"  Margin="5" Click="userButton_Click">
                                 <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Account" Width="15" Height="15" Foreground="black"/>
+                                    <Icon:PackIconMaterial Kind="AccountOutline" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Users" Margin="10,0,0,0" Foreground="Black"/>
                                 </StackPanel>
                             </Button>
 
                             <Button Name="roleButton"  Margin="5" Click="roleButton_Click">
                                 <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="AccountCog" Width="15" Height="15" Foreground="Black"/>
+                                    <Icon:PackIconMaterial Kind="AccountSchoolOutline" Width="15" Height="15" Foreground="Black"/>
                                     <TextBlock Text="Roles" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
 
                             <Button Name="tableviewButton"  Margin="5" Click="tableviewButton_Click">
                                 <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="Table" Width="15" Height="15" Foreground="black"/>
+                                    <Icon:PackIconMaterial Kind="Warehouse" Width="15" Height="15" Foreground="black"/>
                                     <TextBlock Text="Table" Margin="10,0,0,0" Foreground="black"/>
                                 </StackPanel>
                             </Button>
