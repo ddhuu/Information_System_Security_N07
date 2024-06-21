@@ -8,6 +8,8 @@
         public string OBJECT_NAME { get; set; }
         public string TIMESTAMP { get; set; }
 
+        public string STATUS { get; set; }
+
         public string SQL_TEXT { get; set; }
 
     }

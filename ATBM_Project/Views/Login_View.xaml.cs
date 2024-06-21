@@ -29,8 +29,7 @@ namespace ATBM_Project.Views
 
             string role = session.Role;
 
-            // truong khoa chi co 1 nguoi
-            if(session.Username.ToUpper() == "NV001")
+            if (session.Username.ToUpper() == "NV001")
             {
                 HeadDepartmentPage headDepartment = new HeadDepartmentPage(connection, session.Username);
                 this.Close();
@@ -93,19 +92,55 @@ namespace ATBM_Project.Views
                         countRole++;
                     }
                 }
-                var role = Lrole.Where(hh => hh == "DBA" || hh.Contains("RL_")).ToList();
-                if (role.Count == 0)
+                var role = Lrole.Where(roleName => roleName == "DBA" || roleName.Contains("RL_")).ToList();
+                if (countRole < 0)
                 {
                     MessageBox.Show("Account does not have privileges in this system");
                     return;
                 }
-                else
+                else if (countRole == 1)
                 {
                     session.Username = user;
                     session.Role = role[0];
-                    Console.WriteLine("User: {0}", session.Username);
-                    Console.WriteLine("Role: {0}", session.Role);
                     directWindowUser(conn, session);
+                }
+                else
+                {
+                    if (role.Where(roleName => roleName == "DBA").Count() == 1)
+                    {
+                        session.Username = user;
+                        session.Role = role[0];
+                        directWindowUser(conn, session);
+                    }
+                    else
+                    {
+                        string userRole = "";
+                        string sqlText = "select sys_context('user_ctx','role') role from dual";
+                        try
+                        {
+                            using (OracleCommand cmd1 = new OracleCommand(sqlText, conn))
+                            {
+                                using (OracleDataReader reader1 = cmd1.ExecuteReader())
+                                {
+                                    while (reader1.Read())
+                                    {
+                                        userRole = reader1.GetString(reader1.GetOrdinal("ROLE"));
+                                    }
+                                }
+                            }
+                            session.Username = user;
+                            session.Role = userRole;
+                            Console.WriteLine("Username: " + session.Username);
+                            Console.WriteLine("Role: " + session.Role);
+                            directWindowUser(conn, session);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Account does not have privileges in this system");
+                        }
+
+
+                    }
                 }
             }
         }

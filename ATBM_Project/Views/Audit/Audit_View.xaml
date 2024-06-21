@@ -156,6 +156,13 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
+                <DataGridTextColumn x:Name="STATUS" Header="STATUS" IsReadOnly="True" CanUserResize="False" Width="*" Binding="{Binding STATUS}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
                 <DataGridTemplateColumn x:Name="SQL_TEXT" Header="SQL_TEXT" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

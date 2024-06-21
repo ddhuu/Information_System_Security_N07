@@ -14,7 +14,7 @@ namespace ATBM_Project.Views.Audit
     /// </summary>
     public partial class Audit_View : UserControl
     {
-        private List<Audits> _listAudit { get; set; }
+        private List<Audits> _currentList { get; set; }
         private Admin_VM _adminVM;
         private UserControl _userControl;
         private bool _isFirstLoad = true;
@@ -31,9 +31,8 @@ namespace ATBM_Project.Views.Audit
             auditType.Add("Fine-Grained Audit For PHUCAP");
             auditTypeCombobox.ItemsSource = auditType;
             auditTypeCombobox.SelectedItem = "Standard Audit";
-            _listAudit = _adminVM.GetStandardAudit();
-            AuditGrid.ItemsSource = _listAudit;
-            SQL_TEXT.Visibility = Visibility.Collapsed;
+            _currentList = _adminVM.GetStandardAudit();
+            AuditGrid.ItemsSource = _currentList;
             int result;
             _adminVM.execProcedure("sp_get_audit_status", out result);
             auditCheckBox.IsChecked = result == 1 ? true : false;
@@ -46,8 +45,8 @@ namespace ATBM_Project.Views.Audit
             string type = auditTypeCombobox.SelectedItem as string;
             if (type == "Standard Audit")
             {
-                AuditGrid.ItemsSource = _adminVM.GetStandardAudit();
-                SQL_TEXT.Visibility = Visibility.Collapsed;
+                _currentList = _adminVM.GetStandardAudit();
+                AuditGrid.ItemsSource = _currentList;
                 fineGrainAuditCheckBox.IsEnabled = false;
                 fineGrainAuditCheckBox.Visibility = Visibility.Collapsed;
                 auditCheckBox.IsEnabled = true;
@@ -55,17 +54,19 @@ namespace ATBM_Project.Views.Audit
             }
             else if (type == "Fine-Grained Audit For PHUCAP")
             {
-                AuditGrid.ItemsSource = _adminVM.GetFGAudit("FGA_POLICY_PHUCAP");
-                SQL_TEXT.Visibility = Visibility.Visible;
+                _currentList = _adminVM.GetFGAudit("FGA_POLICY_PHUCAP");
+                AuditGrid.ItemsSource = _currentList;
                 fineGrainAuditCheckBox.IsEnabled = true;
                 fineGrainAuditCheckBox.Visibility = Visibility.Visible;
+                STATUS.Visibility = Visibility.Collapsed;
                 auditCheckBox.IsEnabled = false;
                 auditCheckBox.Visibility = Visibility.Collapsed;
             }
             else
             {
-                AuditGrid.ItemsSource = _adminVM.GetFGAudit("FGA_POLICY_DIEM");
-                SQL_TEXT.Visibility = Visibility.Visible;
+                _currentList = _adminVM.GetFGAudit("FGA_POLICY_DIEM");
+                AuditGrid.ItemsSource = _currentList;
+                STATUS.Visibility = Visibility.Collapsed;
                 fineGrainAuditCheckBox.IsEnabled = true;
                 fineGrainAuditCheckBox.Visibility = Visibility.Visible;
                 auditCheckBox.IsEnabled = false;
@@ -78,10 +79,10 @@ namespace ATBM_Project.Views.Audit
         private void SearchUser_TextChange(object sender, TextChangedEventArgs e)
         {
             string textSearch = SearchUser.Text;
-            AuditGrid.ItemsSource = _listAudit;
+            AuditGrid.ItemsSource = _currentList;
             if (textSearch != null)
             {
-                var searchResult = _listAudit.Where(t => t.USERNAME.Contains(textSearch));
+                var searchResult = _currentList.Where(t => t.USERNAME.Contains(textSearch));
                 AuditGrid.ItemsSource = searchResult;
             }
 
@@ -98,8 +99,7 @@ namespace ATBM_Project.Views.Audit
             if (checkBox.IsChecked == true)
             {
                 checkBox.IsHitTestVisible = false;
-                await Task.Run(() => _adminVM.execProcedure("sp_audit_user", "NHANSU", "enable"));
-                await Task.Run(() => _adminVM.execProcedure("sp_audit_user", "SINHVIEN", "enable"));
+                await Task.Run(() => _adminVM.execProcedure("USP_SETTING_AUDIT", "enable"));
                 checkBox.IsHitTestVisible = true;
                 if (!_isFirstLoad)
                 {
@@ -120,8 +120,7 @@ namespace ATBM_Project.Views.Audit
             if (checkBox.IsChecked == false)
             {
                 checkBox.IsHitTestVisible = false;
-                await Task.Run(() => _adminVM.execProcedure("sp_audit_user", "NHANSU", "disable"));
-                await Task.Run(() => _adminVM.execProcedure("sp_audit_user", "SINHVIEN", "disable"));
+                await Task.Run(() => _adminVM.execProcedure("USP_SETTING_AUDIT", "disable"));
                 checkBox.IsHitTestVisible = true;
                 if (!_isFirstLoad)
                 {

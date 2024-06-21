@@ -25,6 +25,7 @@ namespace ATBM_Project.Views
             try
             {
                 _admin.CreateRole(text);
+                MessageBox.Show("Add new Role Successfully!");
                 _userControl.Content = new Role_View(_admin, _userControl);
             }
             catch (Exception ex)
@@ -38,3 +39,4 @@ namespace ATBM_Project.Views
         }
     }
 }
+

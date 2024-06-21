@@ -81,16 +81,7 @@ namespace ATBM_Project.ViewsModels
                 return false;
             }
         }
-        public void ExecuteAlterSession()
-        {
 
-
-            // Thực thi ALTER SESSION
-            string alterSessionSQL = "ALTER SESSION SET \"_oracle_script\"=true";
-            OracleCommand alterSessionCmd = new OracleCommand(alterSessionSQL, connection);
-            alterSessionCmd.ExecuteNonQuery();
-
-        }
 
         public void DropUser(Users user)
         {
@@ -99,7 +90,7 @@ namespace ATBM_Project.ViewsModels
                 throw new ArgumentNullException("User, User.Name or connection is null");
             }
             // Thực thi ALTER SESSION
-            ExecuteAlterSession();
+
 
             // Thực thi DROP USER
             string dropUserSQL = $"DROP USER {user.Name} CASCADE";
@@ -109,7 +100,7 @@ namespace ATBM_Project.ViewsModels
         }
         public void AddNewUser(string userID, string password)
         {
-            ExecuteAlterSession();
+
 
             string SQLCreateUser = $"CREATE USER {userID} IDENTIFIED BY {password}";
             OracleCommand cmdCreateUser = new OracleCommand(SQLCreateUser, connection);
@@ -143,7 +134,7 @@ namespace ATBM_Project.ViewsModels
 
         public void CreateRole(string roleName)
         {
-            ExecuteAlterSession();
+
             string SQLcontext = $"CREATE ROLE {roleName}";
             OracleCommand cmd = new OracleCommand(SQLcontext, connection);
             cmd.ExecuteNonQuery();
@@ -572,8 +563,7 @@ namespace ATBM_Project.ViewsModels
             try
             {
                 var list = new List<Audits>();
-                string SQLcontext = $"SELECT SESSIONID, USERNAME, ACTION_NAME, OBJ_NAME, TO_CHAR(TIMESTAMP, 'DD/MM/YYYY HH24:MI:SS')" +
-                    $" AS TIMESTAMP FROM DBA_AUDIT_TRAIL WHERE OWNER='ADMIN' ORDER BY TIMESTAMP DESC ";
+                string SQLcontext = $"SELECT SESSIONID, USERNAME, ACTION_NAME, OBJ_NAME,SQL_TEXT, TO_CHAR(TIMESTAMP, 'DD/MM/YYYY HH24:MI:SS') AS TIMESTAMP, RETURNCODE FROM DBA_AUDIT_TRAIL WHERE OWNER='ADMIN' ORDER BY TIMESTAMP DESC ";
 
                 using (OracleCommand cmd = new OracleCommand(SQLcontext, connection))
                 {
@@ -583,20 +573,19 @@ namespace ATBM_Project.ViewsModels
                         {
                             list.Add(new Audits
                             {
-                                SESSION_ID = reader.GetString(reader.GetOrdinal("SESSIONID")),
-                                USERNAME = reader.GetString(reader.GetOrdinal("USERNAME")),
-                                ACTION_NAME = reader.GetString(reader.GetOrdinal("ACTION_NAME")),
-                                OBJECT_NAME = reader.GetString(reader.GetOrdinal("OBJ_NAME")),
-                                TIMESTAMP = reader.GetString(reader.GetOrdinal("TIMESTAMP"))
+                                SESSION_ID = reader.IsDBNull(reader.GetOrdinal("SESSIONID")) ? string.Empty : reader.GetString(reader.GetOrdinal("SESSIONID")),
+                                USERNAME = reader.IsDBNull(reader.GetOrdinal("USERNAME")) ? string.Empty : reader.GetString(reader.GetOrdinal("USERNAME")),
+                                ACTION_NAME = reader.IsDBNull(reader.GetOrdinal("ACTION_NAME")) ? string.Empty : reader.GetString(reader.GetOrdinal("ACTION_NAME")),
+                                OBJECT_NAME = reader.IsDBNull(reader.GetOrdinal("OBJ_NAME")) ? string.Empty : reader.GetString(reader.GetOrdinal("OBJ_NAME")),
+                                TIMESTAMP = reader.IsDBNull(reader.GetOrdinal("TIMESTAMP")) ? string.Empty : reader.GetString(reader.GetOrdinal("TIMESTAMP")),
+                                STATUS = reader.IsDBNull(reader.GetOrdinal("RETURNCODE")) ? "Error" : reader.GetInt32(reader.GetOrdinal("RETURNCODE")) == 0 ? "Success" : "Error",
+                                SQL_TEXT = reader.IsDBNull(reader.GetOrdinal("SQL_TEXT")) ? string.Empty : reader.GetString(reader.GetOrdinal("SQL_TEXT")),
                             });
-
                         }
                     }
                 }
 
-
                 return list;
-
             }
             catch
             {
@@ -609,8 +598,7 @@ namespace ATBM_Project.ViewsModels
             try
             {
                 var list = new List<Audits>();
-                string SQLcontext = $"SELECT SESSION_ID, DB_USER, STATEMENT_TYPE, OBJECT_NAME, TO_CHAR(TIMESTAMP, 'DD/MM/YYYY HH24:MI:SS')" +
-                    $" AS TIMESTAMP, SQL_TEXT FROM DBA_FGA_AUDIT_TRAIL WHERE OBJECT_SCHEMA='ADMIN' AND POLICY_NAME='{policyName}' ORDER BY TIMESTAMP DESC ";
+                string SQLcontext = $"SELECT SESSION_ID, DB_USER, STATEMENT_TYPE, OBJECT_NAME, TO_CHAR(TIMESTAMP, 'DD/MM/YYYY HH24:MI:SS') AS TIMESTAMP, SQL_TEXT FROM DBA_FGA_AUDIT_TRAIL WHERE OBJECT_SCHEMA='ADMIN' AND POLICY_NAME='{policyName}' ORDER BY TIMESTAMP DESC ";
 
                 using (OracleCommand cmd = new OracleCommand(SQLcontext, connection))
                 {
@@ -620,27 +608,24 @@ namespace ATBM_Project.ViewsModels
                         {
                             list.Add(new Audits
                             {
-                                SESSION_ID = reader.GetString(reader.GetOrdinal("SESSION_ID")),
-                                USERNAME = reader.GetString(reader.GetOrdinal("DB_USER")),
-                                ACTION_NAME = reader.GetString(reader.GetOrdinal("STATEMENT_TYPE")),
-                                OBJECT_NAME = reader.GetString(reader.GetOrdinal("OBJECT_NAME")),
-                                TIMESTAMP = reader.GetString(reader.GetOrdinal("TIMESTAMP")),
-                                SQL_TEXT = reader.GetString(reader.GetOrdinal("SQL_TEXT"))
-                            });
+                                SESSION_ID = reader.IsDBNull(reader.GetOrdinal("SESSION_ID")) ? string.Empty : reader.GetString(reader.GetOrdinal("SESSION_ID")),
+                                USERNAME = reader.IsDBNull(reader.GetOrdinal("DB_USER")) ? string.Empty : reader.GetString(reader.GetOrdinal("DB_USER")),
+                                ACTION_NAME = reader.IsDBNull(reader.GetOrdinal("STATEMENT_TYPE")) ? string.Empty : reader.GetString(reader.GetOrdinal("STATEMENT_TYPE")),
+                                OBJECT_NAME = reader.IsDBNull(reader.GetOrdinal("OBJECT_NAME")) ? string.Empty : reader.GetString(reader.GetOrdinal("OBJECT_NAME")),
+                                TIMESTAMP = reader.IsDBNull(reader.GetOrdinal("TIMESTAMP")) ? string.Empty : reader.GetString(reader.GetOrdinal("TIMESTAMP")),
+                                SQL_TEXT = reader.IsDBNull(reader.GetOrdinal("SQL_TEXT")) ? string.Empty : reader.GetString(reader.GetOrdinal("SQL_TEXT")),
 
+                            });
                         }
                     }
                 }
 
-
                 return list;
-
             }
             catch
             {
                 return new List<Audits>();
             }
-
         }
 
         public void execProcedure(string procedureName, params object[] parameters)

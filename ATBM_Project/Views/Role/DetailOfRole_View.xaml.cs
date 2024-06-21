@@ -44,5 +44,10 @@ namespace ATBM_Project.Views.Role
         {
             DetailOfRole.Content = new UsersOfRole_View(_admin, roleName);
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
