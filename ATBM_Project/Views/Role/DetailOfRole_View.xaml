@@ -24,10 +24,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!--Menu Icon-->
-                <Button HorizontalAlignment="Left" Margin="20 28 0 35" Click="Back_Click">
-                    <Icon:PackIconMaterial Kind="ArrowLeft" Width="15" Height="15" Foreground="black"/>
-                </Button>
+
 
                 <Border Grid.Row="1" Background="#eeeee4" CornerRadius="0 0 0 0">
                     <DockPanel>

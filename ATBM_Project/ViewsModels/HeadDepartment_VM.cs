@@ -75,7 +75,7 @@ namespace ATBM_Project.ViewsModels
                     // Thêm tham số và gán giá trị
                     command.Parameters.Add(new OracleParameter("value1", employee.ID));
                     command.Parameters.Add(new OracleParameter("value2", OracleDbType.NVarchar2)).Value = employee.FullName;
-                    command.Parameters.Add(new OracleParameter("value3", employee.Gender));
+                    command.Parameters.Add(new OracleParameter("value3", OracleDbType.NVarchar2)).Value = employee.Gender;
                     command.Parameters.Add(new OracleParameter("value4", employee.DOB));
                     command.Parameters.Add(new OracleParameter("value5", employee.Grant));
                     command.Parameters.Add(new OracleParameter("value6", employee.PhoneNumber));
@@ -109,7 +109,7 @@ namespace ATBM_Project.ViewsModels
                 {
                     // Thêm tham số và gán giá trị
                     command.Parameters.Add(new OracleParameter("hoten", OracleDbType.NVarchar2)).Value = newEmployee.FullName;
-                    command.Parameters.Add(new OracleParameter("phai", newEmployee.Gender));
+                    command.Parameters.Add(new OracleParameter("phai", OracleDbType.NVarchar2)).Value = newEmployee.Gender;
                     command.Parameters.Add(new OracleParameter("ngsinh", newEmployee.DOB));
                     command.Parameters.Add(new OracleParameter("dt", newEmployee.PhoneNumber));
                     command.Parameters.Add(new OracleParameter("phucap", newEmployee.Grant));
