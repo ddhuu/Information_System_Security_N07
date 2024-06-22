@@ -125,12 +125,12 @@ select* from all_sa_labels;
 
 -- B5: APPLY NO CONTROL
 BEGIN 
- SA_POLICY_ADMIN.APPLY_TABLE_POLICY ( 
-    POLICY_NAME => 'OLS_POLICY',
-    SCHEMA_NAME => 'ADMIN', 
-    TABLE_NAME => 'THONGBAO',
-    TABLE_OPTIONS => 'NO_CONTROL'
- ); 
+    SA_POLICY_ADMIN.APPLY_TABLE_POLICY ( 
+        POLICY_NAME => 'OLS_POLICY',
+        SCHEMA_NAME => 'ADMIN', 
+        TABLE_NAME => 'THONGBAO',
+        TABLE_OPTIONS => 'NO_CONTROL'
+    ); 
 END;
 
 
@@ -182,14 +182,14 @@ SELECT * FROM THONGBAO;
 
 --B7: AP DUNG OLS VAO BANG 
 BEGIN 
-SA_POLICY_ADMIN.REMOVE_TABLE_POLICY('OLS_POLICY','ADMIN','THONGBAO');
-SA_POLICY_ADMIN.APPLY_TABLE_POLICY ( 
-    policy_name => 'OLS_POLICY', 
-    schema_name => 'ADMIN', 
-    table_name => 'THONGBAO',
-    table_options => 'READ_CONTROL',
-    predicate => null
-); 
+    SA_POLICY_ADMIN.REMOVE_TABLE_POLICY('OLS_POLICY','ADMIN','THONGBAO');
+    SA_POLICY_ADMIN.APPLY_TABLE_POLICY ( 
+        policy_name => 'OLS_POLICY', 
+        schema_name => 'ADMIN', 
+        table_name => 'THONGBAO',
+        table_options => 'READ_CONTROL',
+        predicate => null
+    ); 
 END; 
 
 

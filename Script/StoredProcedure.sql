@@ -1,5 +1,4 @@
 -- SP tao user moi
--- Nho alter session set "_ORACLE_SCRIPT"=true; truoc khi goi procedure nay
 -- admin can co du quyen
 -- grant create session to admin with admin option;
 -- grant create user to admin;
@@ -94,7 +93,7 @@ END;
 
 
 -- Goi 2 thuc thi 2 procedure tren
-alter session set "_ORACLE_SCRIPT"=true;
+-- alter session set "_ORACLE_SCRIPT"=true;
 EXEC USP_CREATE_USERS;
 EXEC USP_GRANT_ROLES;
 

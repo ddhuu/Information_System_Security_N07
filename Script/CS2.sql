@@ -1,11 +1,11 @@
--- CS#2: Nguoi dung có VAITRO la “Giang vien” co quyen truy cap du lieu:
--- - Nhu mot nguoi dung co vai tro “Nhan vien co ban” (xem mo ta CS#1).
+-- CS#2: Nguoi dung co VAITRO la Giang vien co quyen truy cap du lieu:
+-- - Nhu mot nguoi dung co vai tro Nhan vien co ban(xem mo ta CS#1).
 -- - Xem du lieu phan cong giang day lien quan den ban than minh (PHANCONG).
 -- - Xem du lieu tren quan he DANGKY lien quan den cac lop hoc phan ma giang vien duoc phan cong giang day.
 -- - Cap nhat du lieu tai cac truong lien quan diem so (trong quan he DANGKY) cua cac sinh vien co tham gia lop hoc phan ma giang vien do duoc phan cong giang day. Cac
 -- truong lien quan diem so bao gom: DIEMTH, DIEMQT, DIEMCK, DIEMTK.
 
--- - Nhu mot nguoi dung co vai tro “Nhan vien co ban” (xem mo ta CS#1)
+-- - Nhu mot nguoi dung co vai tro Nhan vien co ban (xem mo ta CS#1)
 grant RL_NHANVIENCOBAN TO RL_GIANGVIEN;
 
 -- Xem thong tin phan cong cua chinh minh
