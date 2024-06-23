@@ -43,6 +43,8 @@ namespace ATBM_Project.Views.General
 
             string sqlString = "SELECT * FROM ADMIN.SINHVIEN";
             OracleCommand cmd = new OracleCommand(sqlString, _connection);
+            try
+            {
 
             using (OracleDataReader reader = cmd.ExecuteReader())
             {
@@ -74,6 +76,10 @@ namespace ATBM_Project.Views.General
                         Group = group,
                     });
                 }
+            }
+            }
+            catch (Exception ex){
+                MessageBox.Show(ex.Message);
             }
             return students;
         }
